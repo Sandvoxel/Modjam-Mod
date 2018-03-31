@@ -1,15 +1,15 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
+  "modid": "IM",
+  "name": "Immersive Magic",
+  "description": "Adds fast-paced and affinity-based magic to your Minecraft experience.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
-  "logoFile": "",
+  "authorList": ["TheCrazyGrape", "Sandvoxel"],
+  "credits": "Baseboard idea from BigHatMagnus on the Minecraft Forums",
+  "logoFile": "ImmMag.png",
   "screenshots": [],
   "dependencies": []
 }
