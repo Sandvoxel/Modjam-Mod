@@ -1,8 +1,8 @@
-package com.sandvoxel.tempname.common.blocks.LIb;
+package com.sandvoxel.immersivemagic.common.blocks.LIb;
 
-import com.sandvoxel.tempname.Refrence;
-import com.sandvoxel.tempname.common.tileentitys.TileEntityBase;
-import com.sandvoxel.tempname.common.util.TileHelper;
+import com.sandvoxel.immersivemagic.Refrence;
+import com.sandvoxel.immersivemagic.common.tileentitys.TileEntityBase;
+import com.sandvoxel.immersivemagic.common.util.TileHelper;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;

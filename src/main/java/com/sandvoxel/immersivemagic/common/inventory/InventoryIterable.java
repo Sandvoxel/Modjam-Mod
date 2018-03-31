@@ -1,4 +1,4 @@
-package com.sandvoxel.tempname.common.inventory;
+package com.sandvoxel.immersivemagic.common.inventory;
 
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;

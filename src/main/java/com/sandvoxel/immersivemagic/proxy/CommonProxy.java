@@ -1,8 +1,8 @@
-package com.sandvoxel.tempname.proxy;
+package com.sandvoxel.immersivemagic.proxy;
 
-import com.sandvoxel.tempname.TempName;
-import com.sandvoxel.tempname.common.blocks.Blocks;
-import com.sandvoxel.tempname.common.util.RegistryHelper;
+import com.sandvoxel.immersivemagic.ImmersiveMagic;
+import com.sandvoxel.immersivemagic.common.blocks.Blocks;
+import com.sandvoxel.immersivemagic.common.util.RegistryHelper;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
@@ -31,7 +31,7 @@ public class CommonProxy {
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
 
         for (Block block : RegistryHelper.getBlocks()) {
-            TempName.LOGGER.info(block.getUnlocalizedName());
+            ImmersiveMagic.LOGGER.info(block.getUnlocalizedName());
             event.getRegistry().register(block);
         }
     }
@@ -39,7 +39,7 @@ public class CommonProxy {
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
         for (Item item : RegistryHelper.getItems()) {
-            TempName.LOGGER.info(item.getUnlocalizedName());
+            ImmersiveMagic.LOGGER.info(item.getUnlocalizedName());
             event.getRegistry().register(item);
         }
     }

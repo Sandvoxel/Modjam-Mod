@@ -1,4 +1,14 @@
 package com.sandvoxel.immersivemagic.api.magic;
 
-public class IAffinities {
+import net.minecraft.util.EnumFacing;
+
+public enum IAffinities {
+    FIRE,
+    WATER,
+    ICE,
+    AIR,
+    EARTH,
+    ENDER,
+    LIGHT,
+    DARKNESS;
 }

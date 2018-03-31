@@ -1,4 +1,4 @@
-package com.sandvoxel.tempname.common.util;
+package com.sandvoxel.immersivemagic.common.util;
 
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.item.ItemStack;

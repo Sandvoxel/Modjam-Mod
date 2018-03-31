@@ -1,7 +1,7 @@
-package com.sandvoxel.tempname.common.util;
+package com.sandvoxel.immersivemagic.common.util;
 
-import com.sandvoxel.tempname.TempName;
-import com.sandvoxel.tempname.common.blocks.LIb.BlockBase;
+import com.sandvoxel.immersivemagic.ImmersiveMagic;
+import com.sandvoxel.immersivemagic.common.blocks.LIb.BlockBase;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelBakery;
@@ -47,7 +47,7 @@ public class RegistryHelper {
 
         } catch (Exception e) {
 
-            TempName.LOGGER.error(String.format("Block %s has had a error : %s", blockClass.getCanonicalName(), e));
+            ImmersiveMagic.LOGGER.error(String.format("Block %s has had a error : %s", blockClass.getCanonicalName(), e));
         }
 
         return block;
@@ -64,7 +64,7 @@ public class RegistryHelper {
 
         } catch (Exception e) {
 
-            TempName.LOGGER.error(String.format("Failed to initialize ItemBlock for: %s || %s", block.getUnlocalizedName(), e));
+            ImmersiveMagic.LOGGER.error(String.format("Failed to initialize ItemBlock for: %s || %s", block.getUnlocalizedName(), e));
         }
     }
 

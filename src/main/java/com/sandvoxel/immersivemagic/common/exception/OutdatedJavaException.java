@@ -1,4 +1,4 @@
-package com.sandvoxel.tempname.common.exception;
+package com.sandvoxel.immersivemagic.common.exception;
 
 public class OutdatedJavaException extends RuntimeException {
     public OutdatedJavaException(final String message) {

@@ -1,7 +1,7 @@
-package com.sandvoxel.tempname.proxy;
+package com.sandvoxel.immersivemagic.proxy;
 
-import com.sandvoxel.tempname.Refrence;
-import com.sandvoxel.tempname.common.util.RegistryHelper;
+import com.sandvoxel.immersivemagic.Refrence;
+import com.sandvoxel.immersivemagic.common.util.RegistryHelper;
 import net.minecraft.block.Block;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;

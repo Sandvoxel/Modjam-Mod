@@ -1,7 +1,6 @@
-package com.sandvoxel.tempname.common.blocks;
+package com.sandvoxel.immersivemagic.common.blocks;
 
-import com.sandvoxel.tempname.Refrence;
-import com.sandvoxel.tempname.common.blocks.LIb.BlockBase;
+import com.sandvoxel.immersivemagic.common.blocks.LIb.BlockBase;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 

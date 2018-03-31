@@ -1,6 +1,6 @@
-package com.sandvoxel.tempname.common.blocks.LIb;
+package com.sandvoxel.immersivemagic.common.blocks.LIb;
 
-import com.sandvoxel.tempname.Refrence;
+import com.sandvoxel.immersivemagic.Refrence;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;

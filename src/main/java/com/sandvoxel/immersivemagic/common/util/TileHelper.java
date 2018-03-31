@@ -1,6 +1,5 @@
-package com.sandvoxel.tempname.common.util;
+package com.sandvoxel.immersivemagic.common.util;
 
-import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;

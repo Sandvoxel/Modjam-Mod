@@ -1,9 +1,8 @@
-package com.sandvoxel.tempname.common.blocks;
+package com.sandvoxel.immersivemagic.common.blocks;
 
-import com.sandvoxel.tempname.Refrence;
-import com.sandvoxel.tempname.TempName;
-import com.sandvoxel.tempname.common.blocks.LIb.BlockBase;
-import com.sandvoxel.tempname.common.util.RegistryHelper;
+import com.sandvoxel.immersivemagic.Refrence;
+import com.sandvoxel.immersivemagic.common.blocks.LIb.BlockBase;
+import com.sandvoxel.immersivemagic.common.util.RegistryHelper;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 

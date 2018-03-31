@@ -1,6 +1,6 @@
-package com.sandvoxel.tempname.api.inventory;
+package com.sandvoxel.immersivemagic.api.inventory;
 
-import com.sandvoxel.tempname.common.inventory.InventoryOperation;
+import com.sandvoxel.immersivemagic.common.inventory.InventoryOperation;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 

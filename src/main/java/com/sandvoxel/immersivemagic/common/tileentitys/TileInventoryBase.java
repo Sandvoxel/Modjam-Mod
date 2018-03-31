@@ -1,7 +1,7 @@
-package  com.sandvoxel.tempname.common.tileentitys;
+package  com.sandvoxel.immersivemagic.common.tileentitys;
 
-import com.sandvoxel.tempname.api.inventory.IInventoryHandler;
-import com.sandvoxel.tempname.common.inventory.InventoryOperation;
+import com.sandvoxel.immersivemagic.api.inventory.IInventoryHandler;
+import com.sandvoxel.immersivemagic.common.inventory.InventoryOperation;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;

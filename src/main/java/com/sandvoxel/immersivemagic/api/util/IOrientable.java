@@ -1,4 +1,4 @@
-package com.sandvoxel.tempname.api.util;
+package com.sandvoxel.immersivemagic.api.util;
 
 import net.minecraft.util.EnumFacing;
 

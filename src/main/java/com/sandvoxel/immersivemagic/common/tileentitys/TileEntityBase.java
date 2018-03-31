@@ -1,7 +1,7 @@
-package com.sandvoxel.tempname.common.tileentitys;
+package com.sandvoxel.immersivemagic.common.tileentitys;
 
-import com.sandvoxel.tempname.api.util.IOrientable;
-import com.sandvoxel.tempname.common.util.TileHelper;
+import com.sandvoxel.immersivemagic.api.util.IOrientable;
+import com.sandvoxel.immersivemagic.common.util.TileHelper;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 
