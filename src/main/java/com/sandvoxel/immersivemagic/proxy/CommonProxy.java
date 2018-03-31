@@ -46,12 +46,12 @@ public class CommonProxy {
     public static void attachCapability(AttachCapabilitiesEvent<Entity> event)
     {
         if (!(event.getObject() instanceof EntityPlayer)) return;
-        event.addCapability(AFFINITIES_CAPABILITY, new AffinitiesProvider());
+        final Affinities maxHealth = new Affinities((EntityPlayer) event.getObject());
+        event.addCapability(AFFINITIES_CAPABILITY, AffinitiesProvider.createpoider(maxHealth));
     }
 
     @SubscribeEvent
     public static void playerClone(PlayerEvent.Clone event) {
-        ImmersiveMagic.LOGGER.info("-----------------------------------------------------------");
 
     }
 

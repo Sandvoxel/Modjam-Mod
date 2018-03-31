@@ -1,39 +1,33 @@
 package com.sandvoxel.immersivemagic.common.magicdata;
 
 import com.sandvoxel.immersivemagic.api.magic.IAffinities;
+import com.sandvoxel.immersivemagic.common.capability.SimpleCapabilityProvider;
+import com.sandvoxel.immersivemagic.common.util.CapabilityUtils;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
+import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class AffinitiesProvider implements ICapabilitySerializable<NBTBase> {
+public class AffinitiesProvider {
 
     @CapabilityInject(IAffinities.class)
     public static final Capability<IAffinities> AFFINITIES_CAPABILITY = null;
 
 
-    @Override
-    public boolean hasCapability(@Nonnull Capability<?> capability, @Nullable EnumFacing facing) {
-        return capability == AFFINITIES_CAPABILITY;
-    }
 
     @Nullable
-    @Override
-    public <T> T getCapability(@Nonnull Capability<T> capability, @Nullable EnumFacing facing) {
-        return capability == AFFINITIES_CAPABILITY ? AFFINITIES_CAPABILITY.<T> cast(AFFINITIES_CAPABILITY.getDefaultInstance()):null;
+    public static IAffinities getMaxHealth(EntityPlayer entity) {
+        return CapabilityUtils.getCapability(entity, AFFINITIES_CAPABILITY, null);
     }
 
-    @Override
-    public NBTBase serializeNBT() {
-        return AFFINITIES_CAPABILITY.getStorage().writeNBT(AFFINITIES_CAPABILITY,AFFINITIES_CAPABILITY.getDefaultInstance(),null);
+    public static ICapabilityProvider createpoider(IAffinities affinities){
+        return new SimpleCapabilityProvider<>(AFFINITIES_CAPABILITY,null,affinities);
     }
 
-    @Override
-    public void deserializeNBT(NBTBase nbt) {
-        AFFINITIES_CAPABILITY.getStorage().readNBT(AFFINITIES_CAPABILITY,AFFINITIES_CAPABILITY.getDefaultInstance(),null,nbt);
-    }
 }

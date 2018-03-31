@@ -30,6 +30,11 @@ public class Affinities implements IAffinities {
     }
 
     @Override
+    public void addAffinities(AffinityTypes affinityTypes) {
+        this.affinitieTypes.add(affinityTypes);
+    }
+
+    @Override
     public void setPlayerAffinitiesFromID(int[] IDs) {
         affinitieTypes.clear();
         for(int id : IDs){

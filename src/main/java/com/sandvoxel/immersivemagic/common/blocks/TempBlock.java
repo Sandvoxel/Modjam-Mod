@@ -4,6 +4,7 @@ import com.sandvoxel.immersivemagic.ImmersiveMagic;
 import com.sandvoxel.immersivemagic.api.magic.IAffinities;
 import com.sandvoxel.immersivemagic.common.blocks.LIb.BlockBase;
 import com.sandvoxel.immersivemagic.common.magicdata.AffinitiesProvider;
+import com.sandvoxel.immersivemagic.common.magicdata.AffinityTypes;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
@@ -24,7 +25,12 @@ public class TempBlock extends BlockBase {
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         IAffinities affinities = playerIn.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY,null);
-        ImmersiveMagic.LOGGER.info(affinities.getPlayerAffinities().toString());
+
+        if(playerIn.isSneaking()){
+            ImmersiveMagic.LOGGER.info(affinities.getPlayerAffinities().toString());
+        }else {
+            affinities.addAffinities(AffinityTypes.LIGHT);
+        }
         return true;
     }
 }

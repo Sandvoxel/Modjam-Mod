@@ -8,5 +8,7 @@ import java.util.List;
 public interface IAffinities {
     public List<AffinityTypes>getPlayerAffinities();
 
+    public void addAffinities(AffinityTypes affinityTypes);
+
     public void setPlayerAffinitiesFromID(int[] IDs);
 }
