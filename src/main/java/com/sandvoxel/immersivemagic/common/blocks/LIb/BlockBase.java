@@ -1,18 +1,28 @@
 package com.sandvoxel.immersivemagic.common.blocks.LIb;
 
 import com.sandvoxel.immersivemagic.Refrence;
+import com.sandvoxel.immersivemagic.api.util.IBlockRender;
+import com.sandvoxel.immersivemagic.common.util.Platform;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.statemap.DefaultStateMapper;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class BlockBase extends Block {
+public class BlockBase extends Block implements IBlockRender {
 
     private String resourcePath;
     private String internalName = "";
@@ -53,5 +63,18 @@ public class BlockBase extends Block {
         super.harvestBlock(worldIn, player, pos, state, te, stack);
         worldIn.setBlockToAir(pos);
     }
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerBlockRenderer() {
+        final String resourcePath = String.format("%s:%s", Refrence.MOD_ID, this.resourcePath);
+        ModelLoader.setCustomStateMapper(this, new DefaultStateMapper() {
+            @SideOnly(Side.CLIENT)
+            @Override
+            protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
+                return new ModelResourceLocation(resourcePath, getPropertyString(state.getProperties()));
+            }
+        });
+    }
+
 
 }

@@ -1,6 +1,8 @@
 package com.sandvoxel.immersivemagic.common.util;
 
 import com.sandvoxel.immersivemagic.ImmersiveMagic;
+import com.sandvoxel.immersivemagic.api.util.IBlockRender;
+import com.sandvoxel.immersivemagic.api.util.IItemRender;
 import com.sandvoxel.immersivemagic.common.blocks.LIb.BlockBase;
 import com.sandvoxel.immersivemagic.common.items.Items;
 import com.sandvoxel.immersivemagic.common.items.lib.ItemBase;
@@ -46,6 +48,10 @@ public class RegistryHelper {
             block.setUnlocalizedName(internalName);
             itemBlock.setRegistryName(Objects.requireNonNull(block.getRegistryName()));
 
+            if (Platform.isClient()) {
+                ((IBlockRender) block).registerBlockRenderer();
+            }
+
             blocks.add(block);
             items.add(itemBlock);
 
@@ -75,6 +81,10 @@ public class RegistryHelper {
             item.setUnlocalizedName(internalName);
             item.setRegistryName(modid,internalName);
 
+            if(Platform.isClient()){
+                ((IItemRender)item).registerItemRenderer();
+            }
+
             items.add(item);
         }catch (Exception e){
             ImmersiveMagic.LOGGER.error(String.format("Item %s has had a error : %s", itemClass.getCanonicalName(), e));
@@ -97,6 +107,7 @@ public class RegistryHelper {
             ImmersiveMagic.LOGGER.error(String.format("Failed to initialize ItemBlock for: %s || %s", block.getUnlocalizedName(), e));
         }
     }
+
 
 
 

@@ -1,8 +1,10 @@
 package com.sandvoxel.immersivemagic.proxy;
 
 import com.sandvoxel.immersivemagic.Refrence;
+import com.sandvoxel.immersivemagic.common.items.Items;
 import com.sandvoxel.immersivemagic.common.util.RegistryHelper;
 import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -30,6 +32,9 @@ public class ClientProxy extends CommonProxy {
     public static void RegisterModels(ModelRegistryEvent event) {
         for (Block block : RegistryHelper.getBlocks()) {
             RegistryHelper.initItemBlocks(Refrence.MOD_ID, block);
+        }
+        for(Item items : RegistryHelper.getItemBlocks()){
+
         }
     }
 }
