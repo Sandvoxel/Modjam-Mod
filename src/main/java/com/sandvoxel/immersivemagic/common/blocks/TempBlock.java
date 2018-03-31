@@ -32,9 +32,14 @@ public class TempBlock extends BlockBase {
         //Minecraft.getMinecraft().displayGuiScreen(new TestScreen());
 
         if(playerIn.isSneaking()){
-            ImmersiveMagic.LOGGER.info(affinities.getPlayerAffinities());
+            for(AffinityObject object : affinities.getPlayerAffinities()){
+                if(object.getAffinityType() == AffinityTypes.FIRE){
+                    ImmersiveMagic.LOGGER.info(object.getAffinityPower());
+                }
+            }
+            affinities.addAffinities(new AffinityObject(AffinityTypes.FIRE,0));
         }else {
-            affinities.addAffinities(new AffinityObject(AffinityTypes.LIGHT,20));
+            affinities.addAffinities(new AffinityObject(AffinityTypes.FIRE,10));
         }
         return true;
     }

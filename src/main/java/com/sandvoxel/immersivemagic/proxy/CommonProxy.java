@@ -4,7 +4,8 @@ import com.sandvoxel.immersivemagic.ImmersiveMagic;
 import com.sandvoxel.immersivemagic.Refrence;
 import com.sandvoxel.immersivemagic.api.magic.IAffinities;
 import com.sandvoxel.immersivemagic.common.blocks.Blocks;
-import com.sandvoxel.immersivemagic.common.entity.SpellBase;
+import com.sandvoxel.immersivemagic.common.entity.render.SpellDefault;
+import com.sandvoxel.immersivemagic.common.entity.spells.SpellBase;
 import com.sandvoxel.immersivemagic.common.items.Items;
 import com.sandvoxel.immersivemagic.common.magicdata.Affinities;
 import com.sandvoxel.immersivemagic.common.magicdata.AffinitiesProvider;
@@ -36,6 +37,8 @@ public class CommonProxy {
     }
 
     public void init(FMLInitializationEvent event) {
+        SpellDefault.registerRender();
+
 
     }
 

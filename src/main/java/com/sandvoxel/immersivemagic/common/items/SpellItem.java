@@ -1,7 +1,6 @@
 package com.sandvoxel.immersivemagic.common.items;
 
-import com.sandvoxel.immersivemagic.ImmersiveMagic;
-import com.sandvoxel.immersivemagic.common.entity.SpellBase;
+import com.sandvoxel.immersivemagic.common.entity.spells.SpellBase;
 import com.sandvoxel.immersivemagic.common.items.lib.ItemBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -12,7 +11,7 @@ import net.minecraft.world.World;
 
 public class SpellItem extends ItemBase {
     public SpellItem() {
-        super("spell","");
+        super("spell","spell");
     }
 
     @Override
@@ -20,7 +19,7 @@ public class SpellItem extends ItemBase {
 
         if(!worldIn.isRemote){
             SpellBase spellBase = new SpellBase(worldIn,playerIn);
-            spellBase.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.5F, 1.0F);
+            spellBase.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 0.5F, 1.0F);
             worldIn.spawnEntity(spellBase);
         }
 

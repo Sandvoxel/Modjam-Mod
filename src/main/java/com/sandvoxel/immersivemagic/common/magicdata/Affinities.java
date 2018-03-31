@@ -6,6 +6,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagString;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Affinities implements IAffinities {
@@ -25,11 +26,15 @@ public class Affinities implements IAffinities {
 
     @Override
     public void addAffinities(AffinityObject affinityTypes) {
-        for (AffinityObject affinityObject : affinityObjects){
+        Iterator<AffinityObject> iter = affinityObjects.iterator();
+
+        while (iter.hasNext()){
+            AffinityObject affinityObject = iter.next();
+
             if(affinityObject.getAffinityType()==affinityTypes.getAffinityType())
-                return;
+                iter.remove();
         }
-            this.affinityObjects.add(affinityTypes);
+        this.affinityObjects.add(affinityTypes);
     }
 
     @Override
