@@ -15,9 +15,6 @@ public class AffinitiesProvider implements ICapabilitySerializable<NBTBase> {
     @CapabilityInject(IAffinities.class)
     public static final Capability<IAffinities> AFFINITIES_CAPABILITY = null;
 
-    private IAffinities instance = AFFINITIES_CAPABILITY.getDefaultInstance();
-
-
 
     @Override
     public boolean hasCapability(@Nonnull Capability<?> capability, @Nullable EnumFacing facing) {
@@ -27,16 +24,16 @@ public class AffinitiesProvider implements ICapabilitySerializable<NBTBase> {
     @Nullable
     @Override
     public <T> T getCapability(@Nonnull Capability<T> capability, @Nullable EnumFacing facing) {
-        return capability == AFFINITIES_CAPABILITY ? AFFINITIES_CAPABILITY.<T> cast(this.instance):null;
+        return capability == AFFINITIES_CAPABILITY ? AFFINITIES_CAPABILITY.<T> cast(AFFINITIES_CAPABILITY.getDefaultInstance()):null;
     }
 
     @Override
     public NBTBase serializeNBT() {
-        return AFFINITIES_CAPABILITY.getStorage().writeNBT(AFFINITIES_CAPABILITY,this.instance,null);
+        return AFFINITIES_CAPABILITY.getStorage().writeNBT(AFFINITIES_CAPABILITY,AFFINITIES_CAPABILITY.getDefaultInstance(),null);
     }
 
     @Override
     public void deserializeNBT(NBTBase nbt) {
-        AFFINITIES_CAPABILITY.getStorage().readNBT(AFFINITIES_CAPABILITY,this.instance,null,nbt);
+        AFFINITIES_CAPABILITY.getStorage().readNBT(AFFINITIES_CAPABILITY,AFFINITIES_CAPABILITY.getDefaultInstance(),null,nbt);
     }
 }

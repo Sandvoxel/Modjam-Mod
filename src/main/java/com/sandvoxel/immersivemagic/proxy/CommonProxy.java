@@ -43,9 +43,8 @@ public class CommonProxy {
     public static final ResourceLocation AFFINITIES_CAPABILITY = new ResourceLocation(Refrence.MOD_ID, "affinitys");
 
     @SubscribeEvent
-    public void attachCapability(AttachCapabilitiesEvent<Entity> event)
+    public static void attachCapability(AttachCapabilitiesEvent<Entity> event)
     {
-        ImmersiveMagic.LOGGER.info(event.getObject());
         if (!(event.getObject() instanceof EntityPlayer)) return;
         event.addCapability(AFFINITIES_CAPABILITY, new AffinitiesProvider());
     }
@@ -53,6 +52,7 @@ public class CommonProxy {
     @SubscribeEvent
     public static void playerClone(PlayerEvent.Clone event) {
         ImmersiveMagic.LOGGER.info("-----------------------------------------------------------");
+
     }
 
 
