@@ -20,9 +20,7 @@ public class SpellItem extends ItemBase {
 
         if(!worldIn.isRemote){
             SpellBase spellBase = new SpellBase(worldIn,playerIn);
-            spellBase.motionX *= 2;
-            spellBase.motionY *= 2;
-            spellBase.motionZ *= 2;
+            spellBase.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.5F, 1.0F);
             worldIn.spawnEntity(spellBase);
         }
 

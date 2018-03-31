@@ -14,11 +14,15 @@ public class SpellBase extends EntityThrowable {
     private String internalName = "test";
     public SpellBase(World worldIn) {
         super(worldIn);
+        noClip = false;
+
 
     }
 
     public SpellBase(World world, EntityLivingBase entityLivingBase){
         super(world,entityLivingBase);
+        noClip = false;
+        setNoGravity(true);
     }
 
     public String getInternalName() {
@@ -27,7 +31,7 @@ public class SpellBase extends EntityThrowable {
 
     @Override
     protected void onImpact(RayTraceResult result) {
-        this.isDead = true;
+        //this.isDead = true;
         ImmersiveMagic.LOGGER.info(result.entityHit);
     }
 
