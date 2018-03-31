@@ -1,14 +1,14 @@
 [
 {
-  "modid": "IM",
+  "modid": "immmag",
   "name": "Immersive Magic",
-  "description": "Adds fast-paced and affinity-based magic to your Minecraft experience.",
+  "description": "Adds fast-paced, affinity-based magic to your Minecraft experience.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
   "authorList": ["TheCrazyGrape", "Sandvoxel"],
-  "credits": "Baseboard idea from BigHatMagnus on the Minecraft Forums",
+  "credits": "baseboard idea and name taken from BigHatMagnus' post on the Minecraft Forums",
   "logoFile": "ImmMag.png",
   "screenshots": [],
   "dependencies": []
