@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		" I",
+		"s "
+		],
+	"key": {
+		"s": {
+			"item": "minecraft:stick"
+			},
+		"I": {
+			"item": "minecraft:iron_nugget"
+			}
+		},
+	"result": {
+		"item": "immmag:spell"
+		}
+}
