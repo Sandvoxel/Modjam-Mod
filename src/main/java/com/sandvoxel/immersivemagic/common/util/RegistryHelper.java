@@ -2,6 +2,8 @@ package com.sandvoxel.immersivemagic.common.util;
 
 import com.sandvoxel.immersivemagic.ImmersiveMagic;
 import com.sandvoxel.immersivemagic.common.blocks.LIb.BlockBase;
+import com.sandvoxel.immersivemagic.common.items.Items;
+import com.sandvoxel.immersivemagic.common.items.lib.ItemBase;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelBakery;
@@ -18,7 +20,9 @@ import java.util.Objects;
 public class RegistryHelper {
 
     private static List<Block> blocks = new ArrayList<>();
-    private static List<ItemBlock> items = new ArrayList<>();
+    private static List<Item> items = new ArrayList<>();
+
+
 
     public static Block addBlockToRegistry(String modid, Class<? extends Block> blockClass) {
         Block block = null;
@@ -53,6 +57,32 @@ public class RegistryHelper {
         return block;
     }
 
+    public static Item addItemsToRegistry(String modid, Class<?extends ItemBase> itemClass){
+        Item item = null;
+        String internalName;
+
+        try {
+            item = itemClass.getConstructor().newInstance();
+
+            internalName = ((ItemBase)item).getInteneralName();
+
+            if (!internalName.equals(internalName.toLowerCase(Locale.US)))
+                throw new IllegalArgumentException(String.format("InternalName values need to be all lowercase! Item: %s", internalName));
+
+            if (internalName.isEmpty())
+                throw new IllegalArgumentException(String.format("InternalName cannot be blank! Item: %s", itemClass.getCanonicalName()));
+
+            item.setUnlocalizedName(internalName);
+            item.setRegistryName(modid,internalName);
+
+            items.add(item);
+        }catch (Exception e){
+            ImmersiveMagic.LOGGER.error(String.format("Item %s has had a error : %s", itemClass.getCanonicalName(), e));
+        }
+
+        return item;
+    }
+
     public static void initItemBlocks(String modid, Block block) {
 
         try {
@@ -68,11 +98,13 @@ public class RegistryHelper {
         }
     }
 
+
+
     public static List<Block> getBlocks() {
         return blocks;
     }
 
-    public static List<ItemBlock> getItems() {
+    public static List<Item> getItemBlocks() {
         return items;
     }
 }

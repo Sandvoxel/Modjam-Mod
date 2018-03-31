@@ -4,6 +4,7 @@ import com.sandvoxel.immersivemagic.ImmersiveMagic;
 import com.sandvoxel.immersivemagic.Refrence;
 import com.sandvoxel.immersivemagic.api.magic.IAffinities;
 import com.sandvoxel.immersivemagic.common.blocks.Blocks;
+import com.sandvoxel.immersivemagic.common.items.Items;
 import com.sandvoxel.immersivemagic.common.magicdata.Affinities;
 import com.sandvoxel.immersivemagic.common.magicdata.AffinitiesProvider;
 import com.sandvoxel.immersivemagic.common.magicdata.AffinitiesStorage;
@@ -28,6 +29,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class CommonProxy {
     public void preInit(FMLPreInitializationEvent event) {
         Blocks.registerBlocks();
+        Items.registerItems();
         CapabilityManager.INSTANCE.register(IAffinities.class, new AffinitiesStorage(),Affinities.class);
     }
 
@@ -67,7 +69,7 @@ public class CommonProxy {
 
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
-        for (Item item : RegistryHelper.getItems()) {
+        for (Item item : RegistryHelper.getItemBlocks()) {
             ImmersiveMagic.LOGGER.info(item.getUnlocalizedName());
             event.getRegistry().register(item);
         }

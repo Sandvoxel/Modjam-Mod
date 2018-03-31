@@ -1,19 +1,18 @@
 package com.sandvoxel.immersivemagic.common.magicdata;
 
-import net.minecraft.util.EnumFacing;
-
 public enum AffinityTypes {
-    FIRE(0),
-    WATER(1),
-    ICE(2),
-    AIR(3),
-    EARTH(4),
-    ENDER(5),
-    LIGHT(6),
-    DARKNESS(7);
+    FIRE(0,"fire"),
+    WATER(1,"water"),
+    ICE(2,"ice"),
+    AIR(3,"air"),
+    EARTH(4,"earth"),
+    ENDER(5,"ender"),
+    LIGHT(6,"light"),
+    DARKNESS(7,"darkness");
 
     private static final AffinityTypes[] ID_LOOKUP = new AffinityTypes[values().length];
     private int ID;
+    private String Name;
 
     static {
         for (AffinityTypes tier : values()) {
@@ -21,8 +20,9 @@ public enum AffinityTypes {
         }
     }
 
-    AffinityTypes(int ID) {
+    AffinityTypes(int ID, String name) {
         this.ID = ID;
+        this.Name = name;
     }
 
     public static AffinityTypes getAffinity(int ID) {
