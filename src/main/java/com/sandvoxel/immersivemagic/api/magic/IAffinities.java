@@ -1,14 +1,11 @@
 package com.sandvoxel.immersivemagic.api.magic;
 
-import net.minecraft.util.EnumFacing;
+import com.sandvoxel.immersivemagic.common.magicdata.AffinitieTypes;
+import com.sandvoxel.immersivemagic.common.magicdata.Affinities;
+import net.minecraft.entity.player.EntityPlayer;
 
-public enum IAffinities {
-    FIRE,
-    WATER,
-    ICE,
-    AIR,
-    EARTH,
-    ENDER,
-    LIGHT,
-    DARKNESS;
+import java.util.List;
+
+public interface IAffinities {
+    public List<AffinitieTypes>getPlayerAffinities(EntityPlayer player);
 }
