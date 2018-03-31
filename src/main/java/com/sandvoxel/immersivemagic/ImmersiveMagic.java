@@ -1,9 +1,9 @@
-package com.sandvoxel.tempname;
+package com.sandvoxel.immersivemagic;
 
 import com.google.common.base.Stopwatch;
-import com.sandvoxel.tempname.common.exception.OutdatedJavaException;
-import com.sandvoxel.tempname.common.util.Logger;
-import com.sandvoxel.tempname.proxy.CommonProxy;
+import com.sandvoxel.immersivemagic.common.exception.OutdatedJavaException;
+import com.sandvoxel.immersivemagic.common.util.Logger;
+import com.sandvoxel.immersivemagic.proxy.CommonProxy;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -15,16 +15,16 @@ import org.apache.commons.lang3.SystemUtils;
 import java.util.concurrent.TimeUnit;
 
 @Mod(modid = Refrence.MOD_ID, name = Refrence.MOD_NAME, version = Refrence.MOD_VERSION)
-public class TempName {
+public class ImmersiveMagic {
 
     public static Logger LOGGER = new Logger(Refrence.MOD_NAME);
     public static Stopwatch STOPWATCH = Stopwatch.createUnstarted();
 
 
     @Mod.Instance("Trainwreck TrainwreckLib")
-    public static TempName instance;
+    public static ImmersiveMagic instance;
 
-    @SidedProxy(clientSide = "com.sandvoxel.tempname.proxy.ClientProxy", serverSide = "com.sandvoxel.tempname.proxy.ServerProxy")
+    @SidedProxy(clientSide = "com.sandvoxel.immersivemagic.proxy.ClientProxy", serverSide = "com.sandvoxel.immersivemagic.proxy.ServerProxy")
     private static CommonProxy proxy;
 
     @Mod.EventHandler
@@ -63,4 +63,5 @@ public class TempName {
         LOGGER.info("[Post-Init] Finished <" + STOPWATCH.elapsed(TimeUnit.MILLISECONDS) + "ms>");
         STOPWATCH.reset();
     }
+
 }
