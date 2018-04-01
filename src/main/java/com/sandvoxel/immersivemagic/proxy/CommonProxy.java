@@ -33,7 +33,7 @@ public class CommonProxy {
         Blocks.registerBlocks();
         Items.registerItems();
         CapabilityManager.INSTANCE.register(IAffinities.class, new AffinitiesStorage(),Affinities.class);
-        SpellBase.addSpellToRegistry();
+        SpellBase.addSpellToRegistry("basic");
     }
 
     public void init(FMLInitializationEvent event) {

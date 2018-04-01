@@ -46,8 +46,8 @@ public class SpellBase extends EntityThrowable {
         this.isDead = true;
     }
 
-    public static void addSpellToRegistry(){
-        ResourceLocation resourceLocation = new ResourceLocation(Refrence.MOD_ID+":yesr");
+    public static void addSpellToRegistry(String spellName){
+        ResourceLocation resourceLocation = new ResourceLocation(Refrence.MOD_ID+":spell_" + spellName);
         EntityRegistry.registerModEntity(resourceLocation,SpellBase.class,"spell",32184985,Refrence.MOD_ID,64,10,true);
     }
 

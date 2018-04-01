@@ -31,7 +31,7 @@ public class BlockBase extends Block implements IBlockRender {
 
     public BlockBase(Material blockMaterialIn, String resourcePath) {
         super(blockMaterialIn);
-        this.resourcePath = resourcePath;
+        this.resourcePath = resourcePath + internalName;
     }
 
     public String getInternalName() {

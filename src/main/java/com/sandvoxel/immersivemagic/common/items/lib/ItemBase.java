@@ -12,10 +12,16 @@ public class ItemBase extends Item implements IItemRender {
     private String resourcePath;
 
 
-    public ItemBase(String inteneralName, String resourcePath){
+    public ItemBase(String internalName, String resourcePath){
         this.maxStackSize = 64;
-        this.inteneralName = inteneralName;
+        this.inteneralName = internalName;
         this.resourcePath = resourcePath;
+    }
+
+    public ItemBase(String internalName){
+        this.maxStackSize = 64;
+        this.inteneralName = internalName;
+        this.resourcePath = internalName;
     }
 
     public String getInteneralName() {
