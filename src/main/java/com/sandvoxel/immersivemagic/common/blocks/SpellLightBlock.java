@@ -24,7 +24,7 @@ import java.util.Random;
 
 public class SpellLightBlock extends BlockBase {
 
-    protected static final AxisAlignedBB SPELL_LIGHT_AABB = new AxisAlignedBB(0.24D, 0.4D, 0.4D, 0.6D, 0.6D, 0.6D);
+    protected static final AxisAlignedBB SPELL_LIGHT_AABB = new AxisAlignedBB(0.35D, 0.35D, 0.35D, 0.65D, 0.65D, 0.65D);
 
     public SpellLightBlock() {
         super(Material.GLASS, "");
