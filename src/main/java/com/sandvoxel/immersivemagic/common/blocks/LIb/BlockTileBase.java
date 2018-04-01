@@ -1,6 +1,6 @@
 package com.sandvoxel.immersivemagic.common.blocks.LIb;
 
-import com.sandvoxel.immersivemagic.Refrence;
+import com.sandvoxel.immersivemagic.Reference;
 import com.sandvoxel.immersivemagic.common.tileentitys.TileEntityBase;
 import com.sandvoxel.immersivemagic.common.util.TileHelper;
 import net.minecraft.block.Block;
@@ -34,7 +34,7 @@ public class BlockTileBase extends BlockBase {
         this.setTileProvider(true);
         this.isInventory = IInventory.class.isAssignableFrom(clazz);
 
-        String tileName = "tile." + Refrence.MOD_ID + "." + clazz.getSimpleName();
+        String tileName = "tile." + Reference.MOD_ID + "." + clazz.getSimpleName();
         GameRegistry.registerTileEntity(this.tileEntityClass, tileName);
     }
 

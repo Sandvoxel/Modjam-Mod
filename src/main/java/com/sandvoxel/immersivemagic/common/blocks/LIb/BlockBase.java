@@ -1,6 +1,6 @@
 package com.sandvoxel.immersivemagic.common.blocks.LIb;
 
-import com.sandvoxel.immersivemagic.Refrence;
+import com.sandvoxel.immersivemagic.Reference;
 import com.sandvoxel.immersivemagic.api.util.IBlockRender;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -42,7 +42,7 @@ public class BlockBase extends Block implements IBlockRender {
     public String getUnlocalizedName() {
         String blockName = getUnwrappedUnlocalizedName(super.getUnlocalizedName());
 
-        return String.format("tile.%s.%s", Refrence.MOD_ID, blockName);
+        return String.format("tile.%s.%s", Reference.MOD_ID, blockName);
     }
 
     private String getUnwrappedUnlocalizedName(String unlocalizedName) {
@@ -62,7 +62,7 @@ public class BlockBase extends Block implements IBlockRender {
     @Override
     @SideOnly(Side.CLIENT)
     public void registerBlockRenderer() {
-        final String resourcePath = String.format("%s:%s", Refrence.MOD_ID, this.resourcePath);
+        final String resourcePath = String.format("%s:%s", Reference.MOD_ID, this.resourcePath);
         ModelLoader.setCustomStateMapper(this, new DefaultStateMapper() {
             @SideOnly(Side.CLIENT)
             @Override

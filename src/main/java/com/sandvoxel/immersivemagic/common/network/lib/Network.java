@@ -1,6 +1,7 @@
 package com.sandvoxel.immersivemagic.common.network.lib;
 
-import com.sandvoxel.immersivemagic.Refrence;
+import com.sandvoxel.immersivemagic.Reference;
+import com.sandvoxel.immersivemagic.Reference;
 import com.sandvoxel.immersivemagic.common.network.AffinityGuiPacket;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,7 +16,7 @@ public class Network extends NetworkWrapperBase {
     private static Network instance = new Network();
 
     public Network() {
-        super(Refrence.MOD_ID);
+        super(Reference.MOD_ID);
     }
 
     public static Network getInstance() {

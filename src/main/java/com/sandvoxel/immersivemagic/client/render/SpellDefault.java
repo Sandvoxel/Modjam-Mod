@@ -1,6 +1,6 @@
 package com.sandvoxel.immersivemagic.client.render;
 
-import com.sandvoxel.immersivemagic.Refrence;
+import com.sandvoxel.immersivemagic.Reference;
 import com.sandvoxel.immersivemagic.common.spells.entity.SpellLight;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 
 public class SpellDefault extends Render {
 
-    private static ResourceLocation texture = new ResourceLocation(Refrence.MOD_ID,"textures/misc/fire.png");
+    private static ResourceLocation texture = new ResourceLocation(Reference.MOD_ID,"textures/misc/fire.png");
 
     protected SpellDefault(RenderManager renderManager) {
         super(renderManager);
@@ -26,7 +26,7 @@ public class SpellDefault extends Render {
 
     protected SpellDefault(RenderManager renderManager, String textureLocation) {
         super(renderManager);
-        texture = new ResourceLocation(Refrence.MOD_ID,textureLocation);
+        texture = new ResourceLocation(Reference.MOD_ID,textureLocation);
     }
 
     public static void registerRender(){

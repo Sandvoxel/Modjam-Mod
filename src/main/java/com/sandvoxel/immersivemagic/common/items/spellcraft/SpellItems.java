@@ -1,7 +1,6 @@
 package com.sandvoxel.immersivemagic.common.items.spellcraft;
 
-import com.sandvoxel.immersivemagic.ImmersiveMagic;
-import com.sandvoxel.immersivemagic.Refrence;
+import com.sandvoxel.immersivemagic.Reference;
 import com.sandvoxel.immersivemagic.api.magic.IAffinities;
 import com.sandvoxel.immersivemagic.common.items.lib.ItemBase;
 import com.sandvoxel.immersivemagic.common.magicdata.AffinitiesProvider;
@@ -10,7 +9,6 @@ import com.sandvoxel.immersivemagic.common.magicdata.AffinityTypes;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumHand;
@@ -62,7 +60,7 @@ public class SpellItems extends ItemBase {
     @Override
     public void registerItemRenderer() {
         for (int i = 0; i < AffinityTypes.values().length; i++) {
-            ModelLoader.setCustomModelResourceLocation(this, i, new ModelResourceLocation(Refrence.MOD_ID + ":" + resourcePath + "/spellcraft-" + AffinityTypes.getAffinity(i).name(), "inventory"));
+            ModelLoader.setCustomModelResourceLocation(this, i, new ModelResourceLocation(Reference.MOD_ID + ":" + resourcePath + "/spellcraft-" + AffinityTypes.getAffinity(i).name(), "inventory"));
         }
     }
 }

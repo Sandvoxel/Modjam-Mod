@@ -1,7 +1,7 @@
 package com.sandvoxel.immersivemagic.common.util;
 
 import com.sandvoxel.immersivemagic.ImmersiveMagic;
-import com.sandvoxel.immersivemagic.Refrence;
+import com.sandvoxel.immersivemagic.Reference;
 import com.sandvoxel.immersivemagic.api.util.IBlockRender;
 import com.sandvoxel.immersivemagic.api.util.IItemRender;
 import com.sandvoxel.immersivemagic.common.blocks.LIb.BlockBase;
@@ -126,7 +126,7 @@ public class RegistryHelper {
                 throw new IllegalArgumentException(String.format("InternalName cannot be blank! Item: %s", spellClass.getCanonicalName()));
 
             item.setUnlocalizedName(internalName);
-            item.setRegistryName(Refrence.MOD_ID,internalName);
+            item.setRegistryName(Reference.MOD_ID,internalName);
 
             items.add(item);
 

@@ -1,6 +1,6 @@
 package com.sandvoxel.immersivemagic.proxy;
 
-import com.sandvoxel.immersivemagic.Refrence;
+import com.sandvoxel.immersivemagic.Reference;
 import com.sandvoxel.immersivemagic.api.magic.IAffinities;
 import com.sandvoxel.immersivemagic.client.render.SpellDefault;
 import com.sandvoxel.immersivemagic.common.blocks.Blocks;
@@ -50,7 +50,7 @@ public class CommonProxy {
     }
 
 
-    public static final ResourceLocation AFFINITIES_CAPABILITY = new ResourceLocation(Refrence.MOD_ID, "affinitys");
+    public static final ResourceLocation AFFINITIES_CAPABILITY = new ResourceLocation(Reference.MOD_ID, "affinitys");
 
     @SubscribeEvent
     public static void attachCapability(AttachCapabilitiesEvent<Entity> event)

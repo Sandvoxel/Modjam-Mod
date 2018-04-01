@@ -16,7 +16,7 @@ import java.io.IOException;
 
 public class TestScreen extends GuiScreen {
 
-    final ResourceLocation textture = new ResourceLocation(Refrence.MOD_ID,"textures/gui/affinity_selection.png");
+    final ResourceLocation textture = new ResourceLocation(Reference.MOD_ID,"textures/gui/affinity_selection.png");
     int texHeight = 114;
     int texWidth = 114;
     int centerX;

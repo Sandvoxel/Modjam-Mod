@@ -1,6 +1,6 @@
 package com.sandvoxel.immersivemagic.common.items.lib;
 
-import com.sandvoxel.immersivemagic.Refrence;
+import com.sandvoxel.immersivemagic.Reference;
 import com.sandvoxel.immersivemagic.api.util.IItemRender;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -40,7 +40,7 @@ public class ItemBase extends Item implements IItemRender {
 
     @Override
     public void registerItemRenderer() {
-        final String resourcePath = String.format("%s:%s", Refrence.MOD_ID, this.resourcePath);
+        final String resourcePath = String.format("%s:%s", Reference.MOD_ID, this.resourcePath);
 
         ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(resourcePath, "inventory"));
     }

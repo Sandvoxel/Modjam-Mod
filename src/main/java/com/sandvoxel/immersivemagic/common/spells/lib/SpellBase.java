@@ -1,6 +1,6 @@
 package com.sandvoxel.immersivemagic.common.spells.lib;
 
-import com.sandvoxel.immersivemagic.Refrence;
+import com.sandvoxel.immersivemagic.Reference;
 import com.sandvoxel.immersivemagic.api.spell.ISpellRegstier;
 import com.sandvoxel.immersivemagic.common.items.lib.ItemBase;
 import com.sandvoxel.immersivemagic.common.spells.SpellTypes;
@@ -29,7 +29,7 @@ public class SpellBase extends ItemBase implements ISpellRegstier {
 
     @Override
     public void RegstierSpellEntity(int id) {
-        ResourceLocation resourceLocation = new ResourceLocation(Refrence.MOD_ID+":spell_" + getInteneralName());
-        EntityRegistry.registerModEntity(resourceLocation, entityClass,"spell",id,Refrence.MOD_ID,64,10,true);
+        ResourceLocation resourceLocation = new ResourceLocation(Reference.MOD_ID+":spell_" + getInteneralName());
+        EntityRegistry.registerModEntity(resourceLocation, entityClass,"spell",id, Reference.MOD_ID,64,10,true);
     }
 }

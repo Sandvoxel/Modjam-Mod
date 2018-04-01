@@ -1,6 +1,6 @@
 package com.sandvoxel.immersivemagic.common.spells.entity;
 
-import com.sandvoxel.immersivemagic.Refrence;
+import com.sandvoxel.immersivemagic.Reference;
 import com.sandvoxel.immersivemagic.common.blocks.Blocks;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.EnumParticleTypes;
@@ -54,8 +54,8 @@ public class SpellLight extends SpellEntityBase {
     }
 
     public static void addSpellToRegistry(String spellName){
-        ResourceLocation resourceLocation = new ResourceLocation(Refrence.MOD_ID+":spell_" + spellName);
-        EntityRegistry.registerModEntity(resourceLocation,SpellLight.class,"spell",32184985,Refrence.MOD_ID,64,10,true);
+        ResourceLocation resourceLocation = new ResourceLocation(Reference.MOD_ID+":spell_" + spellName);
+        EntityRegistry.registerModEntity(resourceLocation,SpellLight.class,"spell",32184985, Reference.MOD_ID,64,10,true);
     }
 
 }

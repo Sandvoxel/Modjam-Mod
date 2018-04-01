@@ -14,10 +14,10 @@ import org.apache.commons.lang3.SystemUtils;
 
 import java.util.concurrent.TimeUnit;
 
-@Mod(modid = Refrence.MOD_ID, name = Refrence.MOD_NAME, version = Refrence.MOD_VERSION)
+@Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.MOD_VERSION)
 public class ImmersiveMagic {
 
-    public static Logger LOGGER = new Logger(Refrence.MOD_NAME);
+    public static Logger LOGGER = new Logger(Reference.MOD_NAME);
     public static Stopwatch STOPWATCH = Stopwatch.createUnstarted();
 
 
@@ -33,7 +33,7 @@ public class ImmersiveMagic {
         LOGGER.info("[Pre-Init] Started");
 
         if (!SystemUtils.isJavaVersionAtLeast(JavaVersion.JAVA_1_8)) {
-            throw new OutdatedJavaException(String.format("%s requires Java 8 or newer, Please update your java", Refrence.MOD_NAME));
+            throw new OutdatedJavaException(String.format("%s requires Java 8 or newer, Please update your java", Reference.MOD_NAME));
         }
 
         proxy.preInit(event);

@@ -1,6 +1,6 @@
 package com.sandvoxel.immersivemagic.common.blocks;
 
-import com.sandvoxel.immersivemagic.Refrence;
+import com.sandvoxel.immersivemagic.Reference;
 import com.sandvoxel.immersivemagic.common.blocks.LIb.BlockBase;
 import com.sandvoxel.immersivemagic.common.util.RegistryHelper;
 import net.minecraft.block.Block;
@@ -43,7 +43,7 @@ public enum Blocks {
     }
 
     private void registerBlock() {
-        block = RegistryHelper.addBlockToRegistry(Refrence.MOD_ID, blockClass);
+        block = RegistryHelper.addBlockToRegistry(Reference.MOD_ID, blockClass);
     }
 
     public String getName() {

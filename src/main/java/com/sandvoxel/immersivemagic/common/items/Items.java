@@ -1,6 +1,6 @@
 package com.sandvoxel.immersivemagic.common.items;
 
-import com.sandvoxel.immersivemagic.Refrence;
+import com.sandvoxel.immersivemagic.Reference;
 import com.sandvoxel.immersivemagic.common.items.lib.ItemBase;
 import com.sandvoxel.immersivemagic.common.items.spellcraft.SpellItems;
 import com.sandvoxel.immersivemagic.common.util.RegistryHelper;
@@ -21,6 +21,6 @@ public enum Items {
         }
     }
     private void registerItem() {
-        item = RegistryHelper.addItemsToRegistry(Refrence.MOD_ID, itemClass);
+        item = RegistryHelper.addItemsToRegistry(Reference.MOD_ID, itemClass);
     }
 }
