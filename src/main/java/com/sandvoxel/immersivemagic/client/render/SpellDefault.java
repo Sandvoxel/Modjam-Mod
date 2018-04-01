@@ -17,16 +17,23 @@ import org.lwjgl.opengl.GL11;
 import javax.annotation.Nullable;
 
 public class SpellDefault extends Render {
+
+    private static ResourceLocation texture = new ResourceLocation(Refrence.MOD_ID,"textures/misc/fire.png");
+
     protected SpellDefault(RenderManager renderManager) {
         super(renderManager);
     }
 
+    protected SpellDefault(RenderManager renderManager, String textureLocation) {
+        super(renderManager);
+        texture = new ResourceLocation(Refrence.MOD_ID,textureLocation);
+    }
+
     public static void registerRender(){
-        RenderingRegistry.registerEntityRenderingHandler(SpellLight.class, new SpellDefault(Minecraft.getMinecraft().getRenderManager()));
+        RenderingRegistry.registerEntityRenderingHandler(SpellLight.class, new SpellDefault(Minecraft.getMinecraft().getRenderManager(), "textures/misc/light.png"));
     }
 
 
-    private static final ResourceLocation texture = new ResourceLocation(Refrence.MOD_ID,"textures/misc/fire.png");
 
     @Nullable
     @Override

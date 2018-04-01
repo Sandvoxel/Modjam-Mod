@@ -12,8 +12,8 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 
-public class MineingSpell extends SpellBase {
-    public MineingSpell() {
+public class MiningSpell extends SpellBase {
+    public MiningSpell() {
         super("miningspell", "", SpellTypes.DIRECT_SPELL, null);
     }
 
