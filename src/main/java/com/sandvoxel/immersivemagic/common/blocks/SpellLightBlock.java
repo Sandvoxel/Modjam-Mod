@@ -1,5 +1,6 @@
 package com.sandvoxel.immersivemagic.common.blocks;
 
+import com.sandvoxel.immersivemagic.ImmersiveMagic;
 import com.sandvoxel.immersivemagic.common.blocks.LIb.BlockBase;
 import com.sandvoxel.immersivemagic.common.spells.Spells;
 import net.minecraft.block.material.Material;
@@ -9,6 +10,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
@@ -18,6 +20,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
+import java.util.Random;
 
 public class SpellLightBlock extends BlockBase {
 
@@ -28,6 +31,20 @@ public class SpellLightBlock extends BlockBase {
         setInternalName("spell_light");
         lightValue = 15;
     }
+
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
+        super.randomDisplayTick(stateIn, worldIn, pos, rand);
+        ImmersiveMagic.LOGGER.info("awdawdaw");
+        if(worldIn.isRemote){
+            for (int i = 0; i < 2; ++i)
+            {
+                worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, pos.getX()+0.5D, pos.getY()+0.5D, pos.getZ()+0.5D, 0,0,0);
+            }
+        }
+    }
+
 
     @Override
     public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
