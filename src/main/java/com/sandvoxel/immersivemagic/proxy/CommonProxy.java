@@ -1,5 +1,6 @@
 package com.sandvoxel.immersivemagic.proxy;
 
+import com.sandvoxel.immersivemagic.ImmersiveMagic;
 import com.sandvoxel.immersivemagic.Reference;
 import com.sandvoxel.immersivemagic.api.magic.IAffinities;
 import com.sandvoxel.immersivemagic.client.render.SpellDefault;
@@ -8,6 +9,7 @@ import com.sandvoxel.immersivemagic.common.items.Items;
 import com.sandvoxel.immersivemagic.common.magicdata.Affinities;
 import com.sandvoxel.immersivemagic.common.magicdata.AffinitiesProvider;
 import com.sandvoxel.immersivemagic.common.magicdata.AffinitiesStorage;
+import com.sandvoxel.immersivemagic.common.magicdata.AffinityObject;
 import com.sandvoxel.immersivemagic.common.network.lib.Network;
 import com.sandvoxel.immersivemagic.common.network.lib.NetworkWrapperBase;
 import com.sandvoxel.immersivemagic.common.spells.Spells;
@@ -20,12 +22,15 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+import java.util.Iterator;
 
 
 @Mod.EventBusSubscriber
@@ -65,6 +70,26 @@ public class CommonProxy {
 
     }
 
+    @SubscribeEvent
+    public static void onLivingUpdateEvent(LivingEvent.LivingUpdateEvent event){
+        if(event.getEntity() instanceof EntityPlayer){
+            if(event.getEntity().world.isRemote)
+                return;
+            EntityPlayer player = (EntityPlayer)event.getEntity();
+            IAffinities affinities = player.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY,null);
+            Iterator<AffinityObject> iter = affinities.getPlayerAffinities().iterator();
+
+            for(AffinityObject affinityObject : affinities.getPlayerAffinities()){
+                if(affinityObject.getManaCap() > affinityObject.getAffinityMana()){
+                    affinityObject.setAffinityMana(affinityObject.getAffinityMana()+1);
+                }
+
+            }
+
+
+
+        }
+    }
 
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {

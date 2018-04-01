@@ -1,5 +1,6 @@
 package com.sandvoxel.immersivemagic.common.magicdata;
 
+import com.sandvoxel.immersivemagic.ImmersiveMagic;
 import com.sandvoxel.immersivemagic.api.magic.IAffinities;
 import net.minecraft.entity.player.EntityPlayer;
 
@@ -32,7 +33,51 @@ public class Affinities implements IAffinities {
             if(affinityObject.getAffinityType()==affinityTypes.getAffinityType())
                 iter.remove();
         }
+        ImmersiveMagic.LOGGER.info(affinityTypes);
         this.affinityObjects.add(affinityTypes);
+    }
+
+    @Override
+    public boolean removeAffinity(AffinityTypes affinityType) {
+        Iterator<AffinityObject> iter = affinityObjects.iterator();
+
+        while (iter.hasNext()){
+            AffinityObject affinityObject = iter.next();
+
+            if(affinityObject.getAffinityType()==affinityType)
+                iter.remove();
+        }
+        return false;
+    }
+
+    @Override
+    public int getAffinityLevel(AffinityTypes affinityType) {
+        for (AffinityObject affinityObject : affinityObjects) {
+            if (affinityObject.getAffinityType() == affinityType) {
+                return affinityObject.getAffinityPower();
+            }
+        }
+        return 0;
+    }
+
+    @Override
+    public int getAffinityMana(AffinityTypes affinityType) {
+        for (AffinityObject affinityObject : affinityObjects) {
+            if (affinityObject.getAffinityType() == affinityType) {
+                return affinityObject.getAffinityMana();
+            }
+        }
+        return 0;
+    }
+
+    @Override
+    public int getManaCap(AffinityTypes affinityType) {
+        for (AffinityObject affinityObject : affinityObjects){
+            if(affinityObject.getAffinityType() == affinityType){
+                return affinityObject.getManaCap();
+            }
+        }
+        return 0;
     }
 
     @Override

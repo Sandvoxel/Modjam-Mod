@@ -11,6 +11,7 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiButtonImage;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 
 import java.io.IOException;
@@ -22,9 +23,13 @@ public class TestScreen extends GuiScreen {
     int texWidth = 114;
     int centerX;
     int centerY;
+    EntityPlayer player;
 
     AffinityButtons button;
 
+    public TestScreen(EntityPlayer player) {
+        this.player = player;
+    }
 
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
@@ -44,7 +49,7 @@ public class TestScreen extends GuiScreen {
     @Override
     public void initGui() {
         buttonList.clear();
-        buttonList.add(button = new AffinityButtons(0,30,30));
+        buttonList.add(button = new AffinityButtons(0,30,30, player));
         super.initGui();
     }
 
@@ -52,7 +57,7 @@ public class TestScreen extends GuiScreen {
     protected void actionPerformed(GuiButton button) throws IOException {
         switch (button.id){
             case 0:
-                Network.sendToServer(new AffinityGuiPacket(AffinityTypes.LIGHT.getMeta(),1,100));
+                Network.sendToServer(new AffinityGuiPacket(AffinityTypes.LIGHT.getMeta(),1));
         }
         super.actionPerformed(button);
     }

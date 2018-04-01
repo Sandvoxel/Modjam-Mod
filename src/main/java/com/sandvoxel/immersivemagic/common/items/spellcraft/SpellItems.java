@@ -31,11 +31,8 @@ public class SpellItems extends ItemBase {
         IAffinities affinities = playerIn.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY,null);
         ItemStack helditem = playerIn.getHeldItem(handIn);
 
-        if(affinities.getPlayerAffinities().isEmpty()){
-            affinities.addAffinities(new AffinityObject(AffinityTypes.getAffinity(helditem.getItemDamage()),1,200));
-        }else {
+        affinities.addAffinities(new AffinityObject(AffinityTypes.getAffinity(helditem.getItemDamage()),1));
 
-        }
 
 
 

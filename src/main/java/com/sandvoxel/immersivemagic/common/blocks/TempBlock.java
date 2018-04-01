@@ -26,7 +26,7 @@ public class TempBlock extends BlockBase {
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         IAffinities affinities = playerIn.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY,null);
 
-        Minecraft.getMinecraft().displayGuiScreen(new TestScreen());
+        Minecraft.getMinecraft().displayGuiScreen(new TestScreen(playerIn));
 
 
         return true;

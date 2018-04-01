@@ -3,12 +3,12 @@ package com.sandvoxel.immersivemagic.common.magicdata;
 public class AffinityObject {
     private AffinityTypes affinityType;
     private int affinityPower;
-    private int affinityMana;
+    private int affinityMana=0;
 
-    public AffinityObject(AffinityTypes affinityType, int affinityPower,int affinityMana) {
+
+    public AffinityObject(AffinityTypes affinityType, int affinityPower) {
         this.affinityType = affinityType;
         this.affinityPower = affinityPower;
-        this.affinityMana = affinityMana;
     }
 
     public AffinityTypes getAffinityType() {
@@ -17,6 +17,14 @@ public class AffinityObject {
 
     public int getAffinityMana() {
         return affinityMana;
+    }
+
+    public int getManaCap() {
+        return affinityPower*200;
+    }
+
+    public int getPowerCap(){
+        return 32;
     }
 
     public void setAffinityMana(int affinityMana) {

@@ -27,24 +27,21 @@ public class AffinityGuiPacket extends PacketBase {
     public AffinityGuiPacket() {
     }
 
-    public AffinityGuiPacket(int id, int power, int mana) {
+    public AffinityGuiPacket(int id, int power) {
         this.id = id;
         this.power = power;
-        this.mana = mana;
     }
 
     @Override
     public void fromBytes(ByteBuf buf) {
         this.id = buf.readInt();
         this.power = buf.readInt();
-        this.mana = buf.readInt();
     }
 
     @Override
     public void toBytes(ByteBuf buf) {
         buf.writeInt(id);
         buf.writeInt(power);
-        buf.writeInt(mana);
     }
 
 
@@ -57,9 +54,14 @@ public class AffinityGuiPacket extends PacketBase {
     public IMessage handleServer(NetHandlerPlayServer netHandler) {
         IAffinities affinities = netHandler.player.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY,null);
 
-        affinities.addAffinities(new AffinityObject(AffinityTypes.getAffinity(id),power,mana));
+        AffinityTypes affinityType = AffinityTypes.getAffinity(id);
 
-        ImmersiveMagic.LOGGER.info(affinities.hasAffinity(AffinityTypes.LIGHT));
+        if(affinities.hasAffinity(affinityType)){
+            affinities.removeAffinity(affinityType);
+        }else {
+            affinities.addAffinities(new AffinityObject(affinityType , affinities.getAffinityLevel(affinityType)));
+        }
+        ImmersiveMagic.LOGGER.info(affinities.getAffinityMana(affinityType));
         return null;
     }
 }
