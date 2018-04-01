@@ -1,4 +1,4 @@
-package com.sandvoxel.immersivemagic.common.entity.spells;
+package com.sandvoxel.immersivemagic.common.spells.entity;
 
 /**
  * Created by CrazyGrape on 3/31/2018.

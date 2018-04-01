@@ -8,7 +8,7 @@ import net.minecraft.item.ItemStack;
 
 public enum  Spells {
     LIGHT_SPELL(LightSpell.class),
-    MINEING_SPELL(MineingSpell.class);
+    MINEING_SPELL(MiningSpell.class);
 
     private Class<? extends SpellBase> spellItemClass;
     private Item item;
