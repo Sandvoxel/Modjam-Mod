@@ -13,4 +13,6 @@ public interface IAffinities {
     public void addAffinities(AffinityObject affinityTypes);
 
     public void setPlayerAffinities(List<AffinityObject> affinities);
+
+    boolean hasAffinity(AffinityTypes affinityTypes);
 }

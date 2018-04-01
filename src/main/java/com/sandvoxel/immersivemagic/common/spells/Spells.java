@@ -1,15 +1,17 @@
 package com.sandvoxel.immersivemagic.common.spells;
 
 
-import com.sandvoxel.immersivemagic.Refrence;
-import com.sandvoxel.immersivemagic.common.items.Items;
 import com.sandvoxel.immersivemagic.common.spells.lib.SpellBase;
 import com.sandvoxel.immersivemagic.common.util.RegistryHelper;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 public enum  Spells {
-    LIGHT_SPELL(newSpell.class);
+    LIGHT_SPELL(LightSpell.class),
+    MINEING_SPELL(MineingSpell.class);
 
     private Class<? extends SpellBase> spellItemClass;
+    private Item item;
 
 
     Spells(Class<? extends SpellBase> spellItemClass) {
@@ -23,6 +25,10 @@ public enum  Spells {
         }
     }
     private void registerSpell(int id) {
-        RegistryHelper.spellRegstration(spellItemClass,id);
+        item = RegistryHelper.spellRegstration(spellItemClass,id);
+    }
+
+    public ItemStack getitemStack(){
+        return new ItemStack(item);
     }
 }

@@ -43,4 +43,14 @@ public class Affinities implements IAffinities {
         affinityObjects = nbt;
     }
 
+    @Override
+    public boolean hasAffinity(AffinityTypes affinityTypes) {
+        for (AffinityObject affinityObject : affinityObjects){
+            if(affinityObject.getAffinityType() == affinityTypes){
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

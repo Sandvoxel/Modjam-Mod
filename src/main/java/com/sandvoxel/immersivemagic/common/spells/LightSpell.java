@@ -9,8 +9,8 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 
-public class newSpell extends SpellBase {
-    public newSpell() {
+public class LightSpell extends SpellBase {
+    public LightSpell() {
         super("lightspell", "", SpellTypes.THROWABLE_SPELL, SpellLight.class);
     }
 

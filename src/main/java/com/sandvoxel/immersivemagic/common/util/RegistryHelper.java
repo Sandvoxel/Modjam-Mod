@@ -98,7 +98,6 @@ public class RegistryHelper {
     public static void initItemBlocks(Block block) {
 
         try {
-            ImmersiveMagic.LOGGER.info(block+"-------------------------------------------------------");
             Item itemBlock = Item.getItemFromBlock(block);
             ModelResourceLocation model = new ModelResourceLocation(String.format("%s", block.getRegistryName()));
             ModelBakery.registerItemVariants(itemBlock, model);
@@ -110,7 +109,7 @@ public class RegistryHelper {
         }
     }
 
-    public static void spellRegstration(Class<? extends SpellBase> spellClass,int id){
+    public static Item spellRegstration(Class<? extends SpellBase> spellClass,int id){
         Item item = null;
         String internalName;
 
@@ -140,6 +139,7 @@ public class RegistryHelper {
             ImmersiveMagic.LOGGER.error(String.format("Failed to initialize Spell for: %s || %s", spellClass.getCanonicalName(), e));
 
         }
+        return item;
     }
 
 
