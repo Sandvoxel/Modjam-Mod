@@ -3,11 +3,16 @@ package com.sandvoxel.immersivemagic.common.entity.spells;
 import com.sandvoxel.immersivemagic.ImmersiveMagic;
 import com.sandvoxel.immersivemagic.Refrence;
 import com.sandvoxel.immersivemagic.api.magic.IAffinities;
+import com.sandvoxel.immersivemagic.common.blocks.Blocks;
 import com.sandvoxel.immersivemagic.common.magicdata.AffinitiesProvider;
 import com.sandvoxel.immersivemagic.common.magicdata.AffinityObject;
 import com.sandvoxel.immersivemagic.common.magicdata.AffinityTypes;
+import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
@@ -34,15 +39,10 @@ public class SpellBase extends EntityThrowable {
         //this.isDead = true;
         //world.setBlockToAir(result.getBlockPos());
         if (!world.isRemote && result.getBlockPos()!=null){
-            IAffinities affinities = getThrower().getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY,null);
-
-
-            for(AffinityObject object : affinities.getPlayerAffinities()){
-                if(object.getAffinityType() == AffinityTypes.FIRE){
-                    world.createExplosion(this, result.getBlockPos().getX(),result.getBlockPos().getY(),result.getBlockPos().getZ(),(float) object.getAffinityPower(),true);
-                }
-            }
+            ImmersiveMagic.LOGGER.info(Blocks.SPELL_LIGHT.getBlocks().getDefaultState());
+            world.setBlockState(result.getBlockPos().add(result.sideHit.getDirectionVec()),Blocks.SPELL_LIGHT.getBlocks().getDefaultState());
         }
+        if(result.entityHit==null)
         this.isDead = true;
     }
 
