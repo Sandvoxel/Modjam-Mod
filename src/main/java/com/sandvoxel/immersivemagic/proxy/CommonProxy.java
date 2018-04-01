@@ -8,6 +8,8 @@ import com.sandvoxel.immersivemagic.common.items.Items;
 import com.sandvoxel.immersivemagic.common.magicdata.Affinities;
 import com.sandvoxel.immersivemagic.common.magicdata.AffinitiesProvider;
 import com.sandvoxel.immersivemagic.common.magicdata.AffinitiesStorage;
+import com.sandvoxel.immersivemagic.common.network.lib.Network;
+import com.sandvoxel.immersivemagic.common.network.lib.NetworkWrapperBase;
 import com.sandvoxel.immersivemagic.common.spells.Spells;
 import com.sandvoxel.immersivemagic.common.util.RegistryHelper;
 import net.minecraft.block.Block;
@@ -34,11 +36,12 @@ public class CommonProxy {
         Spells.registerSpells();
         CapabilityManager.INSTANCE.register(IAffinities.class, new AffinitiesStorage(),Affinities.class);
 
+
     }
 
     public void init(FMLInitializationEvent event) {
         SpellDefault.registerRender();
-
+        Network.init();
 
     }
 

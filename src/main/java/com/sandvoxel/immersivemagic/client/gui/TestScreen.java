@@ -1,8 +1,13 @@
 package com.sandvoxel.immersivemagic.client.gui;
 
 import com.sandvoxel.immersivemagic.Refrence;
+import com.sandvoxel.immersivemagic.common.magicdata.AffinityTypes;
+import com.sandvoxel.immersivemagic.common.network.AffinityGuiPacket;
+import com.sandvoxel.immersivemagic.common.network.lib.Network;
+import com.sun.deploy.panel.AdvancedNetworkSettingsDialog;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.GuiButtonImage;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
@@ -17,6 +22,7 @@ public class TestScreen extends GuiScreen {
     int centerX;
     int centerY;
 
+    GuiButton button;
 
 
     @Override
@@ -36,11 +42,17 @@ public class TestScreen extends GuiScreen {
 
     @Override
     public void initGui() {
+        buttonList.clear();
+        buttonList.add(button = new GuiButton(0,30,30,"memes"));
         super.initGui();
     }
 
     @Override
     protected void actionPerformed(GuiButton button) throws IOException {
+        switch (button.id){
+            case 0:
+                Network.sendToServer(new AffinityGuiPacket(AffinityTypes.LIGHT.getMeta(),1,100));
+        }
         super.actionPerformed(button);
     }
 
