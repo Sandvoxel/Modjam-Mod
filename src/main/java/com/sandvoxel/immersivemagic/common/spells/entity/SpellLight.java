@@ -3,7 +3,6 @@ package com.sandvoxel.immersivemagic.common.spells.entity;
 import com.sandvoxel.immersivemagic.Refrence;
 import com.sandvoxel.immersivemagic.common.blocks.Blocks;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.RayTraceResult;

@@ -4,14 +4,10 @@ import com.sandvoxel.immersivemagic.api.magic.IAffinities;
 import com.sandvoxel.immersivemagic.common.capability.SimpleCapabilityProvider;
 import com.sandvoxel.immersivemagic.common.util.CapabilityUtils;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.nbt.NBTBase;
-import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
-import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class AffinitiesProvider {

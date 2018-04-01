@@ -1,7 +1,5 @@
 package com.sandvoxel.immersivemagic.proxy;
 
-import com.sandvoxel.immersivemagic.Refrence;
-import com.sandvoxel.immersivemagic.common.items.Items;
 import com.sandvoxel.immersivemagic.common.util.RegistryHelper;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;

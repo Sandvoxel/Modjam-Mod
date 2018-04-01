@@ -1,9 +1,7 @@
 package com.sandvoxel.immersivemagic.common.magicdata;
 
-import com.sandvoxel.immersivemagic.ImmersiveMagic;
 import com.sandvoxel.immersivemagic.api.magic.IAffinities;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.nbt.NBTTagString;
 
 import java.util.ArrayList;
 import java.util.Iterator;

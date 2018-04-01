@@ -1,7 +1,7 @@
 package com.sandvoxel.immersivemagic.common.spells;
 
-import com.sandvoxel.immersivemagic.common.spells.lib.SpellBase;
 import com.sandvoxel.immersivemagic.common.spells.entity.SpellLight;
+import com.sandvoxel.immersivemagic.common.spells.lib.SpellBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;

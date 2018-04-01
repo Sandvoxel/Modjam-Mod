@@ -9,7 +9,7 @@ import net.minecraftforge.client.model.ModelLoader;
 
 public class ItemBase extends Item implements IItemRender {
     private String inteneralName;
-    private String resourcePath;
+    protected String resourcePath;
 
 
     public ItemBase(String internalName, String resourcePath){

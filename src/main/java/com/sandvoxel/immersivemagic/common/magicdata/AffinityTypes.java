@@ -25,6 +25,11 @@ public enum AffinityTypes {
         this.Name = name;
     }
 
+    public int getMeta() {
+        return this.ordinal();
+    }
+
+
     public static AffinityTypes getAffinity(int ID) {
         if (ID < 0 || ID >= ID_LOOKUP.length) {
             ID = 0;
@@ -33,6 +38,9 @@ public enum AffinityTypes {
         return ID_LOOKUP[ID];
     }
 
+    public String getName() {
+        return Name;
+    }
 
     public static int getAffinityID(AffinityTypes affinityTypes){
         return affinityTypes.ID;

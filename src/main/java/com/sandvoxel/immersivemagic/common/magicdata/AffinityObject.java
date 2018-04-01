@@ -1,8 +1,5 @@
 package com.sandvoxel.immersivemagic.common.magicdata;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class AffinityObject {
     private AffinityTypes affinityType;
     private int affinityPower;

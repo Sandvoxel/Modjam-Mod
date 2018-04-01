@@ -5,7 +5,6 @@ import com.sandvoxel.immersivemagic.api.spell.ISpellRegstier;
 import com.sandvoxel.immersivemagic.common.items.lib.ItemBase;
 import com.sandvoxel.immersivemagic.common.spells.SpellTypes;
 import com.sandvoxel.immersivemagic.common.spells.entity.SpellEntityBase;
-import com.sandvoxel.immersivemagic.common.spells.entity.SpellLight;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 

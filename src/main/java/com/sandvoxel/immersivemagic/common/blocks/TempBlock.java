@@ -1,12 +1,9 @@
 package com.sandvoxel.immersivemagic.common.blocks;
 
-import com.sandvoxel.immersivemagic.ImmersiveMagic;
 import com.sandvoxel.immersivemagic.api.magic.IAffinities;
 import com.sandvoxel.immersivemagic.client.gui.TestScreen;
 import com.sandvoxel.immersivemagic.common.blocks.LIb.BlockBase;
 import com.sandvoxel.immersivemagic.common.magicdata.AffinitiesProvider;
-import com.sandvoxel.immersivemagic.common.magicdata.AffinityObject;
-import com.sandvoxel.immersivemagic.common.magicdata.AffinityTypes;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
