@@ -12,5 +12,5 @@ public interface IAffinities {
 
     public void addAffinities(AffinityObject affinityTypes);
 
-    public void setPlayerAffinitiesFromNBT(NBTTagString nbtTagString);
+    public void setPlayerAffinities(List<AffinityObject> affinities);
 }

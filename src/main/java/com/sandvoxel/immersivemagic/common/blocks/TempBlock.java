@@ -29,18 +29,9 @@ public class TempBlock extends BlockBase {
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         IAffinities affinities = playerIn.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY,null);
 
-        //Minecraft.getMinecraft().displayGuiScreen(new TestScreen());
+        Minecraft.getMinecraft().displayGuiScreen(new TestScreen());
 
-        if(playerIn.isSneaking()){
-            for(AffinityObject object : affinities.getPlayerAffinities()){
-                if(object.getAffinityType() == AffinityTypes.FIRE){
-                    ImmersiveMagic.LOGGER.info(object.getAffinityPower());
-                }
-            }
-            affinities.addAffinities(new AffinityObject(AffinityTypes.FIRE,0));
-        }else {
-            affinities.addAffinities(new AffinityObject(AffinityTypes.FIRE,10));
-        }
+
         return true;
     }
 }

@@ -38,16 +38,9 @@ public class Affinities implements IAffinities {
     }
 
     @Override
-    public void setPlayerAffinitiesFromNBT(NBTTagString nbt) {
-        String[] affinities = nbt.getString().split(" ");
-        ImmersiveMagic.LOGGER.info(affinities[0]);
+    public void setPlayerAffinities(List<AffinityObject> nbt) {
         affinityObjects.clear();
-        if(!affinities[0].isEmpty()) {
-            for (String affinitiy : affinities) {
-                String[] holder = affinitiy.split("-");
-                affinityObjects.add(new AffinityObject(AffinityTypes.getAffinity(Integer.parseInt(holder[0])), Integer.parseInt(holder[1])));
-            }
-        }
+        affinityObjects = nbt;
     }
 
 }
