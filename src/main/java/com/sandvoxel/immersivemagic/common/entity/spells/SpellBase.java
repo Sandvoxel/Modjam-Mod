@@ -13,6 +13,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
@@ -29,17 +30,26 @@ public class SpellBase extends EntityThrowable {
     public SpellBase(World world, EntityLivingBase entityLivingBase){
         super(world,entityLivingBase);
         noClip = false;
+        setGlowing(false);
         setNoGravity(true);
     }
 
 
     @Override
+    public void onEntityUpdate() {
+        if (this.world.isRemote)
+        {
+            for (int i = 0; i < 2; ++i)
+            {
+                this.world.spawnParticle(EnumParticleTypes.PORTAL, this.posX + (this.rand.nextDouble() - 0.5D) * (double)this.width, this.posY + this.rand.nextDouble() * (double)this.height - 0.25D, this.posZ + (this.rand.nextDouble() - 0.5D) * (double)this.width, (this.rand.nextDouble() - 0.5D) * 2.0D, -this.rand.nextDouble(), (this.rand.nextDouble() - 0.5D) * 2.0D);
+            }
+        }
+    }
+
+    @Override
     protected void onImpact(RayTraceResult result) {
 
-        //this.isDead = true;
-        //world.setBlockToAir(result.getBlockPos());
         if (!world.isRemote && result.getBlockPos()!=null){
-            ImmersiveMagic.LOGGER.info(Blocks.SPELL_LIGHT.getBlocks().getDefaultState());
             world.setBlockState(result.getBlockPos().add(result.sideHit.getDirectionVec()),Blocks.SPELL_LIGHT.getBlocks().getDefaultState());
         }
         if(result.entityHit==null)
