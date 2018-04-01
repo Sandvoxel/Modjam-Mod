@@ -1,6 +1,7 @@
 package com.sandvoxel.immersivemagic.client.gui;
 
 import com.sandvoxel.immersivemagic.Refrence;
+import com.sandvoxel.immersivemagic.client.buttons.AffinityButtons;
 import com.sandvoxel.immersivemagic.common.magicdata.AffinityTypes;
 import com.sandvoxel.immersivemagic.common.network.AffinityGuiPacket;
 import com.sandvoxel.immersivemagic.common.network.lib.Network;
@@ -22,7 +23,7 @@ public class TestScreen extends GuiScreen {
     int centerX;
     int centerY;
 
-    GuiButton button;
+    AffinityButtons button;
 
 
     @Override
@@ -43,7 +44,7 @@ public class TestScreen extends GuiScreen {
     @Override
     public void initGui() {
         buttonList.clear();
-        buttonList.add(button = new GuiButton(0,30,30,"memes"));
+        buttonList.add(button = new AffinityButtons(0,30,30));
         super.initGui();
     }
 
@@ -65,4 +66,5 @@ public class TestScreen extends GuiScreen {
     public boolean doesGuiPauseGame() {
         return false;
     }
+
 }
