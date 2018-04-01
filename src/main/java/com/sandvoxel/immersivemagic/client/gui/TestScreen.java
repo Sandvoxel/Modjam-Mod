@@ -1,6 +1,6 @@
 package com.sandvoxel.immersivemagic.client.gui;
 
-import com.sandvoxel.immersivemagic.Refrence;
+import com.sandvoxel.immersivemagic.Reference;
 import com.sandvoxel.immersivemagic.client.buttons.AffinityButtons;
 import com.sandvoxel.immersivemagic.common.magicdata.AffinityTypes;
 import com.sandvoxel.immersivemagic.common.network.AffinityGuiPacket;

@@ -10,7 +10,8 @@ import net.minecraft.item.ItemStack;
 
 public enum Blocks {
     TEMP_BLOCK(TempBlock.class),
-    SPELL_LIGHT(SpellLightBlock.class);
+    SPELL_LIGHT(SpellLightBlock.class),
+    LIQ_BLOCK(LiquefactedBlock.class);
 
     private final Class<? extends BlockBase> blockClass;
     private Block block;

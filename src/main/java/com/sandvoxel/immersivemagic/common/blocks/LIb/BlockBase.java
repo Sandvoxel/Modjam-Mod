@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 
 public class BlockBase extends Block implements IBlockRender {
 
-    private String resourcePath;
+    protected String resourcePath;
     private String internalName = "";
     protected boolean isInventory = false;
 
