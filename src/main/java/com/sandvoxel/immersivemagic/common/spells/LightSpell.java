@@ -19,7 +19,7 @@ public class LightSpell extends SpellBase {
 
         if(!worldIn.isRemote){
             SpellLight spellLight = new SpellLight(worldIn,playerIn);
-            spellLight.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.0F, 1.0F);
+            spellLight.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, (float) -(playerIn.motionX+playerIn.motionY+playerIn.motionZ)+1.0F, 1.0F);
             worldIn.spawnEntity(spellLight);
         }
 
