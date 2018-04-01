@@ -36,7 +36,6 @@ public class SpellLightBlock extends BlockBase {
     @Override
     public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
         super.randomDisplayTick(stateIn, worldIn, pos, rand);
-        ImmersiveMagic.LOGGER.info("awdawdaw");
         if(worldIn.isRemote){
             for (int i = 0; i < 2; ++i)
             {
