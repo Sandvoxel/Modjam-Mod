@@ -7,7 +7,7 @@ import com.sandvoxel.immersivemagic.common.util.RegistryHelper;
 import net.minecraft.item.Item;
 
 public enum Items {
-    SPELL(SpellItem.class);
+    ;
 
     private Class<? extends ItemBase> itemClass;
     private Item item;

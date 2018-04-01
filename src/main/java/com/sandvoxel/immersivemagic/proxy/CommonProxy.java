@@ -4,8 +4,8 @@ import com.sandvoxel.immersivemagic.ImmersiveMagic;
 import com.sandvoxel.immersivemagic.Refrence;
 import com.sandvoxel.immersivemagic.api.magic.IAffinities;
 import com.sandvoxel.immersivemagic.common.blocks.Blocks;
-import com.sandvoxel.immersivemagic.common.entity.render.SpellDefault;
-import com.sandvoxel.immersivemagic.common.entity.spells.SpellBase;
+import com.sandvoxel.immersivemagic.client.render.SpellDefault;
+import com.sandvoxel.immersivemagic.common.spells.Spells;
 import com.sandvoxel.immersivemagic.common.items.Items;
 import com.sandvoxel.immersivemagic.common.magicdata.Affinities;
 import com.sandvoxel.immersivemagic.common.magicdata.AffinitiesProvider;
@@ -32,8 +32,9 @@ public class CommonProxy {
     public void preInit(FMLPreInitializationEvent event) {
         Blocks.registerBlocks();
         Items.registerItems();
+        Spells.registerSpells();
         CapabilityManager.INSTANCE.register(IAffinities.class, new AffinitiesStorage(),Affinities.class);
-        SpellBase.addSpellToRegistry("basic");
+
     }
 
     public void init(FMLInitializationEvent event) {
@@ -67,7 +68,6 @@ public class CommonProxy {
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
 
         for (Block block : RegistryHelper.getBlocks()) {
-            ImmersiveMagic.LOGGER.info(block.getUnlocalizedName());
             event.getRegistry().register(block);
         }
     }
@@ -75,7 +75,6 @@ public class CommonProxy {
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
         for (Item item : RegistryHelper.getItemBlocks()) {
-            ImmersiveMagic.LOGGER.info(item.getUnlocalizedName());
             event.getRegistry().register(item);
         }
     }

@@ -6,11 +6,14 @@ import com.sandvoxel.immersivemagic.common.util.RegistryHelper;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
 
+@Mod.EventBusSubscriber(Side.CLIENT)
 public class ClientProxy extends CommonProxy {
 
     @Override
@@ -31,7 +34,7 @@ public class ClientProxy extends CommonProxy {
     @SubscribeEvent
     public static void RegisterModels(ModelRegistryEvent event) {
         for (Block block : RegistryHelper.getBlocks()) {
-            RegistryHelper.initItemBlocks(Refrence.MOD_ID, block);
+            RegistryHelper.initItemBlocks(block);
         }
         for(Item items : RegistryHelper.getItemBlocks()){
 

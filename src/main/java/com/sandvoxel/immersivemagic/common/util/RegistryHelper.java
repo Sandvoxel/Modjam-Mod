@@ -1,10 +1,13 @@
 package com.sandvoxel.immersivemagic.common.util;
 
 import com.sandvoxel.immersivemagic.ImmersiveMagic;
+import com.sandvoxel.immersivemagic.Refrence;
 import com.sandvoxel.immersivemagic.api.util.IBlockRender;
 import com.sandvoxel.immersivemagic.api.util.IItemRender;
 import com.sandvoxel.immersivemagic.common.blocks.LIb.BlockBase;
 import com.sandvoxel.immersivemagic.common.items.lib.ItemBase;
+import com.sandvoxel.immersivemagic.common.spells.SpellTypes;
+import com.sandvoxel.immersivemagic.common.spells.lib.SpellBase;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelBakery;
@@ -92,9 +95,10 @@ public class RegistryHelper {
         return item;
     }
 
-    public static void initItemBlocks(String modid, Block block) {
+    public static void initItemBlocks(Block block) {
 
         try {
+            ImmersiveMagic.LOGGER.info(block+"-------------------------------------------------------");
             Item itemBlock = Item.getItemFromBlock(block);
             ModelResourceLocation model = new ModelResourceLocation(String.format("%s", block.getRegistryName()));
             ModelBakery.registerItemVariants(itemBlock, model);
@@ -102,10 +106,56 @@ public class RegistryHelper {
             ModelLoader.setCustomMeshDefinition(itemBlock, meshDefinition);
 
         } catch (Exception e) {
-
             ImmersiveMagic.LOGGER.error(String.format("Failed to initialize ItemBlock for: %s || %s", block.getUnlocalizedName(), e));
         }
     }
+
+    public static void spellRegstration(Class<? extends SpellBase> spellClass,int id){
+        Item item = null;
+        String internalName;
+
+        try {
+            item = spellClass.getConstructor().newInstance();
+            internalName = ((SpellBase)item).getInteneralName();
+
+            ImmersiveMagic.LOGGER.info(spellClass);
+
+            if (!internalName.equals(internalName.toLowerCase(Locale.US)))
+                throw new IllegalArgumentException(String.format("InternalName values need to be all lowercase! Item: %s", internalName));
+
+            if (internalName.isEmpty())
+                throw new IllegalArgumentException(String.format("InternalName cannot be blank! Item: %s", spellClass.getCanonicalName()));
+
+            item.setUnlocalizedName(internalName);
+            item.setRegistryName(Refrence.MOD_ID,internalName);
+
+            items.add(item);
+
+            if (((SpellBase)item).getSpellType() == SpellTypes.THROWABLE_SPELL){
+                ((SpellBase)item).RegstierSpellEntity(id);
+            }
+
+
+        }catch (Exception e){
+            ImmersiveMagic.LOGGER.error(String.format("Failed to initialize Spell for: %s || %s", spellClass.getCanonicalName(), e));
+
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

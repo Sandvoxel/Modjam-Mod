@@ -1,8 +1,7 @@
-package com.sandvoxel.immersivemagic.common.entity.render;
+package com.sandvoxel.immersivemagic.client.render;
 
-import com.sandvoxel.immersivemagic.ImmersiveMagic;
 import com.sandvoxel.immersivemagic.Refrence;
-import com.sandvoxel.immersivemagic.common.entity.spells.SpellBase;
+import com.sandvoxel.immersivemagic.common.spells.entity.SpellLight;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
@@ -10,14 +9,12 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
-import net.minecraft.client.renderer.vertex.VertexBuffer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import org.lwjgl.opengl.GL11;
 
 import javax.annotation.Nullable;
-import java.util.Map;
 
 public class SpellDefault extends Render {
     protected SpellDefault(RenderManager renderManager) {
@@ -25,7 +22,7 @@ public class SpellDefault extends Render {
     }
 
     public static void registerRender(){
-        RenderingRegistry.registerEntityRenderingHandler(SpellBase.class, new SpellDefault(Minecraft.getMinecraft().getRenderManager()));
+        RenderingRegistry.registerEntityRenderingHandler(SpellLight.class, new SpellDefault(Minecraft.getMinecraft().getRenderManager()));
     }
 
 
