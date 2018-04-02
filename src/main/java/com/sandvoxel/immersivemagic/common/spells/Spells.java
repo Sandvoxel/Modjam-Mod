@@ -1,7 +1,6 @@
 package com.sandvoxel.immersivemagic.common.spells;
 
 
-import com.sandvoxel.immersivemagic.common.spells.entity.Liquefact;
 import com.sandvoxel.immersivemagic.common.spells.lib.SpellBase;
 import com.sandvoxel.immersivemagic.common.util.RegistryHelper;
 import net.minecraft.item.Item;
@@ -10,7 +9,8 @@ import net.minecraft.item.ItemStack;
 public enum  Spells {
     LIGHT_SPELL(LightSpell.class),
     MINING_SPELL(MiningSpell.class),
-    LIQUEFACT_SPELL(LiquefactSpell.class);
+    LIQUEFACT_SPELL(LiquefactSpell.class),
+    NOVA_SPELL(NovaSpell.class);
 
     private Class<? extends SpellBase> spellItemClass;
     private Item item;

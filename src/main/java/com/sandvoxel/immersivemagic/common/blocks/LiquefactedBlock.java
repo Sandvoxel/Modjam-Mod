@@ -5,6 +5,7 @@ import com.google.common.collect.Maps;
 import com.sandvoxel.immersivemagic.ImmersiveMagic;
 import com.sandvoxel.immersivemagic.Reference;
 import com.sandvoxel.immersivemagic.common.blocks.LIb.BlockBase;
+import com.sandvoxel.immersivemagic.common.blocks.LIb.BlockFallingBase;
 import com.sandvoxel.immersivemagic.common.creativetab.MainCreativeTab;
 import jline.internal.Nullable;
 import net.minecraft.block.Block;
@@ -45,7 +46,7 @@ import java.util.*;
 /**
  * Created by CrazyGrape on 4/1/2018.
  */
-public class LiquefactedBlock extends BlockBase{
+public class LiquefactedBlock extends BlockBase {
 
     protected static final PropertyEnum<LiqBlockTypes> LIQ_BLOCK_TYPE = PropertyEnum.create("liq_block_type", LiqBlockTypes.class);
 

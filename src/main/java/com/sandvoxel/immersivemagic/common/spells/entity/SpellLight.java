@@ -11,18 +11,14 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 
 public class SpellLight extends SpellEntityBase {
+
+    //Necessary
     public SpellLight(World worldIn) {
         super(worldIn);
-        noClip = false;
-
-
     }
 
     public SpellLight(World world, EntityLivingBase entityLivingBase){
-        super(world,entityLivingBase);
-        noClip = false;
-        setGlowing(false);
-        setNoGravity(true);
+        super(world, entityLivingBase, false, EnumParticleTypes.FIREWORKS_SPARK);
     }
 
 

@@ -13,57 +13,60 @@ import net.minecraft.world.World;
 public class SpellEntityBase extends EntityThrowable {
 
     protected EnumParticleTypes spellParticleType = EnumParticleTypes.SPELL;
-
     protected Double projPartVel = 1.0D;
     protected Double impactPartVel = 2.5D;
     protected Double fizzlePartVel = 2.0D;
+    protected int deathParticleNum = 250;
     protected boolean hasGravity = false;
 
     public SpellEntityBase(World worldIn) {
         super(worldIn);
+        noClip = false;
     }
 
     public SpellEntityBase(World worldIn, double x, double y, double z) {
         super(worldIn, x, y, z);
+        setNoGravity(true);
+        noClip = false;
     }
 
     public SpellEntityBase(World worldIn, EntityLivingBase throwerIn) {
         super(worldIn, throwerIn);
+        setNoGravity(true);
     }
 
     public SpellEntityBase(World worldIn, EntityLivingBase throwerIn, boolean hasGravity, EnumParticleTypes spellParticle) {
         super(worldIn, throwerIn);
         this.hasGravity = hasGravity;
+        if (!hasGravity){
+            setNoGravity(true);
+        }
         this.spellParticleType = spellParticle;
+        noClip = false;
     }
 
     public SpellEntityBase(World worldIn, EntityLivingBase throwerIn, boolean hasGravity, EnumParticleTypes spellParticle, double impactPartVel, double projectilePartVel, double fizzlePartVel) {
         super(worldIn, throwerIn);
         this.hasGravity = hasGravity;
+        if (!hasGravity){
+            setNoGravity(true);
+        }
         this.spellParticleType = spellParticle;
         this.impactPartVel = impactPartVel;
         this.projPartVel = projectilePartVel;
         this.fizzlePartVel = fizzlePartVel;
+        noClip = false;
     }
 
     @Override
     public void onEntityUpdate() {
-        if (this.world.isRemote)
-        {
-            this.world.spawnParticle(spellParticleType,
-                    this.posX + (this.rand.nextDouble() - 0.5D) * (double)this.width,
-                    this.posY + this.rand.nextDouble() * (double)this.height - 0.25D,
-                    this.posZ + (this.rand.nextDouble() - 0.5D) * (double)this.width,
-                    (this.rand.nextDouble() - 0.5D) * -motionX * projPartVel,
-                    (this.rand.nextDouble() - 0.5D) * -motionY * projPartVel,
-                    (this.rand.nextDouble() - 0.5D) * -motionZ * projPartVel);
-        }
+        spawnParticleTrail();
         if (!hasGravity) {
             if(Math.abs(motionX) < 0.05 && Math.abs(motionY) < 0.05 && Math.abs(motionZ) < 0.05){
                 isDead = true;
                 if (this.world.isRemote)
                 {
-                    for (int i = 0; i < 400; ++i)
+                    for (int i = 0; i < deathParticleNum; ++i)
                     {
                         this.world.spawnParticle(spellParticleType,
                                 this.posX + (this.rand.nextDouble() - 0.5D) * (double)this.width,
@@ -97,6 +100,19 @@ public class SpellEntityBase extends EntityThrowable {
         }
         if(result.entityHit==null)
             this.isDead = true;
+    }
+
+    protected void spawnParticleTrail() {
+        if (this.world.isRemote)
+        {
+            this.world.spawnParticle(spellParticleType,
+                    this.posX + (this.rand.nextDouble() - 0.5D) * (double)this.width,
+                    this.posY + this.rand.nextDouble() * (double)this.height - 0.25D,
+                    this.posZ + (this.rand.nextDouble() - 0.5D) * (double)this.width,
+                    (this.rand.nextDouble() - 0.5D) * -motionX * projPartVel,
+                    (this.rand.nextDouble() - 0.5D) * -motionY * projPartVel,
+                    (this.rand.nextDouble() - 0.5D) * -motionZ * projPartVel);
+        }
     }
 
     protected void impactDeathHandling(RayTraceResult result, int numberOfParticles, EnumParticleTypes particleType) {

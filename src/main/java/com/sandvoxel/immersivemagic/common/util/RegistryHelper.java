@@ -2,6 +2,7 @@ package com.sandvoxel.immersivemagic.common.util;
 
 import com.sandvoxel.immersivemagic.ImmersiveMagic;
 import com.sandvoxel.immersivemagic.Reference;
+import com.sandvoxel.immersivemagic.api.blocks.IBlock;
 import com.sandvoxel.immersivemagic.api.util.IBlockRender;
 import com.sandvoxel.immersivemagic.api.util.IItemRender;
 import com.sandvoxel.immersivemagic.common.blocks.LIb.BlockBase;
@@ -31,13 +32,15 @@ public class RegistryHelper {
     public static Block addBlockToRegistry(String modid, Class<? extends Block> blockClass) {
         Block block = null;
         ItemBlock itemBlock;
-        String internalName;
+        String internalName = "";
 
         try {
             block = blockClass.getConstructor().newInstance();
             itemBlock = new ItemBlock(block);
 
-            internalName = ((BlockBase) block).getInternalName();
+            if (block instanceof IBlock) {
+                internalName = ((IBlock) block).getInternalName();
+            }
 
             if (!internalName.equals(internalName.toLowerCase(Locale.US)))
                 throw new IllegalArgumentException(String.format("InternalName values need to be all lowercase! Item: %s", internalName));

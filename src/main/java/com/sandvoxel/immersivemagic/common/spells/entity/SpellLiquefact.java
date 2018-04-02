@@ -18,11 +18,6 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
  */
 public class Liquefact extends SpellEntityBase {
 
-    public Liquefact(World worldIn) {
-        super(worldIn);
-        noClip = false;
-    }
-
     public Liquefact(World world, EntityLivingBase entityLivingBase){
         super(world,entityLivingBase, true, EnumParticleTypes.CRIT);
         noClip = false;

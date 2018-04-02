@@ -1,8 +1,9 @@
 package com.sandvoxel.immersivemagic.client.render;
 
 import com.sandvoxel.immersivemagic.Reference;
-import com.sandvoxel.immersivemagic.common.spells.entity.Liquefact;
+import com.sandvoxel.immersivemagic.common.spells.entity.SpellLiquefact;
 import com.sandvoxel.immersivemagic.common.spells.entity.SpellLight;
+import com.sandvoxel.immersivemagic.common.spells.entity.SpellNova;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
@@ -19,7 +20,7 @@ import javax.annotation.Nullable;
 
 public class SpellDefault extends Render {
 
-    private static ResourceLocation texture = new ResourceLocation(Reference.MOD_ID,"textures/misc/fire.png");
+    private ResourceLocation texture = new ResourceLocation(Reference.MOD_ID,"textures/misc/fire.png");
 
     protected SpellDefault(RenderManager renderManager) {
         super(renderManager);
@@ -32,7 +33,8 @@ public class SpellDefault extends Render {
 
     public static void registerRender(){
         RenderingRegistry.registerEntityRenderingHandler(SpellLight.class, new SpellDefault(Minecraft.getMinecraft().getRenderManager(), "textures/misc/light.png"));
-        RenderingRegistry.registerEntityRenderingHandler(Liquefact.class, new SpellDefault(Minecraft.getMinecraft().getRenderManager(), "textures/misc/earth.png"));
+        RenderingRegistry.registerEntityRenderingHandler(SpellLiquefact.class, new SpellDefault(Minecraft.getMinecraft().getRenderManager(), "textures/misc/earth.png"));
+        RenderingRegistry.registerEntityRenderingHandler(SpellNova.class, new SpellDefault(Minecraft.getMinecraft().getRenderManager(), "textures/misc/fire.png"));
     }
 
 

@@ -13,10 +13,10 @@ public enum Blocks {
     SPELL_LIGHT(SpellLightBlock.class),
     LIQ_BLOCK(LiquefactedBlock.class);
 
-    private final Class<? extends BlockBase> blockClass;
+    private final Class<? extends Block> blockClass;
     private Block block;
 
-    Blocks(Class<? extends BlockBase> blockClass) {
+    Blocks(Class<? extends Block> blockClass) {
         this.blockClass = blockClass;
     }
 
@@ -29,7 +29,6 @@ public enum Blocks {
     public ItemStack getStack() {
         return new ItemStack(block);
     }
-
 
     public ItemStack getStack(int size, int meta) {
         return new ItemStack(block, size, meta);

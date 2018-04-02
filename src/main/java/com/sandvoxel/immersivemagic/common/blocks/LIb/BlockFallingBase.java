@@ -4,6 +4,7 @@ import com.sandvoxel.immersivemagic.Reference;
 import com.sandvoxel.immersivemagic.api.blocks.IBlock;
 import com.sandvoxel.immersivemagic.api.util.IBlockRender;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockFalling;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -19,14 +20,17 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 
-public class BlockBase extends Block implements IBlockRender, IBlock {
+/**
+ * Created by CrazyGrape on 4/1/2018.
+ */
+public class BlockFallingBase extends BlockFalling implements IBlockRender, IBlock {
 
     protected String resourcePath;
     private String internalName = "";
     protected boolean isInventory = false;
 
 
-    public BlockBase(Material blockMaterialIn, String resourcePath) {
+    public BlockFallingBase(Material blockMaterialIn, String resourcePath) {
         super(blockMaterialIn);
         this.resourcePath = resourcePath + internalName;
     }
@@ -73,6 +77,4 @@ public class BlockBase extends Block implements IBlockRender, IBlock {
             }
         });
     }
-
-
 }
