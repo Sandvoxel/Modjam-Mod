@@ -16,6 +16,9 @@ public class Affinities implements IAffinities {
 
     public Affinities(EntityPlayer player) {
         this.player = player;
+        for(AffinityTypes types : AffinityTypes.values()){
+            affinityObjects.add(new AffinityObject(types));
+        }
     }
 
     @Override
@@ -24,50 +27,23 @@ public class Affinities implements IAffinities {
     }
 
     @Override
-    public void addAffinities(AffinityObject affinityTypes) {
-        Iterator<AffinityObject> iter = affinityObjects.iterator();
-
-        while (iter.hasNext()){
-            AffinityObject affinityObject = iter.next();
-
-            if(affinityObject.getAffinityType()==affinityTypes.getAffinityType())
-                iter.remove();
-        }
-        ImmersiveMagic.LOGGER.info(affinityTypes);
-        this.affinityObjects.add(affinityTypes);
+    public void addAffinities(AffinityTypes affinityType) {
+        affinityObjects.get(affinityType.getMeta()).setActive(true);
     }
 
     @Override
-    public boolean removeAffinity(AffinityTypes affinityType) {
-        Iterator<AffinityObject> iter = affinityObjects.iterator();
-
-        while (iter.hasNext()){
-            AffinityObject affinityObject = iter.next();
-
-            if(affinityObject.getAffinityType()==affinityType)
-                iter.remove();
-        }
-        return false;
+    public void removeAffinity(AffinityTypes affinityType) {
+        affinityObjects.get(affinityType.getMeta()).setActive(false);
     }
 
     @Override
     public int getAffinityLevel(AffinityTypes affinityType) {
-        for (AffinityObject affinityObject : affinityObjects) {
-            if (affinityObject.getAffinityType() == affinityType) {
-                return affinityObject.getAffinityPower();
-            }
-        }
-        return 0;
+        return affinityObjects.get(affinityType.getMeta()).getAffinityPower();
     }
 
     @Override
     public int getAffinityMana(AffinityTypes affinityType) {
-        for (AffinityObject affinityObject : affinityObjects) {
-            if (affinityObject.getAffinityType() == affinityType) {
-                return affinityObject.getAffinityMana();
-            }
-        }
-        return 0;
+        return affinityObjects.get(affinityType.getMeta()).getAffinityMana();
     }
 
     @Override
@@ -83,22 +59,15 @@ public class Affinities implements IAffinities {
 
     @Override
     public int getManaCap(AffinityTypes affinityType) {
-        for (AffinityObject affinityObject : affinityObjects){
-            if(affinityObject.getAffinityType() == affinityType){
-                return affinityObject.getManaCap();
-            }
-        }
-        return 0;
+        return affinityObjects.get(affinityType.getMeta()).getManaCap();
+
     }
 
     @Override
-    public void addXp(int XP,AffinityTypes affinityTypes) {
-        for(AffinityObject affinityObject: affinityObjects){
-            if(affinityObject.getAffinityType() == affinityTypes){
-                affinityObject.setCurrentXP((affinityObject.getCurrentXP()+XP));
-                affinityObject.canLevelUp();
-            }
-        }
+    public void addXp(int XP,AffinityTypes affinityType) {
+        affinityObjects.get(affinityType.getMeta()).setCurrentXP(affinityObjects.get(affinityType.getMeta()).getCurrentXP()+XP);
+        affinityObjects.get(affinityType.getMeta()).canLevelUp();
+        ImmersiveMagic.LOGGER.info(affinityObjects.get(affinityType.getMeta()).getAffinityPower());
     }
 
     @Override
@@ -109,12 +78,7 @@ public class Affinities implements IAffinities {
 
     @Override
     public boolean hasAffinity(AffinityTypes affinityTypes) {
-        for (AffinityObject affinityObject : affinityObjects){
-            if(affinityObject.getAffinityType() == affinityTypes){
-                return true;
-            }
-        }
-        return false;
+        return affinityObjects.get(affinityTypes.getMeta()).isActive();
     }
 
 }
