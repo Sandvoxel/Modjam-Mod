@@ -1,0 +1,9 @@
+{
+	"credit": "Made with Blockbench, a free, modern block model editor by JannisX11",
+	"parent": "minecraft:block/cube_all",
+	"textures": {
+		"all": "immmag:blocks/liquefacted_dirt",
+		"particle": "immmag:blocks/liquefacted_dirt"
+	}
+	]
+}

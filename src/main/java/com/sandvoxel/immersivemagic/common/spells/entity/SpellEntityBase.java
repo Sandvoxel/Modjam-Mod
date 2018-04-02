@@ -2,10 +2,19 @@ package com.sandvoxel.immersivemagic.common.spells.entity;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
 public class SpellEntityBase extends EntityThrowable {
+
+    protected EnumParticleTypes spellParticle = EnumParticleTypes.SPELL;
+    protected Double impactPartVel = 1.0D;
+    protected Double projPartVel = 1.0D;
+    protected Double fizzlePartVel = 1.0D;
+    protected boolean hasGravity = false;
+
+
     public SpellEntityBase(World worldIn) {
         super(worldIn);
     }

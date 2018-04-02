@@ -1,6 +1,7 @@
 package com.sandvoxel.immersivemagic.client.render;
 
 import com.sandvoxel.immersivemagic.Reference;
+import com.sandvoxel.immersivemagic.common.spells.entity.Liquefact;
 import com.sandvoxel.immersivemagic.common.spells.entity.SpellLight;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -31,6 +32,7 @@ public class SpellDefault extends Render {
 
     public static void registerRender(){
         RenderingRegistry.registerEntityRenderingHandler(SpellLight.class, new SpellDefault(Minecraft.getMinecraft().getRenderManager(), "textures/misc/light.png"));
+        RenderingRegistry.registerEntityRenderingHandler(Liquefact.class, new SpellDefault(Minecraft.getMinecraft().getRenderManager(), "textures/misc/earth.png"));
     }
 
 

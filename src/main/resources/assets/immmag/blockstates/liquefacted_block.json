@@ -2,19 +2,54 @@
     "forge_marker": 1,
     "defaults": {
         "textures": {
-            "0": "immmag:blocks/spell_light",
-            "particle": "immmag:blocks/spell_light"
+            "all": "immmag:blocks/liquefacted_dirt",
+            "particle": "immmag:blocks/liquefacted_dirt"
         },
-        "model": "immmag:spell_light",
-        "transform": "forge:default-block",
-        "uvblock": true
+        "model": "minecraft:cube_all",
+        "transform": "forge:default-block"
     },
     "variants": {
-        "normal":[{
-            "model": "immmag:spell_light"
-            }],
-        "inventory":[{
-            "model": "immmag:spell_light"
-            }]
-        }
+        "liq_block_type":{
+            "dirt": {
+
+            },
+            "dirt_c": {
+              "textures": {
+                "all": "immmag:blocks/liquefacted_dirt_c",
+                "particle": "immmag:blocks/liquefacted_dirt_c"
+              }
+            },
+            "sand": {
+              "textures": {
+                "all": "immmag:blocks/liquefacted_sand",
+                "particle": "immmag:blocks/liquefacted_sand"
+              }
+            },
+            "sand_r": {
+              "textures": {
+                "all": "immmag:blocks/liquefacted_sand_r",
+                "particle": "immmag:blocks/liquefacted_sand_r"
+              }
+            },
+            "gravel": {
+              "textures": {
+                "all": "immmag:blocks/liquefacted_gravel",
+                "particle": "immmag:blocks/liquefacted_gravel"
+              }
+            },
+            "soulsand": {
+              "textures": {
+                "all": "immmag:blocks/liquefacted_soulsand",
+                "particle": "immmag:blocks/liquefacted_soulsand"
+              }
+            }
+          },
+      "normal":[{
+        "model": "minecraft:cube_all"
+      }],
+      "inventory":[
+        {
+          "model": "minecraft:cube_all"
+        }]
+      }
 }

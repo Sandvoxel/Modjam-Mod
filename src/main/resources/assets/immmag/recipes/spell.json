@@ -1,15 +1,13 @@
 {
 	"type": "minecraft:crafting_shaped",
 	"pattern": [
-		" I",
-		"s "
+		" g ",
+		"g g",
+		" g "
 		],
 	"key": {
-		"s": {
-			"item": "minecraft:stick"
-			},
-		"I": {
-			"item": "minecraft:iron_nugget"
+		"g": {
+			"item": "minecraft:glass_pane"
 			}
 		},
 	"result": {

@@ -23,7 +23,7 @@ public class SpellItems extends ItemBase {
     public SpellItems() {
         super("spellcraft", "");
         setHasSubtypes(true);
-        setCreativeTab(CreativeTabs.TRANSPORTATION);
+        setCreativeTab(CreativeTabs.TOOLS);
     }
 
     @Override
@@ -44,6 +44,8 @@ public class SpellItems extends ItemBase {
 
     @Override
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
+        if(tab != CreativeTabs.TOOLS)
+            return;
         for (int i = 0; i < AffinityTypes.values().length; i++) {
                 items.add(new ItemStack(this, 1, i));
         }
