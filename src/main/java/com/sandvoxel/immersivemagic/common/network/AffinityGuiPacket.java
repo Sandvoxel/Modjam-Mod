@@ -61,7 +61,9 @@ public class AffinityGuiPacket extends PacketBase {
         }else {
             affinities.addAffinities(new AffinityObject(affinityType , affinities.getAffinityLevel(affinityType)));
         }
-        ImmersiveMagic.LOGGER.info(affinities.getAffinityMana(affinityType));
+        affinities.addXp(100,AffinityTypes.FIRE);
+
+        ImmersiveMagic.LOGGER.info(affinities.getAffinityMana(AffinityTypes.FIRE));
         return null;
     }
 }

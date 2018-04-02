@@ -81,6 +81,16 @@ public class Affinities implements IAffinities {
     }
 
     @Override
+    public void addXp(int XP,AffinityTypes affinityTypes) {
+        for(AffinityObject affinityObject: affinityObjects){
+            if(affinityObject.getAffinityType() == affinityTypes){
+                affinityObject.setCurrentXP((affinityObject.getCurrentXP()+XP));
+                affinityObject.canLevelUp();
+            }
+        }
+    }
+
+    @Override
     public void setPlayerAffinities(List<AffinityObject> nbt) {
         affinityObjects.clear();
         affinityObjects = nbt;

@@ -67,7 +67,9 @@ public class CommonProxy {
 
     @SubscribeEvent
     public static void playerClone(PlayerEvent.Clone event) {
-
+        IAffinities affinities = event.getOriginal().getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY,null);
+        IAffinities affinities1 = event.getEntity().getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY,null);
+        affinities1.setPlayerAffinities(affinities.getPlayerAffinities());
     }
 
     @SubscribeEvent
@@ -83,11 +85,7 @@ public class CommonProxy {
                 if(affinityObject.getManaCap() > affinityObject.getAffinityMana()){
                     affinityObject.setAffinityMana(affinityObject.getAffinityMana()+1);
                 }
-
             }
-
-
-
         }
     }
 

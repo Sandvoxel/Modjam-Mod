@@ -28,7 +28,6 @@ public class TempBlock extends BlockBase {
 
         Minecraft.getMinecraft().displayGuiScreen(new TestScreen(playerIn));
 
-
         return true;
     }
 }

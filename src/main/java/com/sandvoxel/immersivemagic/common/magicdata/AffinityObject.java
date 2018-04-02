@@ -4,6 +4,7 @@ public class AffinityObject {
     private AffinityTypes affinityType;
     private int affinityPower;
     private int affinityMana=0;
+    private int currentXP=0;
 
 
     public AffinityObject(AffinityTypes affinityType, int affinityPower) {
@@ -33,6 +34,26 @@ public class AffinityObject {
 
     private void subtractAffinityMana(int affinityMana){
         this.affinityMana -= affinityMana;
+    }
+
+    public int getCurrentXP() {
+        return currentXP;
+    }
+
+    public void setCurrentXP(int currentXP) {
+        this.currentXP = currentXP;
+    }
+
+    public boolean canLevelUp(){
+        if(!(affinityPower >= getPowerCap())){
+            return false;
+        }
+        if(currentXP > Math.sqrt(affinityPower)+200){
+            affinityPower++;
+            currentXP = 0;
+            return true;
+        }
+        return false;
     }
 
     public int getAffinityPower() {

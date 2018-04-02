@@ -23,7 +23,7 @@ public class AffinityButtons extends GuiButton {
     public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks) {
         IAffinities affinities = player.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY,null);
 
-        if(affinities.hasAffinity(AffinityTypes.LIGHT)){
+        if(affinities.hasAffinity(AffinityTypes.getAffinity(id))){
             displayString = "O";
         }else {
             displayString = "X";

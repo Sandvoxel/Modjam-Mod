@@ -50,14 +50,22 @@ public class TestScreen extends GuiScreen {
     public void initGui() {
         buttonList.clear();
         buttonList.add(button = new AffinityButtons(0,30,30, player));
+        buttonList.add(button = new AffinityButtons(1,60,30, player));
+        buttonList.add(button = new AffinityButtons(2,90,30, player));
+        buttonList.add(button = new AffinityButtons(3,120,30, player));
+        buttonList.add(button = new AffinityButtons(4,30,60, player));
+        buttonList.add(button = new AffinityButtons(5,30,90, player));
+        buttonList.add(button = new AffinityButtons(6,30,120, player));
+        buttonList.add(button = new AffinityButtons(7,120,120, player));
+
         super.initGui();
     }
 
     @Override
     protected void actionPerformed(GuiButton button) throws IOException {
         switch (button.id){
-            case 0:
-                Network.sendToServer(new AffinityGuiPacket(AffinityTypes.LIGHT.getMeta(),1));
+            default:
+                Network.sendToServer(new AffinityGuiPacket(button.id,1));
         }
         super.actionPerformed(button);
     }

@@ -18,6 +18,8 @@ public interface IAffinities {
 
     int getManaCap(AffinityTypes affinityType);
 
+    void addXp(int XP,AffinityTypes affinityTypes);
+
     void setPlayerAffinities(List<AffinityObject> affinities);
 
     boolean hasAffinity(AffinityTypes affinityTypes);
