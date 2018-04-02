@@ -1,5 +1,6 @@
 package com.sandvoxel.immersivemagic.common.blocks;
 
+import com.sandvoxel.immersivemagic.ImmersiveMagic;
 import com.sandvoxel.immersivemagic.api.magic.IAffinities;
 import com.sandvoxel.immersivemagic.client.gui.TestScreen;
 import com.sandvoxel.immersivemagic.common.blocks.LIb.BlockBase;
@@ -18,7 +19,7 @@ public class TempBlock extends BlockBase {
     public TempBlock() {
         super(Material.WOOD, "");
         setInternalName("tempblock");
-        setCreativeTab(CreativeTabs.TRANSPORTATION);
+        setCreativeTab(ImmersiveMagic.tabimmmag);
 
     }
 

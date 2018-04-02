@@ -1,5 +1,6 @@
 package com.sandvoxel.immersivemagic.common.items.spellcraft;
 
+import com.sandvoxel.immersivemagic.ImmersiveMagic;
 import com.sandvoxel.immersivemagic.Reference;
 import com.sandvoxel.immersivemagic.api.magic.IAffinities;
 import com.sandvoxel.immersivemagic.common.items.lib.ItemBase;
@@ -23,7 +24,7 @@ public class SpellItems extends ItemBase {
     public SpellItems() {
         super("spellcraft", "");
         setHasSubtypes(true);
-        setCreativeTab(CreativeTabs.TOOLS);
+        setCreativeTab(ImmersiveMagic.tabimmmag);
     }
 
     @Override
@@ -41,7 +42,7 @@ public class SpellItems extends ItemBase {
 
     @Override
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
-        if(tab != CreativeTabs.TOOLS)
+        if(tab != ImmersiveMagic.tabimmmag)
             return;
         for (int i = 0; i < AffinityTypes.values().length; i++) {
                 items.add(new ItemStack(this, 1, i));

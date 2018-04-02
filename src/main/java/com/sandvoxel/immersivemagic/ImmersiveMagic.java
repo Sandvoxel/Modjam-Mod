@@ -1,6 +1,7 @@
 package com.sandvoxel.immersivemagic;
 
 import com.google.common.base.Stopwatch;
+import com.sandvoxel.immersivemagic.common.creativetab.MainCreativeTab;
 import com.sandvoxel.immersivemagic.common.exception.OutdatedJavaException;
 import com.sandvoxel.immersivemagic.common.util.Logger;
 import com.sandvoxel.immersivemagic.proxy.CommonProxy;
@@ -20,6 +21,8 @@ public class ImmersiveMagic {
 
     public static Logger LOGGER = new Logger(Reference.MOD_NAME);
     public static Stopwatch STOPWATCH = Stopwatch.createUnstarted();
+
+    public static MainCreativeTab tabimmmag = new MainCreativeTab();
 
 
     @Mod.Instance("Trainwreck TrainwreckLib")

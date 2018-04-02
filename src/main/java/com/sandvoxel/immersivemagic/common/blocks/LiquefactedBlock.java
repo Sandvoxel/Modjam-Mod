@@ -2,8 +2,10 @@ package com.sandvoxel.immersivemagic.common.blocks;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
+import com.sandvoxel.immersivemagic.ImmersiveMagic;
 import com.sandvoxel.immersivemagic.Reference;
 import com.sandvoxel.immersivemagic.common.blocks.LIb.BlockBase;
+import com.sandvoxel.immersivemagic.common.creativetab.MainCreativeTab;
 import jline.internal.Nullable;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDirt;
@@ -52,12 +54,12 @@ public class LiquefactedBlock extends BlockBase{
         setInternalName("liquefacted_block");
         setTickRandomly(true);
         setSoundType(SoundType.GROUND);
-        setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
+        setCreativeTab(ImmersiveMagic.tabimmmag);
     }
 
     @Override
     public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> items) {
-        if(itemIn != CreativeTabs.BUILDING_BLOCKS)
+        if(itemIn != ImmersiveMagic.tabimmmag)
             return;
         for(LiqBlockTypes liqType : LiqBlockTypes.values()) {
             items.add(new ItemStack(this, 1, liqType.getMeta()));
