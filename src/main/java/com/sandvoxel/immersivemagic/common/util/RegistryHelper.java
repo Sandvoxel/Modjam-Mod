@@ -5,7 +5,6 @@ import com.sandvoxel.immersivemagic.Reference;
 import com.sandvoxel.immersivemagic.api.blocks.IBlock;
 import com.sandvoxel.immersivemagic.api.util.IBlockRender;
 import com.sandvoxel.immersivemagic.api.util.IItemRender;
-import com.sandvoxel.immersivemagic.common.blocks.LIb.BlockBase;
 import com.sandvoxel.immersivemagic.common.items.lib.ItemBase;
 import com.sandvoxel.immersivemagic.common.spells.SpellTypes;
 import com.sandvoxel.immersivemagic.common.spells.lib.SpellBase;
@@ -134,7 +133,7 @@ public class RegistryHelper {
             items.add(item);
 
             if (((SpellBase)item).getSpellType() == SpellTypes.THROWABLE_SPELL){
-                ((SpellBase)item).RegstierSpellEntity(id);
+                ((SpellBase)item).RegisterSpellEntity(id);
             }
 
 

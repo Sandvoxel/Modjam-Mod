@@ -12,7 +12,7 @@ import net.minecraft.world.World;
 
 public class SpellEntityBase extends EntityThrowable {
 
-    protected EnumParticleTypes spellParticleType = EnumParticleTypes.SPELL;
+    protected EnumParticleTypes spellParticleType;
     protected Double projPartVel = 1.0D;
     protected Double impactPartVel = 2.5D;
     protected Double fizzlePartVel = 2.0D;
@@ -26,6 +26,7 @@ public class SpellEntityBase extends EntityThrowable {
 
     public SpellEntityBase(World worldIn, double x, double y, double z) {
         super(worldIn, x, y, z);
+        spellParticleType = EnumParticleTypes.SPELL;
         setNoGravity(true);
         noClip = false;
     }
@@ -60,7 +61,7 @@ public class SpellEntityBase extends EntityThrowable {
 
     @Override
     public void onEntityUpdate() {
-        spawnParticleTrail();
+        spawnParticleTrail(spellParticleType);
         if (!hasGravity) {
             if(Math.abs(motionX) < 0.05 && Math.abs(motionY) < 0.05 && Math.abs(motionZ) < 0.05){
                 isDead = true;
@@ -87,7 +88,7 @@ public class SpellEntityBase extends EntityThrowable {
     }
 
     protected void impactDeathHandling(RayTraceResult result, int numberOfParticles) {
-        if(!world.isRemote) {
+        if(!this.world.isRemote) {
             for (int i = 0; i < numberOfParticles; ++i) {
                 this.world.spawnParticle(spellParticleType,
                         this.posX + (this.rand.nextDouble() - 0.5D) * (double) this.width,
@@ -102,10 +103,10 @@ public class SpellEntityBase extends EntityThrowable {
             this.isDead = true;
     }
 
-    protected void spawnParticleTrail() {
+    protected void spawnParticleTrail(EnumParticleTypes type) {
         if (this.world.isRemote)
         {
-            this.world.spawnParticle(spellParticleType,
+            this.world.spawnParticle(type,
                     this.posX + (this.rand.nextDouble() - 0.5D) * (double)this.width,
                     this.posY + this.rand.nextDouble() * (double)this.height - 0.25D,
                     this.posZ + (this.rand.nextDouble() - 0.5D) * (double)this.width,
@@ -116,14 +117,14 @@ public class SpellEntityBase extends EntityThrowable {
     }
 
     protected void impactDeathHandling(RayTraceResult result, int numberOfParticles, EnumParticleTypes particleType) {
-        if(!world.isRemote) {
+        if(this.world.isRemote) {
             for (int i = 0; i < numberOfParticles; ++i) {
                 this.world.spawnParticle(particleType,
                         this.posX + (this.rand.nextDouble() - 0.5D) * (double) this.width,
                         this.posY + this.rand.nextDouble() * (double) this.height - 0.25D,
                         this.posZ + (this.rand.nextDouble() - 0.5D) * (double) this.width,
                         (this.rand.nextDouble() - 0.5D) * impactPartVel,
-                        (this.rand.nextDouble() * 2.0D),
+                        (this.rand.nextDouble() - 0.5D) * impactPartVel,
                         (this.rand.nextDouble() - 0.5D) * impactPartVel);
             }
         }

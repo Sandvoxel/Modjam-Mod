@@ -49,11 +49,14 @@ public class Affinities implements IAffinities {
     @Override
     public boolean canCast(int manaCost, AffinityTypes affinityType) {
         AffinityObject affinity = affinityObjects.get(affinityType.getMeta());
-        if (affinity.getAffinityMana() >= manaCost) {
+        if (player.isCreative()) {
+            return true;
+        } else if (affinity.getAffinityMana() >= manaCost) {
             affinityObjects.get(affinityType.getMeta()).setAffinityMana(affinity.getAffinityMana() - manaCost);
             return true;
+        } else {
+            return false;
         }
-        return false;
     }
 
     @Override

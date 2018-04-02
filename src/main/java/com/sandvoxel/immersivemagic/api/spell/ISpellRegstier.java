@@ -5,5 +5,5 @@ import com.sandvoxel.immersivemagic.common.spells.SpellTypes;
 public interface ISpellRegstier {
     SpellTypes getSpellType();
 
-    void RegstierSpellEntity(int id);
+    void RegisterSpellEntity(int id);
 }

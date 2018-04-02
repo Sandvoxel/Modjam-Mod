@@ -1,8 +1,10 @@
 package com.sandvoxel.immersivemagic.common.spells.lib;
 
 import com.sandvoxel.immersivemagic.Reference;
+import com.sandvoxel.immersivemagic.api.magic.IAffinities;
 import com.sandvoxel.immersivemagic.api.spell.ISpellRegstier;
 import com.sandvoxel.immersivemagic.common.items.lib.ItemBase;
+import com.sandvoxel.immersivemagic.common.magicdata.AffinitiesProvider;
 import com.sandvoxel.immersivemagic.common.spells.SpellTypes;
 import com.sandvoxel.immersivemagic.common.spells.entity.SpellEntityBase;
 import net.minecraft.util.ResourceLocation;
@@ -28,7 +30,7 @@ public class SpellBase extends ItemBase implements ISpellRegstier {
     }
 
     @Override
-    public void RegstierSpellEntity(int id) {
+    public void RegisterSpellEntity(int id) {
         ResourceLocation resourceLocation = new ResourceLocation(Reference.MOD_ID+":spell_" + getInteneralName());
         EntityRegistry.registerModEntity(resourceLocation, entityClass,"spell",id, Reference.MOD_ID,64,10,true);
     }

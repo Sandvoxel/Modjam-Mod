@@ -21,18 +21,14 @@ public class SpellLiquefact extends SpellEntityBase {
     //Necessary
     public SpellLiquefact(World worldIn) {
         super(worldIn);
+        spellParticleType = EnumParticleTypes.CRIT;
+        impactPartVel = 4.0D;
     }
 
     public SpellLiquefact(World world, EntityLivingBase entityLivingBase){
         super(world, entityLivingBase, true, EnumParticleTypes.CRIT);
         noClip = false;
         setGlowing(false);
-    }
-
-
-    @Override
-    public void onEntityUpdate() {
-
     }
 
     @Override
@@ -48,6 +44,6 @@ public class SpellLiquefact extends SpellEntityBase {
                 }
             }
         }
-        impactDeathHandling(result, 16);
+        impactDeathHandling(result, 16, spellParticleType);
     }
 }

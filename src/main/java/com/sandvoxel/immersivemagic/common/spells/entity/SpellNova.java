@@ -19,10 +19,13 @@ public class SpellNova extends SpellEntityBase {
 
     protected int explosionRadius = 3;
     protected int age = 0;
+    private EnumParticleTypes spellNovaParticle = EnumParticleTypes.FLAME;
 
     //Necessary
     public SpellNova(World worldIn) {
         super(worldIn);
+        spellParticleType = spellNovaParticle;
+        impactPartVel = 4.0D;
     }
 
     public SpellNova(World world, EntityLivingBase entityLivingBase){
@@ -33,7 +36,7 @@ public class SpellNova extends SpellEntityBase {
 
     @Override
     public void onEntityUpdate() {
-        spawnParticleTrail();
+        spawnParticleTrail(spellNovaParticle);
         age++;
         if(Math.abs(motionX) < 0.05 && Math.abs(motionY) < 0.05 && Math.abs(motionZ) < 0.05){
             isDead = true;
@@ -41,7 +44,7 @@ public class SpellNova extends SpellEntityBase {
             {
                 for (int i = 0; i < deathParticleNum; ++i)
                 {
-                    this.world.spawnParticle(spellParticleType,
+                    this.world.spawnParticle(EnumParticleTypes.LAVA,
                             this.posX + (this.rand.nextDouble() - 0.5D) * (double)this.width,
                             this.posY + this.rand.nextDouble() * (double)this.height - 0.25D,
                             this.posZ + (this.rand.nextDouble() - 0.5D) * (double)this.width,
@@ -61,7 +64,7 @@ public class SpellNova extends SpellEntityBase {
             isDead = true;
             if (this.world.isRemote) {
                 for (int i = 0; i < deathParticleNum; ++i) {
-                    this.world.spawnParticle(spellParticleType,
+                    this.world.spawnParticle(EnumParticleTypes.LAVA,
                             this.posX + (this.rand.nextDouble() - 0.5D) * (double) this.width,
                             this.posY + this.rand.nextDouble() * (double) this.height - 0.25D,
                             this.posZ + (this.rand.nextDouble() - 0.5D) * (double) this.width,
@@ -81,7 +84,7 @@ public class SpellNova extends SpellEntityBase {
         if (!world.isRemote && result.getBlockPos()!=null){
             this.explode();
         }
-        impactDeathHandling(result, 32);
+        impactDeathHandling(result, 32, EnumParticleTypes.LAVA);
     }
 
     private void explode()

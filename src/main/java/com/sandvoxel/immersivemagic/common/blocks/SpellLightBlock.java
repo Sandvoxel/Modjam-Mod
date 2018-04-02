@@ -34,8 +34,8 @@ public class SpellLightBlock extends BlockBase {
     @Override
     public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
         super.randomDisplayTick(stateIn, worldIn, pos, rand);
-        if(worldIn.isRemote){
-            for (int i = 0; i < 2; ++i)
+        if(worldIn.isRemote && rand.nextInt(8) > 5){
+            for (int i = 0; i < rand.nextInt(2); ++i)
             {
                 worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, pos.getX()+0.5D, pos.getY()+0.5D, pos.getZ()+0.5D, 0,0,0);
             }

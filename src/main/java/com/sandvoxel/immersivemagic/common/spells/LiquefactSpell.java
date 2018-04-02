@@ -2,6 +2,7 @@ package com.sandvoxel.immersivemagic.common.spells;
 
 import com.sandvoxel.immersivemagic.api.magic.IAffinities;
 import com.sandvoxel.immersivemagic.common.magicdata.AffinitiesProvider;
+import com.sandvoxel.immersivemagic.common.magicdata.AffinityTypes;
 import com.sandvoxel.immersivemagic.common.spells.entity.SpellLiquefact;
 import com.sandvoxel.immersivemagic.common.spells.lib.SpellBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -21,9 +22,9 @@ public class LiquefactSpell extends SpellBase {
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
-        IAffinities var = playerIn.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY, null);
+        IAffinities aff = playerIn.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY, null);
 
-        if(!worldIn.isRemote){
+        if(!worldIn.isRemote && aff.canCast(50, AffinityTypes.LIGHT)){
             SpellLiquefact liquef = new SpellLiquefact(worldIn,playerIn);
             liquef.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, (float) -(playerIn.motionX+playerIn.motionY+playerIn.motionZ)+1F, 1.0F);
             worldIn.spawnEntity(liquef);
