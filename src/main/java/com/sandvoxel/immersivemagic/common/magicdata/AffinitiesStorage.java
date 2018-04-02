@@ -24,6 +24,8 @@ public class AffinitiesStorage implements Capability.IStorage<IAffinities> {
             string.append(affinityTypes.getAffinityPower());
             string.append("-");
             string.append(affinityTypes.getAffinityMana());
+            string.append("-");
+            string.append(affinityTypes.getCurrentXP());
             string.append(" ");
         }
 
@@ -38,8 +40,10 @@ public class AffinitiesStorage implements Capability.IStorage<IAffinities> {
         if(!affinities[0].isEmpty()) {
             for (String affinitiy : affinities) {
                 String[] holder = affinitiy.split("-");
-                AffinityObject affinityObject = new AffinityObject(AffinityTypes.getAffinity(Integer.parseInt(holder[0])), Integer.parseInt(holder[1]));
+                AffinityObject affinityObject = new AffinityObject(AffinityTypes.getAffinity(Integer.parseInt(holder[0])));
+                affinityObject.setAffinityPower(Integer.parseInt(holder[1]));
                 affinityObject.setAffinityMana(Integer.parseInt(holder[2]));
+                affinityObject.setCurrentXP(Integer.parseInt(holder[3]));
                 list.add(affinityObject);
             }
         }

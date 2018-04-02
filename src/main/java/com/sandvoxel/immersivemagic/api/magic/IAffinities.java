@@ -8,9 +8,9 @@ import java.util.List;
 public interface IAffinities {
     List<AffinityObject>getPlayerAffinities();
 
-    void addAffinities(AffinityObject affinityTypes);
+    void addAffinities(AffinityTypes affinityTypes);
 
-    boolean removeAffinity(AffinityTypes affinityObject);
+    void removeAffinity(AffinityTypes affinityObject);
 
     int getAffinityLevel(AffinityTypes affinityType);
 
