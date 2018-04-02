@@ -16,10 +16,15 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 /**
  * Created by CrazyGrape on 3/31/2018.
  */
-public class Liquefact extends SpellEntityBase {
+public class SpellLiquefact extends SpellEntityBase {
 
-    public Liquefact(World world, EntityLivingBase entityLivingBase){
-        super(world,entityLivingBase, true, EnumParticleTypes.CRIT);
+    //Necessary
+    public SpellLiquefact(World worldIn) {
+        super(worldIn);
+    }
+
+    public SpellLiquefact(World world, EntityLivingBase entityLivingBase){
+        super(world, entityLivingBase, true, EnumParticleTypes.CRIT);
         noClip = false;
         setGlowing(false);
     }
