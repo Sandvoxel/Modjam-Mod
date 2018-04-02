@@ -1,5 +1,6 @@
 package com.sandvoxel.immersivemagic.proxy;
 
+import com.sandvoxel.immersivemagic.client.render.SpellDefault;
 import com.sandvoxel.immersivemagic.common.util.RegistryHelper;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -23,6 +24,7 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void init(FMLInitializationEvent event) {
         super.init(event);
+        SpellDefault.registerRender();
     }
 
     @Override
