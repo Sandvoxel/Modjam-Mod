@@ -16,6 +16,8 @@ public interface IAffinities {
 
     int getAffinityMana(AffinityTypes affinityType);
 
+    boolean canCast(int manaCost, AffinityTypes affinityType);
+
     int getManaCap(AffinityTypes affinityType);
 
     void addXp(int XP,AffinityTypes affinityTypes);

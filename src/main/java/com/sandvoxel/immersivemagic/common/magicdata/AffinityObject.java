@@ -48,7 +48,7 @@ public class AffinityObject {
         if(!(affinityPower >= getPowerCap())){
             return false;
         }
-        if(currentXP > Math.sqrt(affinityPower)+200){
+        if(currentXP > affinityPower * affinityPower + 200){
             affinityPower++;
             currentXP = 0;
             return true;

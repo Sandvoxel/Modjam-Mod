@@ -50,6 +50,9 @@ public class AffinityGuiPacket extends PacketBase {
         return null;
     }
 
+
+    //BUG: Clears the affinity
+    //
     @Override
     public IMessage handleServer(NetHandlerPlayServer netHandler) {
         IAffinities affinities = netHandler.player.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY,null);

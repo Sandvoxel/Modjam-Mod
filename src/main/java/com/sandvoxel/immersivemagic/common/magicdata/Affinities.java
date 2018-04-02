@@ -71,6 +71,17 @@ public class Affinities implements IAffinities {
     }
 
     @Override
+    public boolean canCast(int manaCost, AffinityTypes affinityType) {
+        for (AffinityObject affinityObject : affinityObjects) {
+            if (affinityObject.getAffinityType() == affinityType && affinityObject.getAffinityMana() >= manaCost) {
+                affinityObject.setAffinityMana(affinityObject.getAffinityMana() - manaCost);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
     public int getManaCap(AffinityTypes affinityType) {
         for (AffinityObject affinityObject : affinityObjects){
             if(affinityObject.getAffinityType() == affinityType){
