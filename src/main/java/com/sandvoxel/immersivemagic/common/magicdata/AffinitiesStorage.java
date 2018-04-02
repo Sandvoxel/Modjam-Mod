@@ -38,7 +38,9 @@ public class AffinitiesStorage implements Capability.IStorage<IAffinities> {
         if(!affinities[0].isEmpty()) {
             for (String affinitiy : affinities) {
                 String[] holder = affinitiy.split("-");
-                list.add(new AffinityObject(AffinityTypes.getAffinity(Integer.parseInt(holder[0])), Integer.parseInt(holder[1]),Integer.parseInt(holder[2])));
+                AffinityObject affinityObject = new AffinityObject(AffinityTypes.getAffinity(Integer.parseInt(holder[0])), Integer.parseInt(holder[1]));
+                affinityObject.setAffinityMana(Integer.parseInt(holder[2]));
+                list.add(affinityObject);
             }
         }
         instance.setPlayerAffinities(list);
