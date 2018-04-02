@@ -1,5 +1,6 @@
 package com.sandvoxel.immersivemagic.common.spells.entity;
 
+import com.sandvoxel.immersivemagic.ImmersiveMagic;
 import com.sandvoxel.immersivemagic.common.blocks.Blocks;
 import net.minecraft.entity.EntityAreaEffectCloud;
 import net.minecraft.entity.EntityLivingBase;
@@ -33,6 +34,7 @@ public class SpellNova extends SpellEntityBase {
     @Override
     public void onEntityUpdate() {
         spawnParticleTrail();
+        age++;
         if(Math.abs(motionX) < 0.05 && Math.abs(motionY) < 0.05 && Math.abs(motionZ) < 0.05){
             isDead = true;
             if (this.world.isRemote)
@@ -55,23 +57,23 @@ public class SpellNova extends SpellEntityBase {
 
     @Override
     public void onCollideWithPlayer(EntityPlayer entityIn) {
-        isDead = true;
-        if (this.world.isRemote && age >= 50)
-        {
-            for (int i = 0; i < deathParticleNum; ++i)
-            {
-                this.world.spawnParticle(spellParticleType,
-                        this.posX + (this.rand.nextDouble() - 0.5D) * (double)this.width,
-                        this.posY + this.rand.nextDouble() * (double)this.height - 0.25D,
-                        this.posZ + (this.rand.nextDouble() - 0.5D) * (double)this.width,
-                        (this.rand.nextDouble() - 0.5D) * fizzlePartVel,
-                        (this.rand.nextDouble() - 0.5D) * fizzlePartVel,
-                        (this.rand.nextDouble() - 0.5D) * fizzlePartVel);
+        if(age >= 50) {
+            isDead = true;
+            if (this.world.isRemote) {
+                for (int i = 0; i < deathParticleNum; ++i) {
+                    this.world.spawnParticle(spellParticleType,
+                            this.posX + (this.rand.nextDouble() - 0.5D) * (double) this.width,
+                            this.posY + this.rand.nextDouble() * (double) this.height - 0.25D,
+                            this.posZ + (this.rand.nextDouble() - 0.5D) * (double) this.width,
+                            (this.rand.nextDouble() - 0.5D) * fizzlePartVel,
+                            (this.rand.nextDouble() - 0.5D) * fizzlePartVel,
+                            (this.rand.nextDouble() - 0.5D) * fizzlePartVel);
+                }
+            } else {
+                age = 0;
+                this.explode();
             }
-        } else {
-            this.explode();
         }
-        age++;
     }
 
     @Override
