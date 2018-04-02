@@ -45,7 +45,6 @@ public class CommonProxy {
     }
 
     public void init(FMLInitializationEvent event) {
-        SpellDefault.registerRender();
         Network.init();
 
     }
