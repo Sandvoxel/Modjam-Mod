@@ -3,6 +3,7 @@ package com.sandvoxel.immersivemagic.common.spells.entity;
 import com.sandvoxel.immersivemagic.common.blocks.Blocks;
 import net.minecraft.entity.EntityAreaEffectCloud;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.RayTraceResult;
@@ -16,6 +17,7 @@ import java.util.Collection;
 public class SpellNova extends SpellEntityBase {
 
     protected int explosionRadius = 3;
+    protected int age = 0;
 
     //Necessary
     public SpellNova(World worldIn) {
@@ -49,6 +51,27 @@ public class SpellNova extends SpellEntityBase {
                 this.explode();
             }
         }
+    }
+
+    @Override
+    public void onCollideWithPlayer(EntityPlayer entityIn) {
+        isDead = true;
+        if (this.world.isRemote && age >= 50)
+        {
+            for (int i = 0; i < deathParticleNum; ++i)
+            {
+                this.world.spawnParticle(spellParticleType,
+                        this.posX + (this.rand.nextDouble() - 0.5D) * (double)this.width,
+                        this.posY + this.rand.nextDouble() * (double)this.height - 0.25D,
+                        this.posZ + (this.rand.nextDouble() - 0.5D) * (double)this.width,
+                        (this.rand.nextDouble() - 0.5D) * fizzlePartVel,
+                        (this.rand.nextDouble() - 0.5D) * fizzlePartVel,
+                        (this.rand.nextDouble() - 0.5D) * fizzlePartVel);
+            }
+        } else {
+            this.explode();
+        }
+        age++;
     }
 
     @Override
