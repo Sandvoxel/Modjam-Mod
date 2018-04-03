@@ -31,8 +31,10 @@ public class MiningSpell extends SpellBase {
         for (BlockPos affectedBlock : BlockPos.getAllInBox(pos.add(-1, -1, -1), pos.add(1, 1, 1))) {
 
             Block blockInQuestion = worldIn.getBlockState(affectedBlock).getBlock();
-            if(affinities.canCast(blockInQuestion.getHarvestLevel(worldIn.getBlockState(affectedBlock))*100,AffinityTypes.EARTH) && blockInQuestion.getHarvestLevel(worldIn.getBlockState(affectedBlock) )!= -1.0f && blockInQuestion.getMaterial(worldIn.getBlockState(affectedBlock))==Material.ROCK)
+            if(affinities.canCast(blockInQuestion.getHarvestLevel(worldIn.getBlockState(affectedBlock))*100,AffinityTypes.EARTH) && blockInQuestion.getHarvestLevel(worldIn.getBlockState(affectedBlock) )!= -1.0f && blockInQuestion.getMaterial(worldIn.getBlockState(affectedBlock))==Material.ROCK){
                 worldIn.destroyBlock(affectedBlock,true);
+                affinities.addXp(blockInQuestion.getHarvestLevel(worldIn.getBlockState(affectedBlock)),AffinityTypes.EARTH);
+            }
         }
         return EnumActionResult.PASS;
     }
