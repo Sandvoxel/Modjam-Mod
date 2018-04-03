@@ -60,8 +60,8 @@ public class SpellItems extends ItemBase {
     @Override
     public void registerItemRenderer() {
         for (int i = 0; i < AffinityTypes.values().length; i++) {
-            ImmersiveMagic.LOGGER.info("Attempting to register item render for " + inteneralName + ":" + AffinityTypes.getAffinity(i).name() + " at " + resourcePath + ", " + this);
-            ModelLoader.setCustomModelResourceLocation(this, i, new ModelResourceLocation(Reference.MOD_ID + ":" + this.resourcePath + "spellcraft_" + AffinityTypes.getAffinity(i).name(), "inventory"));
+            ImmersiveMagic.LOGGER.info("Attempting to register item render for " + inteneralName + ":" + AffinityTypes.getAffinity(i).name() + " at " + resourcePath + ", " + this.resourcePath + "spellcraft_" + AffinityTypes.getAffinity(i).name().toLowerCase());
+            ModelLoader.setCustomModelResourceLocation(this, i, new ModelResourceLocation(Reference.MOD_ID + ":" + this.resourcePath + "spellcraft_" + AffinityTypes.getAffinity(i).name().toLowerCase(), "inventory"));
         }
     }
 }

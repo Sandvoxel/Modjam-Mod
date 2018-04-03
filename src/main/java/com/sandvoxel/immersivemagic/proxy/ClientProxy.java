@@ -1,6 +1,9 @@
 package com.sandvoxel.immersivemagic.proxy;
 
+import com.sandvoxel.immersivemagic.api.util.IBlockRender;
+import com.sandvoxel.immersivemagic.api.util.IItemRender;
 import com.sandvoxel.immersivemagic.client.render.SpellDefault;
+import com.sandvoxel.immersivemagic.common.util.Platform;
 import com.sandvoxel.immersivemagic.common.util.RegistryHelper;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -39,7 +42,9 @@ public class ClientProxy extends CommonProxy {
             RegistryHelper.initItemBlocks(block);
         }
         for(Item items : RegistryHelper.getItemBlocks()){
-
+            if(items instanceof IItemRender){
+                ((IItemRender)items).registerItemRenderer();
+            }
         }
 
     }
