@@ -28,15 +28,21 @@ public class MiningSpell extends SpellBase {
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         IAffinities affinities = player.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY, null);
 
+        int i = 0;
+
         for (BlockPos affectedBlock : BlockPos.getAllInBox(pos.add(-1, -1, -1), pos.add(1, 1, 1))) {
 
             Block blockInQuestion = worldIn.getBlockState(affectedBlock).getBlock();
             if(affinities.canCast(blockInQuestion.getHarvestLevel(worldIn.getBlockState(affectedBlock))*100,AffinityTypes.EARTH) && blockInQuestion.getHarvestLevel(worldIn.getBlockState(affectedBlock) )!= -1.0f && blockInQuestion.getMaterial(worldIn.getBlockState(affectedBlock))==Material.ROCK){
                 worldIn.destroyBlock(affectedBlock,true);
                 affinities.addXp(blockInQuestion.getHarvestLevel(worldIn.getBlockState(affectedBlock)),AffinityTypes.EARTH);
+                i++;
             }
         }
-        return EnumActionResult.PASS;
+        if(i>0){
+         return EnumActionResult.PASS;
+        }
+        return EnumActionResult.FAIL;
     }
 
 
