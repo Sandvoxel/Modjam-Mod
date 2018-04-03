@@ -28,6 +28,7 @@ public class LiquefactSpell extends SpellBase {
             SpellLiquefact liquef = new SpellLiquefact(worldIn,playerIn);
             liquef.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, (float) -(playerIn.motionX+playerIn.motionY+playerIn.motionZ)+1F, 1.0F);
             worldIn.spawnEntity(liquef);
+            return new ActionResult(EnumActionResult.SUCCESS,playerIn.getHeldItem(handIn));
         } else {
             if (aff.hasAffinity(AffinityTypes.EARTH)) {
                 dispOutOfMana(playerIn);

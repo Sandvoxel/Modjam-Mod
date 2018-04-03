@@ -26,6 +26,8 @@ public class LightSpell extends SpellBase {
             SpellLight spellLight = new SpellLight(worldIn,playerIn);
             spellLight.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, (float) -(playerIn.motionX+playerIn.motionY+playerIn.motionZ)+1.0F, 1.0F);
             worldIn.spawnEntity(spellLight);
+            return new ActionResult(EnumActionResult.SUCCESS,playerIn.getHeldItem(handIn));
+
         } else {
             if (aff.hasAffinity(AffinityTypes.LIGHT)) {
                 dispOutOfMana(playerIn);
