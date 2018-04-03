@@ -49,7 +49,6 @@ public class ItemBase extends Item implements IItemRender {
     @SideOnly(Side.CLIENT)
     public void registerItemRenderer() {
         String resourcePath = String.format("%s:%s", Reference.MOD_ID, this.resourcePath);
-        ImmersiveMagic.LOGGER.info("Attempting to register item render for " + this + " at " + resourcePath);
         ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(resourcePath, "inventory"));
     }
 
