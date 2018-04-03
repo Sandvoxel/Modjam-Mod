@@ -27,7 +27,6 @@ public class MiningSpell extends SpellBase {
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         IAffinities affinities = player.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY, null);
 
-        ImmersiveMagic.LOGGER.info(affinities.hasAffinity(AffinityTypes.EARTH));
         for (BlockPos affectedBlock : BlockPos.getAllInBox(pos.add(-1, -1, -1), pos.add(1, 1, 1))) {
 
             Block blockInQuestion = worldIn.getBlockState(affectedBlock).getBlock();
