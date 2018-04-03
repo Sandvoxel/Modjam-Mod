@@ -5,6 +5,7 @@ import com.sandvoxel.immersivemagic.Reference;
 import com.sandvoxel.immersivemagic.api.magic.IAffinities;
 import com.sandvoxel.immersivemagic.client.render.SpellDefault;
 import com.sandvoxel.immersivemagic.common.blocks.Blocks;
+import com.sandvoxel.immersivemagic.common.gui.GuiHandler;
 import com.sandvoxel.immersivemagic.common.items.Items;
 import com.sandvoxel.immersivemagic.common.magicdata.Affinities;
 import com.sandvoxel.immersivemagic.common.magicdata.AffinitiesProvider;
@@ -101,5 +102,9 @@ public class CommonProxy {
         for (Item item : RegistryHelper.getItemBlocks()) {
             event.getRegistry().register(item);
         }
+    }
+
+    public void registerGUIs() {
+        new GuiHandler(ImmersiveMagic.instance);
     }
 }

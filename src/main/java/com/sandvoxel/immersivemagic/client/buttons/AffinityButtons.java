@@ -1,5 +1,6 @@
 package com.sandvoxel.immersivemagic.client.buttons;
 
+import com.sandvoxel.immersivemagic.ImmersiveMagic;
 import com.sandvoxel.immersivemagic.Reference;
 import com.sandvoxel.immersivemagic.api.magic.IAffinities;
 import com.sandvoxel.immersivemagic.common.magicdata.AffinitiesProvider;
@@ -22,8 +23,8 @@ public class AffinityButtons extends GuiButton {
     public AffinityButtons(int buttonId, int x, int y, EntityPlayer player) {
         super(buttonId, x, y, "");
         id = buttonId;
-        width = 16;
-        height =16;
+        width = 18;
+        height =18;
         visible = true;
         this.player = player;
     }
@@ -38,6 +39,9 @@ public class AffinityButtons extends GuiButton {
 
         if (this.visible)
         {
+
+
+
             FontRenderer fontrenderer = mc.fontRenderer;
             mc.getTextureManager().bindTexture(texture);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
@@ -46,32 +50,43 @@ public class AffinityButtons extends GuiButton {
             GlStateManager.enableBlend();
             GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
             GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
-            texXStart = (float)id * 16.0f;
+            texXStart = (float)id * 18.0f;
             //this.drawTexturedModalRect(this.x, this.y, texXStart, texYStart, this.width, this.height);
-            this.drawModalRectWithCustomSizedTexture(this.x, this.y, texXStart, texYStart, this.width, this.height, 128.0f, 16.0f);
             //this.drawTexturedModalRect(this.x + this.width, this.y, texXStart, texYStart, this.width, this.height);
             this.mouseDragged(mc, mouseX, mouseY);
             int j = 14737632;
 
+        //Logic for how the button should render if the player has the affinity
+            texYStart = 0.0f;
+            if(affinities.hasAffinity(AffinityTypes.getAffinity(id))){
+                texYStart = 18.0f;
+            } else {
+                texYStart = 0.0f;
+            }
+        //Other button logic
             if (packedFGColour != 0)
             {
                 j = packedFGColour;
+                texYStart = 0.0f;
             }
             else
             if (!this.enabled)
             {
                 j = 10526880;
+                texYStart = 0.0f;
             }
             else if (this.hovered)
             {
+
                 j = 16777120;
-            }
-
-            if(affinities.hasAffinity(AffinityTypes.getAffinity(id))){
-
+                texYStart = 54.0f;
             } else {
-                this.drawGradientRect((int)texXStart - 2, (int)texYStart - 2, this.width + 2, this.height + 2, 10526880, 14737632);
+
             }
+
+
+            //Actual drawing of the texture
+            this.drawModalRectWithCustomSizedTexture(this.x, this.y, texXStart, texYStart, this.width, this.height, 144.0f, 72.0f);
 
             this.drawCenteredString(fontrenderer, this.displayString, this.x + this.width / 2, this.y + (this.height - 8) / 2, j);
         }

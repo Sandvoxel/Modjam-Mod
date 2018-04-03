@@ -5,6 +5,7 @@ import com.sandvoxel.immersivemagic.common.spells.Spells;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
@@ -28,6 +29,7 @@ public class SpellLightBlock extends BlockBase {
         super(Material.GLASS, "");
         setInternalName("spell_light");
         lightValue = 15;
+        setLightOpacity(0);
     }
 
     @SideOnly(Side.CLIENT)
@@ -69,6 +71,11 @@ public class SpellLightBlock extends BlockBase {
     public boolean isPassable(IBlockAccess worldIn, BlockPos pos)
     {
         return true;
+    }
+
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+        return null;
     }
 
     @Override

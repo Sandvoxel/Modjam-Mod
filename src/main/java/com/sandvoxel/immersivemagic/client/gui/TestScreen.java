@@ -2,7 +2,10 @@ package com.sandvoxel.immersivemagic.client.gui;
 
 import com.sandvoxel.immersivemagic.ImmersiveMagic;
 import com.sandvoxel.immersivemagic.Reference;
+import com.sandvoxel.immersivemagic.api.magic.IAffinities;
 import com.sandvoxel.immersivemagic.client.buttons.AffinityButtons;
+import com.sandvoxel.immersivemagic.common.magicdata.AffinitiesProvider;
+import com.sandvoxel.immersivemagic.common.magicdata.AffinityObject;
 import com.sandvoxel.immersivemagic.common.magicdata.AffinityTypes;
 import com.sandvoxel.immersivemagic.common.network.AffinityGuiPacket;
 import com.sandvoxel.immersivemagic.common.network.lib.Network;
@@ -13,11 +16,15 @@ import net.minecraft.client.gui.GuiButtonImage;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.Container;
 import net.minecraft.util.ResourceLocation;
+import org.lwjgl.util.Point;
+import org.lwjgl.util.Rectangle;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
-public class TestScreen extends GuiScreen {
+public class TestScreen extends GuiBase {
 
     final ResourceLocation textture = new ResourceLocation(Reference.MOD_ID,"textures/gui/affinity_selection.png");
     int texWidth = 114;
@@ -29,8 +36,15 @@ public class TestScreen extends GuiScreen {
     EntityPlayer player;
 
     AffinityButtons button;
+    Rectangle buttonExtents;
 
     public TestScreen(EntityPlayer player) {
+        super(Reference.MOD_ID, new Container() {
+            @Override
+            public boolean canInteractWith(EntityPlayer playerIn) {
+                return true;
+            }
+        });
         this.player = player;
     }
 
@@ -47,6 +61,9 @@ public class TestScreen extends GuiScreen {
         drawModalRectWithCustomSizedTexture(centerX, centerY, 0, 0, 114, 114, texWidth, texHeight);
 
         super.drawScreen(mouseX, mouseY, partialTicks);
+
+        Point currentMouse = new Point(mouseX - guiLeft, mouseY - guiTop);
+        
     }
 
     @Override
@@ -55,14 +72,14 @@ public class TestScreen extends GuiScreen {
         buttonCenterX = this.width / 2;
         buttonCenterY = this.height / 2;
         buttonList.clear();
-        buttonList.add(button = new AffinityButtons(0,buttonCenterX - 28,buttonCenterY - 56, player));
-        buttonList.add(button = new AffinityButtons(1,buttonCenterX + 12,buttonCenterY - 56, player));
-        buttonList.add(button = new AffinityButtons(2,buttonCenterX - 56,buttonCenterY - 28, player));
-        buttonList.add(button = new AffinityButtons(3,buttonCenterX + 40,buttonCenterY - 28, player));
-        buttonList.add(button = new AffinityButtons(4,buttonCenterX - 56,buttonCenterY + 11, player));
-        buttonList.add(button = new AffinityButtons(5,buttonCenterX + 40,buttonCenterY + 11, player));
-        buttonList.add(button = new AffinityButtons(6,buttonCenterX - 28,buttonCenterY + 40, player));
-        buttonList.add(button = new AffinityButtons(7,buttonCenterX + 12,buttonCenterY + 40, player));
+        buttonList.add(button = new AffinityButtons(AffinityTypes.LIGHT.getMeta(),  buttonCenterX - 30,  buttonCenterY - 58, player));
+        buttonList.add(button = new AffinityButtons(AffinityTypes.FIRE.getMeta(),   buttonCenterX + 11,  buttonCenterY - 58, player));
+        buttonList.add(button = new AffinityButtons(AffinityTypes.EARTH.getMeta(),  buttonCenterX - 58,  buttonCenterY - 29, player));
+        buttonList.add(button = new AffinityButtons(AffinityTypes.ENDER.getMeta(),  buttonCenterX + 40,  buttonCenterY - 29, player));
+        buttonList.add(button = new AffinityButtons(AffinityTypes.WATER.getMeta(),  buttonCenterX - 58,  buttonCenterY + 11, player));
+        buttonList.add(button = new AffinityButtons(AffinityTypes.AIR.getMeta(),    buttonCenterX + 40,  buttonCenterY + 11, player));
+        buttonList.add(button = new AffinityButtons(AffinityTypes.ICE.getMeta(),    buttonCenterX - 29,  buttonCenterY + 40, player));
+        buttonList.add(button = new AffinityButtons(AffinityTypes.DARKNESS.getMeta(),buttonCenterX + 11, buttonCenterY + 40, player));
 
         super.initGui();
     }
@@ -87,4 +104,13 @@ public class TestScreen extends GuiScreen {
         return false;
     }
 
+    @Override
+    public void drawBG(int paramInt1, int paramInt2, int paramInt3, int paramInt4) {
+
+    }
+
+    @Override
+    public void drawFG(int paramInt1, int paramInt2, int paramInt3, int paramInt4) {
+
+    }
 }

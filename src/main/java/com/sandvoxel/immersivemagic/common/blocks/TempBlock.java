@@ -4,8 +4,10 @@ import com.sandvoxel.immersivemagic.ImmersiveMagic;
 import com.sandvoxel.immersivemagic.api.magic.IAffinities;
 import com.sandvoxel.immersivemagic.client.gui.TestScreen;
 import com.sandvoxel.immersivemagic.common.blocks.LIb.BlockBase;
+import com.sandvoxel.immersivemagic.common.blocks.LIb.BlockTileBase;
 import com.sandvoxel.immersivemagic.common.magicdata.AffinitiesProvider;
 import com.sandvoxel.immersivemagic.common.util.Platform;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -18,12 +20,13 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class TempBlock extends BlockBase {
+public class TempBlock extends BlockTileBase {
+
     public TempBlock() {
         super(Material.WOOD, "");
         setInternalName("tempblock");
         setCreativeTab(ImmersiveMagic.tabimmmag);
-
+        this.setSoundType(SoundType.WOOD);
     }
 
     @Override

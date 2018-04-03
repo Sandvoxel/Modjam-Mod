@@ -83,6 +83,11 @@ public class LiquefactedBlock extends BlockBase {
     }
 
     @Override
+    public boolean isPassable(IBlockAccess worldIn, BlockPos pos) {
+        return true;
+    }
+
+    @Override
     public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn) {
         entityIn.motionX *= 0.35f;
         if(entityIn.motionY <= 0) {

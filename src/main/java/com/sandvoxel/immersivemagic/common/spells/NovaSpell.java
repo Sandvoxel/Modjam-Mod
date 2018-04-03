@@ -29,8 +29,9 @@ public class NovaSpell extends SpellBase {
             SpellNova spellNova = new SpellNova(worldIn,playerIn);
             spellNova.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, (float) -(playerIn.motionX+playerIn.motionY+playerIn.motionZ)+1.0F, 1.0F);
             worldIn.spawnEntity(spellNova);
+            return new ActionResult(EnumActionResult.SUCCESS,playerIn.getHeldItem(handIn));
         }
 
-        return new ActionResult(EnumActionResult.SUCCESS,playerIn.getHeldItem(handIn));
+        return new ActionResult(EnumActionResult.FAIL,playerIn.getHeldItem(handIn));
     }
 }

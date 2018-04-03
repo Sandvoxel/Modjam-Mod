@@ -30,7 +30,6 @@ public class SpellNova extends SpellEntityBase {
 
     public SpellNova(World world, EntityLivingBase entityLivingBase){
         super(world, entityLivingBase, false, EnumParticleTypes.LAVA);
-        setGlowing(true);
         deathParticleNum = 400;
     }
 

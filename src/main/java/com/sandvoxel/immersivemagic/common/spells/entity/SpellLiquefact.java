@@ -34,6 +34,8 @@ public class SpellLiquefact extends SpellEntityBase {
     @Override
     protected void onImpact(RayTraceResult result) {
         if (!world.isRemote && result.getBlockPos()!=null) {
+            //Compare all blocks withing the XYZ radius (cubic) to determine whether or not blocks should be converted into their liquedfacted forms
+            //Bug: ignores metadata
             BlockPos pos = result.getBlockPos();
             for (BlockPos affectedBlock : BlockPos.getAllInBox(pos.add(-1, -1, -1), pos.add(1, 1, 1))) {
                 for (LiquefactedBlock.LiqBlockTypes type : LiquefactedBlock.LiqBlockTypes.values()) {
