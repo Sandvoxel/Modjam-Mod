@@ -2,6 +2,7 @@ package com.sandvoxel.immersivemagic.common.spells;
 
 import com.sandvoxel.immersivemagic.ImmersiveMagic;
 import com.sandvoxel.immersivemagic.api.magic.IAffinities;
+import com.sandvoxel.immersivemagic.common.magicdata.Affinities;
 import com.sandvoxel.immersivemagic.common.magicdata.AffinitiesProvider;
 import com.sandvoxel.immersivemagic.common.magicdata.AffinityTypes;
 import com.sandvoxel.immersivemagic.common.spells.entity.SpellNova;
@@ -25,12 +26,14 @@ public class NovaSpell extends SpellBase {
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
         IAffinities aff = playerIn.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY, null);
 
-        if(!worldIn.isRemote && aff.canCast(100, AffinityTypes.FIRE)){
-            SpellNova spellNova = new SpellNova(worldIn,playerIn);
-            spellNova.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, (float) -(playerIn.motionX+playerIn.motionY+playerIn.motionZ)+1.0F, 1.0F);
-            worldIn.spawnEntity(spellNova);
-            return new ActionResult(EnumActionResult.SUCCESS,playerIn.getHeldItem(handIn));
-        }  else {
+        if(((Affinities)aff).canCast(100, AffinityTypes.FIRE)) {
+            if (!worldIn.isRemote) {
+                SpellNova spellNova = new SpellNova(worldIn, playerIn);
+                spellNova.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, (float) -(playerIn.motionX + playerIn.motionY + playerIn.motionZ) + 1.0F, 1.0F);
+                worldIn.spawnEntity(spellNova);
+                return new ActionResult(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
+            }
+        } else {
             if (aff.hasAffinity(AffinityTypes.FIRE)) {
                 dispOutOfMana(playerIn);
             } else {

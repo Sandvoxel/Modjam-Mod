@@ -1,6 +1,6 @@
 {
     "parent": "minecraft:item/generated",
     "textures": {
-        "layer0": "immmag:misc/scroll"
+        "layer0": "immmag:items/scroll"
     }
 }

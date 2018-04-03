@@ -1,6 +1,7 @@
 package com.sandvoxel.immersivemagic.common.spells;
 
 import com.sandvoxel.immersivemagic.api.magic.IAffinities;
+import com.sandvoxel.immersivemagic.common.magicdata.Affinities;
 import com.sandvoxel.immersivemagic.common.magicdata.AffinitiesProvider;
 import com.sandvoxel.immersivemagic.common.magicdata.AffinityTypes;
 import com.sandvoxel.immersivemagic.common.spells.entity.SpellLight;
@@ -22,20 +23,21 @@ public class LightSpell extends SpellBase {
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
         IAffinities aff = playerIn.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY, null);
 
-        if(!worldIn.isRemote && aff.canCast(50, AffinityTypes.LIGHT)){
-            SpellLight spellLight = new SpellLight(worldIn,playerIn);
-            spellLight.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, (float) -(playerIn.motionX+playerIn.motionY+playerIn.motionZ)+1.0F, 1.0F);
-            worldIn.spawnEntity(spellLight);
-            return new ActionResult(EnumActionResult.SUCCESS,playerIn.getHeldItem(handIn));
+        if(!worldIn.isRemote) {
+            if (((Affinities)aff).canCast(50, AffinityTypes.LIGHT)) {
+                SpellLight spellLight = new SpellLight(worldIn, playerIn);
+                spellLight.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, (float) -(playerIn.motionX + playerIn.motionY + playerIn.motionZ) + 1.0F, 1.0F);
+                worldIn.spawnEntity(spellLight);
+                return new ActionResult(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
 
-        } else {
-            if (aff.hasAffinity(AffinityTypes.LIGHT)) {
-                dispOutOfMana(playerIn);
             } else {
-                dispNoAffinity(playerIn);
+                if (aff.hasAffinity(AffinityTypes.LIGHT)) {
+                    dispOutOfMana(playerIn);
+                } else {
+                    dispNoAffinity(playerIn);
+                }
             }
         }
-
 
         return new ActionResult(EnumActionResult.FAIL,playerIn.getHeldItem(handIn));
     }

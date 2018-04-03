@@ -4,6 +4,7 @@ import com.sandvoxel.immersivemagic.ImmersiveMagic;
 import com.sandvoxel.immersivemagic.api.magic.IAffinities;
 import com.sandvoxel.immersivemagic.common.blocks.Blocks;
 import com.sandvoxel.immersivemagic.common.blocks.LiquefactedBlock;
+import com.sandvoxel.immersivemagic.common.magicdata.Affinities;
 import com.sandvoxel.immersivemagic.common.magicdata.AffinitiesProvider;
 import com.sandvoxel.immersivemagic.common.magicdata.AffinityTypes;
 import com.sandvoxel.immersivemagic.common.spells.lib.SpellBase;
@@ -28,19 +29,24 @@ public class MiningSpell extends SpellBase {
     public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         IAffinities affinities = playerIn.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY, null);
 
-        int i = 0;
 
+        int i = 0;
         for (BlockPos affectedBlock : BlockPos.getAllInBox(pos.add(-1, -1, -1), pos.add(1, 1, 1))) {
 
             Block blockInQuestion = worldIn.getBlockState(affectedBlock).getBlock();
             if(affinities.canCast(blockInQuestion.getHarvestLevel(worldIn.getBlockState(affectedBlock))*100,AffinityTypes.EARTH) && blockInQuestion.getHarvestLevel(worldIn.getBlockState(affectedBlock) )!= -1.0f && blockInQuestion.getMaterial(worldIn.getBlockState(affectedBlock))==Material.ROCK){
-                affinities.addXp(blockInQuestion.getHarvestLevel(worldIn.getBlockState(affectedBlock)),AffinityTypes.EARTH);
+                affinities.addXp(blockInQuestion.getHarvestLevel(worldIn.getBlockState(affectedBlock)), AffinityTypes.EARTH);
                 worldIn.destroyBlock(affectedBlock,true);
                 i++;
             }
         }
         if(i>0){
          return EnumActionResult.PASS;
+        }
+        if (affinities.hasAffinity(AffinityTypes.EARTH)) {
+            dispOutOfMana(playerIn);
+        } else {
+            dispNoAffinity(playerIn);
         }
 
         return EnumActionResult.FAIL;
