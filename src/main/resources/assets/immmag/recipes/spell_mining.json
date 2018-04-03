@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "minecraft:diamond_pickaxe"
+		},
+		{
+			"item": "immmag:crystal_ball"
+		},
+		{
+			"item": "minecraft:diamond_shovel"
+		}
+	],
+	"result": {
+		"item": "immmag:spell_mining"
+	}
+}

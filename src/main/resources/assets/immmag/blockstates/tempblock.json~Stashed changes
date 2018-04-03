@@ -2,8 +2,8 @@
     "forge_marker": 1,
     "defaults": {
         "textures": {
-            "missing": "minecraft:blocks/stone_slab_top",
-            "particle": "minecraft:blocks/stone_slab_top"
+            "0": "immmag:blocks/stone_slab",
+            "particle": "immmag:blocks/stone_slab"
         },
         "model": "immmag:tempblock",
         "transform": "forge:default-block",

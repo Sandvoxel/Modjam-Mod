@@ -1,0 +1,19 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		" g ",
+		"gbg",
+		" g "
+		],
+	"key": {
+		"g": {
+			"item": "minecraft:glowstone_dust"
+			},
+		"b": {
+			"item": "immmag:crystal_ball"
+		}
+		},
+	"result": {
+		"item": "immmag:spell_light"
+		}
+}

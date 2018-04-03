@@ -1,3 +1,6 @@
 {
-    "parent": "immmag:block/spell_light"
+    "parent": "minecraft:item/generated",
+    "textures": {
+        "layer0": "immmag:items/spell"
+    }
 }

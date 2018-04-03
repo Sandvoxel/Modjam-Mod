@@ -2,19 +2,19 @@
     "forge_marker": 1,
     "defaults": {
         "textures": {
-            "0": "immmag:blocks/spell_light",
-            "particle": "immmag:blocks/spell_light"
+            "missing": "minecraft:blocks/redstone_block",
+            "particle": "minecraft:blocks/redstone_block"
         },
-        "model": "immmag:spell_light",
+        "model": "immmag:badblock",
         "transform": "forge:default-block",
         "uvblock": true
     },
     "variants": {
         "normal":[{
-            "model": "immmag:spell_light"
+            "model": "immmag:badblock"
             }],
         "inventory":[{
-            "model": "immmag:spell_light"
+            "model": "immmag:badblock"
             }]
         }
 }

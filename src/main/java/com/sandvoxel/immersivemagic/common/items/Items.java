@@ -11,7 +11,8 @@ import net.minecraft.item.ItemStack;
 
 public enum Items {
     SPELL_CRAFTING_ITEMS(SpellItems.class),
-    COSMIC_ITEM(cosmicItem.class);
+    COSMIC_ITEM(cosmicItem.class),
+    CRYSTAL_BALL(crystalBall.class);
 
     protected Class<? extends ItemBase> itemClass;
     protected Item item;

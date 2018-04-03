@@ -13,9 +13,9 @@ public class MainCreativeTab extends CreativeTabs {
     public MainCreativeTab() {
         super(Reference.MOD_ID+"-tab");
     }
-    protected ItemStack tabIcon = Items.COSMIC_ITEM.getStack(1);
+    protected ItemStack tabIcon = Items.COSMIC_ITEM.getStack();
     @Override
     public ItemStack getTabIconItem() {
-        return tabIcon;
+        return Items.COSMIC_ITEM.getStack();
     }
 }

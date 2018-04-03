@@ -20,21 +20,29 @@ import net.minecraft.world.World;
 
 public class MiningSpell extends SpellBase {
     public MiningSpell() {
-        super("miningspell", "", SpellTypes.DIRECT_SPELL, null);
+        super("spell_mining", "spell_earth", SpellTypes.DIRECT_SPELL, null);
     }
 
     @Override
-    public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        IAffinities affinities = player.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY, null);
+    public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+        IAffinities affinities = playerIn.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY, null);
 
         for (BlockPos affectedBlock : BlockPos.getAllInBox(pos.add(-1, -1, -1), pos.add(1, 1, 1))) {
 
             Block blockInQuestion = worldIn.getBlockState(affectedBlock).getBlock();
-            if(affinities.canCast(blockInQuestion.getHarvestLevel(worldIn.getBlockState(affectedBlock))*100,AffinityTypes.EARTH))
-                worldIn.destroyBlock(affectedBlock,true);
+            if (affinities.canCast(blockInQuestion.getHarvestLevel(worldIn.getBlockState(affectedBlock)) * 100, AffinityTypes.EARTH)) {
+                worldIn.destroyBlock(affectedBlock, true);
+            } else {
+                if (affinities.hasAffinity(AffinityTypes.EARTH)) {
+                    dispOutOfMana(playerIn);
+                } else {
+                    dispNoAffinity(playerIn);
+                }
+            }
+
+
         }
         return EnumActionResult.PASS;
+
     }
-
-
 }

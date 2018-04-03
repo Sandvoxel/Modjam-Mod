@@ -2,19 +2,19 @@
     "forge_marker": 1,
     "defaults": {
         "textures": {
-            "missing": "minecraft:blocks/stone_slab_top",
-            "particle": "minecraft:blocks/stone_slab_top"
+            "missing": "minecraft:blocks/redstone_block",
+            "particle": "minecraft:blocks/redstone_block"
         },
-        "model": "immmag:tempblock",
+        "model": "immmag:badblock",
         "transform": "forge:default-block",
         "uvblock": true
     },
     "variants": {
         "normal":[{
-            "model": "immmag:tempblock"
+            "model": "immmag:badblock"
             }],
         "inventory":[{
-            "model": "immmag:tempblock"
+            "model": "immmag:badblock"
             }]
         }
 }

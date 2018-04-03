@@ -51,10 +51,4 @@ public class ItemBase extends Item implements IItemRender {
         String resourcePath = String.format("%s:%s", Reference.MOD_ID, this.resourcePath);
         ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(resourcePath, "inventory"));
     }
-
-    @Override
-    public void registerModels() {
-        String resourcePath = String.format("%s:%s", Reference.MOD_ID, this.resourcePath);
-        //Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register();
-    }
 }

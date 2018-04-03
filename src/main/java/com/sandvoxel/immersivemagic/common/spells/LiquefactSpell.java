@@ -17,17 +17,23 @@ import net.minecraft.world.World;
  */
 public class LiquefactSpell extends SpellBase {
     public LiquefactSpell() {
-        super("liquefactspell", "spell", SpellTypes.THROWABLE_SPELL, SpellLiquefact.class);
+        super("spell_liquefact", "spell_earth", SpellTypes.THROWABLE_SPELL, SpellLiquefact.class);
     }
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
         IAffinities aff = playerIn.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY, null);
 
-        if(!worldIn.isRemote && aff.canCast(50, AffinityTypes.LIGHT)){
+        if(!worldIn.isRemote && aff.canCast(80, AffinityTypes.EARTH)){
             SpellLiquefact liquef = new SpellLiquefact(worldIn,playerIn);
             liquef.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, (float) -(playerIn.motionX+playerIn.motionY+playerIn.motionZ)+1F, 1.0F);
             worldIn.spawnEntity(liquef);
+        } else {
+            if (aff.hasAffinity(AffinityTypes.EARTH)) {
+                dispOutOfMana(playerIn);
+            } else {
+                dispNoAffinity(playerIn);
+            }
         }
 
         return new ActionResult(EnumActionResult.SUCCESS,playerIn.getHeldItem(handIn));

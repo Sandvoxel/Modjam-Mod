@@ -1,5 +1,6 @@
 package com.sandvoxel.immersivemagic.common.spells.lib;
 
+import com.sandvoxel.immersivemagic.ImmersiveMagic;
 import com.sandvoxel.immersivemagic.Reference;
 import com.sandvoxel.immersivemagic.api.magic.IAffinities;
 import com.sandvoxel.immersivemagic.api.spell.ISpellRegstier;
@@ -21,6 +22,7 @@ public class SpellBase extends ItemBase implements ISpellRegstier {
         super(internalName, resourcePath);
         this.spellType = spellType;
         this.entityClass = entityClass;
+        this.setCreativeTab(ImmersiveMagic.tabimmmag);
     }
 
     @Override

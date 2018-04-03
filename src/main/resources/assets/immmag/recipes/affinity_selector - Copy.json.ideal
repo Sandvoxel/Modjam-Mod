@@ -1,0 +1,74 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"jcE",
+		"esf",
+		"wir"
+		],
+	"key": {
+        "s": {
+          "item": "minecraft:stone_slab",
+          "data": 1
+        },
+        "j": [
+          {
+            "item": "minecraft:lit_pumpkin"
+          }/*,
+          {
+            "item": "minecraft:glowstone"
+          },
+          {
+            "item": "minecraft:sea_lantern"
+          }*/
+        ],
+        "c": [
+          {
+            "item": "minecraft:flint_and_steel"
+          }/*,
+          {
+            "item": "minecraft:fire_charge"
+          }*/
+        ],
+        "e": [
+          {
+            "item": "minecraft:stone",
+            "data": 0
+          }/*,
+          {
+            "item": "minecraft:sandstone"
+          },
+          {
+            "item": "minecraft:clay"
+          },
+          {
+            "item": "minecraft:hardened_clay"
+          }*/
+        ],
+        "e": {
+          "item": "minecraft:ender_pearl"
+        },
+        "f": {
+          "item": "minecraft:feather"
+        },
+        "w": {
+          "item": "minecraft:water_bucket"
+        },
+        "i": {
+          "item": "minecraft:snowball"
+        },
+        "r": [
+          {
+            "item": "minecraft:record_13"
+          }/*,
+          {
+            "item": "minecraft:record_11"
+          },
+          {
+            "item": "minecraft:record_mellohi"
+          }*/
+        ]
+      },
+	"result": {
+		"item": "immmag:tempblock"
+		}
+}

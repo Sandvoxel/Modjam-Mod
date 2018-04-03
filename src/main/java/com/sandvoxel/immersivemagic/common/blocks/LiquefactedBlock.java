@@ -5,8 +5,6 @@ import com.google.common.collect.Maps;
 import com.sandvoxel.immersivemagic.ImmersiveMagic;
 import com.sandvoxel.immersivemagic.Reference;
 import com.sandvoxel.immersivemagic.common.blocks.LIb.BlockBase;
-import com.sandvoxel.immersivemagic.common.blocks.LIb.BlockFallingBase;
-import com.sandvoxel.immersivemagic.common.creativetab.MainCreativeTab;
 import jline.internal.Nullable;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDirt;
@@ -51,16 +49,16 @@ public class LiquefactedBlock extends BlockBase {
     protected static final PropertyEnum<LiqBlockTypes> LIQ_BLOCK_TYPE = PropertyEnum.create("liq_block_type", LiqBlockTypes.class);
 
     public LiquefactedBlock() {
-        super(Material.GROUND, "");
-        setInternalName("liquefacted_block");
+        super(Material.GROUND, "block_liquefacted");
+        setInternalName("block_liquefacted");
         setTickRandomly(true);
         setSoundType(SoundType.GROUND);
-        setCreativeTab(ImmersiveMagic.tabimmmag);
+        //setCreativeTab(ImmersiveMagic.tabimmmag);
     }
 
     @Override
     public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> items) {
-        if(itemIn != ImmersiveMagic.tabimmmag)
+        if(itemIn != null)
             return;
         for(LiqBlockTypes liqType : LiqBlockTypes.values()) {
             items.add(new ItemStack(this, 1, liqType.getMeta()));
@@ -85,6 +83,16 @@ public class LiquefactedBlock extends BlockBase {
     @Override
     public boolean isPassable(IBlockAccess worldIn, BlockPos pos) {
         return true;
+    }
+
+    public EnumPushReaction getMobilityFlag(IBlockState state)
+    {
+        return EnumPushReaction.IGNORE;
+    }
+
+    @Override
+    public boolean isNormalCube(IBlockState state, IBlockAccess world, BlockPos pos) {
+        return false;
     }
 
     @Override
@@ -202,7 +210,7 @@ public class LiquefactedBlock extends BlockBase {
     @SideOnly(Side.CLIENT)
     @Override
     public void registerBlockRenderer() {
-        final String resourcePath = String.format("%s:%s-", Reference.MOD_ID, this.resourcePath);
+        final String resourcePath = String.format("%s:%s", Reference.MOD_ID, this.resourcePath);
         final String badPath = String.format("%s:badblock", Reference.MOD_ID);
 
         ModelLoader.setCustomStateMapper(this, new DefaultStateMapper() {
@@ -216,7 +224,7 @@ public class LiquefactedBlock extends BlockBase {
                 if (blockStates.containsKey(LIQ_BLOCK_TYPE))
                     blockStates.remove(LIQ_BLOCK_TYPE);
 
-                return new ModelResourceLocation(resourcePath + state.getValue(LIQ_BLOCK_TYPE).getName(), getPropertyString(blockStates));
+                return new ModelResourceLocation(resourcePath, getPropertyString(blockStates));
             }
         });
     }

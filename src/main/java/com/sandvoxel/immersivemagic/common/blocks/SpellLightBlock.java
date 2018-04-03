@@ -26,8 +26,8 @@ public class SpellLightBlock extends BlockBase {
     protected static final AxisAlignedBB SPELL_LIGHT_AABB = new AxisAlignedBB(0.35D, 0.35D, 0.35D, 0.65D, 0.65D, 0.65D);
 
     public SpellLightBlock() {
-        super(Material.GLASS, "");
-        setInternalName("spell_light");
+        super(Material.GLASS, "block_spell_light");
+        setInternalName("block_spell_light");
         lightValue = 15;
         setLightOpacity(0);
     }

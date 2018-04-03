@@ -18,7 +18,7 @@ import net.minecraft.world.World;
  */
 public class NovaSpell extends SpellBase {
     public NovaSpell() {
-        super("novaspell", "spell", SpellTypes.THROWABLE_SPELL, SpellNova.class);
+        super("spell_nova", "spell_fire", SpellTypes.THROWABLE_SPELL, SpellNova.class);
     }
 
     @Override
@@ -30,6 +30,12 @@ public class NovaSpell extends SpellBase {
             spellNova.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, (float) -(playerIn.motionX+playerIn.motionY+playerIn.motionZ)+1.0F, 1.0F);
             worldIn.spawnEntity(spellNova);
             return new ActionResult(EnumActionResult.SUCCESS,playerIn.getHeldItem(handIn));
+        }  else {
+            if (aff.hasAffinity(AffinityTypes.FIRE)) {
+                dispOutOfMana(playerIn);
+            } else {
+                dispNoAffinity(playerIn);
+            }
         }
 
         return new ActionResult(EnumActionResult.FAIL,playerIn.getHeldItem(handIn));

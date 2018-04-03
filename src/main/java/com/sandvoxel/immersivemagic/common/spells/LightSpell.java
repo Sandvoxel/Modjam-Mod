@@ -14,17 +14,23 @@ import net.minecraft.world.World;
 
 public class LightSpell extends SpellBase {
     public LightSpell() {
-        super("lightspell", "lightspell", SpellTypes.THROWABLE_SPELL, SpellLight.class);
+        super("spell_light", "spell_light", SpellTypes.THROWABLE_SPELL, SpellLight.class);
     }
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
         IAffinities aff = playerIn.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY, null);
 
-        if(!worldIn.isRemote && aff.canCast(80, AffinityTypes.EARTH)){
+        if(!worldIn.isRemote && aff.canCast(50, AffinityTypes.LIGHT)){
             SpellLight spellLight = new SpellLight(worldIn,playerIn);
             spellLight.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, (float) -(playerIn.motionX+playerIn.motionY+playerIn.motionZ)+1.0F, 1.0F);
             worldIn.spawnEntity(spellLight);
+        } else {
+            if (aff.hasAffinity(AffinityTypes.LIGHT)) {
+                dispOutOfMana(playerIn);
+            } else {
+                dispNoAffinity(playerIn);
+            }
         }
 
 
