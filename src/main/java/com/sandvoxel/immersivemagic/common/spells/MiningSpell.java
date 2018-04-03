@@ -34,8 +34,8 @@ public class MiningSpell extends SpellBase {
 
             Block blockInQuestion = worldIn.getBlockState(affectedBlock).getBlock();
             if(affinities.canCast(blockInQuestion.getHarvestLevel(worldIn.getBlockState(affectedBlock))*100,AffinityTypes.EARTH) && blockInQuestion.getHarvestLevel(worldIn.getBlockState(affectedBlock) )!= -1.0f && blockInQuestion.getMaterial(worldIn.getBlockState(affectedBlock))==Material.ROCK){
+                blockInQuestion.getHarvestLevel(worldIn.getBlockState(affectedBlock))
                 worldIn.destroyBlock(affectedBlock,true);
-                affinities.addXp(blockInQuestion.getHarvestLevel(worldIn.getBlockState(affectedBlock)),AffinityTypes.EARTH);
                 i++;
             }
         }
