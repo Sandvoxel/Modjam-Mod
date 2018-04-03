@@ -36,6 +36,6 @@ public class LiquefactSpell extends SpellBase {
             }
         }
 
-        return new ActionResult(EnumActionResult.SUCCESS,playerIn.getHeldItem(handIn));
+        return new ActionResult(EnumActionResult.FAIL,playerIn.getHeldItem(handIn));
     }
 }
