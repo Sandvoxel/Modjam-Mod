@@ -8,6 +8,7 @@ import com.sandvoxel.immersivemagic.common.magicdata.AffinitiesProvider;
 import com.sandvoxel.immersivemagic.common.magicdata.AffinityTypes;
 import com.sandvoxel.immersivemagic.common.spells.lib.SpellBase;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
@@ -30,7 +31,7 @@ public class MiningSpell extends SpellBase {
         for (BlockPos affectedBlock : BlockPos.getAllInBox(pos.add(-1, -1, -1), pos.add(1, 1, 1))) {
 
             Block blockInQuestion = worldIn.getBlockState(affectedBlock).getBlock();
-            if(affinities.canCast(blockInQuestion.getHarvestLevel(worldIn.getBlockState(affectedBlock))*100,AffinityTypes.EARTH))
+            if(affinities.canCast(blockInQuestion.getHarvestLevel(worldIn.getBlockState(affectedBlock))*100,AffinityTypes.EARTH) && blockInQuestion.getHarvestLevel(worldIn.getBlockState(affectedBlock) )!= -1.0f && blockInQuestion.getMaterial(worldIn.getBlockState(affectedBlock))==Material.ROCK)
                 worldIn.destroyBlock(affectedBlock,true);
         }
         return EnumActionResult.PASS;
