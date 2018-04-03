@@ -1,8 +1,10 @@
 package com.sandvoxel.immersivemagic.common.items;
 
+import com.sandvoxel.immersivemagic.ImmersiveMagic;
 import com.sandvoxel.immersivemagic.Reference;
 import com.sandvoxel.immersivemagic.common.items.lib.ItemBase;
 import com.sandvoxel.immersivemagic.common.items.spellcraft.SpellItems;
+import com.sandvoxel.immersivemagic.common.util.Logger;
 import com.sandvoxel.immersivemagic.common.util.RegistryHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -11,12 +13,14 @@ public enum Items {
     SPELL_CRAFTING_ITEMS(SpellItems.class),
     COSMIC_ITEM(cosmicItem.class);
 
-    private Class<? extends ItemBase> itemClass;
-    private Item item;
+    protected Class<? extends ItemBase> itemClass;
+    protected Item item;
 
     Items(Class<? extends ItemBase> itemClass) {
         this.itemClass = itemClass;
     }
+
+
     public static void registerItems() {
         for (Items item : Items.values()) {
             item.registerItem();

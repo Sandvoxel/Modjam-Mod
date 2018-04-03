@@ -69,7 +69,7 @@ public class Affinities implements IAffinities {
     public void addXp(int XP,AffinityTypes affinityType) {
         affinityObjects.get(affinityType.getMeta()).setCurrentXP(affinityObjects.get(affinityType.getMeta()).getCurrentXP()+XP);
         affinityObjects.get(affinityType.getMeta()).canLevelUp();
-        ImmersiveMagic.LOGGER.info(affinityObjects.get(affinityType.getMeta()).getAffinityPower());
+        ImmersiveMagic.LOGGER.info( affinityType.getName() + ": " +affinityObjects.get(affinityType.getMeta()).getAffinityPower());
     }
 
     @Override

@@ -3,6 +3,7 @@ package com.sandvoxel.immersivemagic.common.network.lib;
 import com.sandvoxel.immersivemagic.Reference;
 import com.sandvoxel.immersivemagic.Reference;
 import com.sandvoxel.immersivemagic.common.network.AffinityGuiPacket;
+import com.sandvoxel.immersivemagic.common.network.AffinityPacket;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -25,6 +26,7 @@ public class Network extends NetworkWrapperBase {
 
     public static void init() {
         getInstance().registerPacket(AffinityGuiPacket.class);
+        getInstance().registerPacket(AffinityPacket.class);
     }
 
     public static void sendPacket(Entity player, Packet<?> packet) {

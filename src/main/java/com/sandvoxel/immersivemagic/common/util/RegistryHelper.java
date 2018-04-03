@@ -58,6 +58,7 @@ public class RegistryHelper {
 
             blocks.add(block);
             items.add(itemBlock);
+            ImmersiveMagic.LOGGER.info("Added block and itemBlock for " + block + ", " + itemBlock + " in " + block.getClass());
 
         } catch (Exception e) {
 
@@ -69,7 +70,7 @@ public class RegistryHelper {
 
     public static Item addItemsToRegistry(String modid, Class<?extends ItemBase> itemClass){
         Item item = null;
-        String internalName;
+        String internalName = null;
 
         try {
             item = itemClass.getConstructor().newInstance();
@@ -90,6 +91,7 @@ public class RegistryHelper {
             }
 
             items.add(item);
+            ImmersiveMagic.LOGGER.info("Added Item " + item);
         }catch (Exception e){
             ImmersiveMagic.LOGGER.error(String.format("Item %s has had a error : %s", itemClass.getCanonicalName(), e));
         }
@@ -98,7 +100,7 @@ public class RegistryHelper {
     }
 
     public static void initItemBlocks(Block block) {
-
+        ImmersiveMagic.LOGGER.info("Initializing ItemBlock for block " + block);
         try {
             Item itemBlock = Item.getItemFromBlock(block);
             ModelResourceLocation model = new ModelResourceLocation(String.format("%s", block.getRegistryName()));
@@ -131,6 +133,7 @@ public class RegistryHelper {
             item.setRegistryName(Reference.MOD_ID,internalName);
 
             items.add(item);
+            ImmersiveMagic.LOGGER.info("Added spell Item " + item);
 
             if (((SpellBase)item).getSpellType() == SpellTypes.THROWABLE_SPELL){
                 ((SpellBase)item).RegisterSpellEntity(id);
@@ -143,19 +146,6 @@ public class RegistryHelper {
         }
         return item;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

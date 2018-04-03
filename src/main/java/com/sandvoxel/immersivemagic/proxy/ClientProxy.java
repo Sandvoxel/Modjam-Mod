@@ -41,5 +41,6 @@ public class ClientProxy extends CommonProxy {
         for(Item items : RegistryHelper.getItemBlocks()){
 
         }
+
     }
 }

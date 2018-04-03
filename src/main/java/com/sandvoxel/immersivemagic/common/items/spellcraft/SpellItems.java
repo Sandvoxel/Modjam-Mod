@@ -52,15 +52,16 @@ public class SpellItems extends ItemBase {
     @Override
     public String getUnlocalizedName(ItemStack stack) {
         String name = super.getUnlocalizedName();
-        String oreName = AffinityTypes.getAffinity(stack.getItemDamage()).name();
-        return name + "." + oreName;
+        String element = AffinityTypes.getAffinity(stack.getItemDamage()).name();
+        return name + "." + element;
     }
 
     @SideOnly(Side.CLIENT)
     @Override
     public void registerItemRenderer() {
         for (int i = 0; i < AffinityTypes.values().length; i++) {
-            ModelLoader.setCustomModelResourceLocation(this, i, new ModelResourceLocation(Reference.MOD_ID + ":" + resourcePath + "/spellcraft-" + AffinityTypes.getAffinity(i).name(), "inventory"));
+            ImmersiveMagic.LOGGER.info("Attempting to register item render for " + inteneralName + ":" + AffinityTypes.getAffinity(i).name() + " at " + resourcePath + ", " + this);
+            ModelLoader.setCustomModelResourceLocation(this, i, new ModelResourceLocation(Reference.MOD_ID + ":" + this.resourcePath + "spellcraft_" + AffinityTypes.getAffinity(i).name(), "inventory"));
         }
     }
 }

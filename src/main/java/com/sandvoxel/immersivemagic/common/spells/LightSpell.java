@@ -14,7 +14,7 @@ import net.minecraft.world.World;
 
 public class LightSpell extends SpellBase {
     public LightSpell() {
-        super("lightspell", "", SpellTypes.THROWABLE_SPELL, SpellLight.class);
+        super("lightspell", "lightspell", SpellTypes.THROWABLE_SPELL, SpellLight.class);
     }
 
     @Override

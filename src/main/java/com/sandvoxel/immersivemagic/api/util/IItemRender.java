@@ -6,4 +6,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public interface IItemRender {
     @SideOnly(Side.CLIENT)
     void registerItemRenderer();
+
+    @SideOnly(Side.CLIENT)
+    void registerModels();
 }

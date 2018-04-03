@@ -1,5 +1,6 @@
 package com.sandvoxel.immersivemagic.common.items;
 
+import com.sandvoxel.immersivemagic.ImmersiveMagic;
 import com.sandvoxel.immersivemagic.Reference;
 import com.sandvoxel.immersivemagic.common.items.lib.ItemBase;
 import net.minecraft.util.ResourceLocation;
@@ -9,8 +10,9 @@ import net.minecraft.util.ResourceLocation;
  */
 public class cosmicItem extends ItemBase {
 
- public cosmicItem(String internalName, String resourcePath) {
-        super("cosmic_item", "textures/misc/orb_cosmic_ring.png");
+    public cosmicItem() {
+        super("cosmic_item", "cosmic_item");
+        setCreativeTab(ImmersiveMagic.tabimmmag);
     }
 
 }

@@ -50,6 +50,10 @@ public class AffinityObject {
         return currentXP;
     }
 
+    public void setAffinityActive(boolean active) {
+        isActive = active;
+    }
+
     public void setCurrentXP(int currentXP) {
         this.currentXP = currentXP;
     }

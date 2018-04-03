@@ -33,6 +33,7 @@ public class SpellDefault extends Render {
 
     protected SpellDefault(RenderManager renderManager) {
         super(renderManager);
+        this.hasShading = false;
     }
 
     protected SpellDefault(RenderManager renderManager, String textureLocation, boolean hasShading) {
@@ -66,7 +67,7 @@ public class SpellDefault extends Render {
         GlStateManager.translate(x,y,z);
         if (!this.hasShading) {
             GL11.glDisable(GL11.GL_LIGHTING);
-            
+
         }
 
 

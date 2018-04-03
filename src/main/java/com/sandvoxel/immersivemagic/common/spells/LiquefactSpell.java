@@ -17,7 +17,7 @@ import net.minecraft.world.World;
  */
 public class LiquefactSpell extends SpellBase {
     public LiquefactSpell() {
-        super("liquefactspell", "", SpellTypes.THROWABLE_SPELL, SpellLiquefact.class);
+        super("liquefactspell", "spell", SpellTypes.THROWABLE_SPELL, SpellLiquefact.class);
     }
 
     @Override

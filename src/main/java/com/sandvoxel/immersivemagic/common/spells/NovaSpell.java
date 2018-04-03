@@ -18,7 +18,7 @@ import net.minecraft.world.World;
  */
 public class NovaSpell extends SpellBase {
     public NovaSpell() {
-        super("novaspell", "", SpellTypes.THROWABLE_SPELL, SpellNova.class);
+        super("novaspell", "spell", SpellTypes.THROWABLE_SPELL, SpellNova.class);
     }
 
     @Override

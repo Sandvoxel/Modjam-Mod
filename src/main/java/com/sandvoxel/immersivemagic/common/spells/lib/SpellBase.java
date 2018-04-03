@@ -23,7 +23,6 @@ public class SpellBase extends ItemBase implements ISpellRegstier {
         this.entityClass = entityClass;
     }
 
-
     @Override
     public SpellTypes getSpellType() {
         return spellType;
@@ -31,7 +30,7 @@ public class SpellBase extends ItemBase implements ISpellRegstier {
 
     @Override
     public void RegisterSpellEntity(int id) {
-        ResourceLocation resourceLocation = new ResourceLocation(Reference.MOD_ID+":spell_" + getInteneralName());
+        ResourceLocation resourceLocation = new ResourceLocation(Reference.MOD_ID + ":spell_" + getInteneralName());
         EntityRegistry.registerModEntity(resourceLocation, entityClass,"spell",id, Reference.MOD_ID,64,10,true);
     }
 }

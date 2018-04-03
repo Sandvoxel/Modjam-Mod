@@ -1,0 +1,20 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "textures": {
+            "missing": "minecraft:blocks/redstone_block",
+            "particle": "minecraft:blocks/redstone_block"
+        },
+        "model": "immmag:badblock",
+        "transform": "forge:default-block",
+        "uvblock": true
+    },
+    "variants": {
+        "normal":[{
+            "model": "immmag:badblock"
+            }],
+        "inventory":[{
+            "model": "immmag:badblock"
+            }]
+        }
+}

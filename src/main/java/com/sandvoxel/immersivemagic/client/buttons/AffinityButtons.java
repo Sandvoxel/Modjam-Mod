@@ -19,13 +19,15 @@ public class AffinityButtons extends GuiButton {
     final ResourceLocation texture = new ResourceLocation(Reference.MOD_ID,"textures/gui/affinity_list.png");
     private float texXStart = 0f;
     private float texYStart = 0f;
+    protected IAffinities affinities;
 
-    public AffinityButtons(int buttonId, int x, int y, EntityPlayer player) {
+    public AffinityButtons(int buttonId, int x, int y, EntityPlayer player, IAffinities affinities) {
         super(buttonId, x, y, "");
         id = buttonId;
         width = 18;
         height =18;
         visible = true;
+        this.affinities = affinities;
         this.player = player;
     }
 
@@ -33,14 +35,14 @@ public class AffinityButtons extends GuiButton {
         return id;
     }
 
+    public IAffinities getAffinityInfo() {
+        return affinities;
+    }
+
     @Override
     public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks) {
-        IAffinities affinities = player.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY,null);
-
         if (this.visible)
         {
-
-
 
             FontRenderer fontrenderer = mc.fontRenderer;
             mc.getTextureManager().bindTexture(texture);
