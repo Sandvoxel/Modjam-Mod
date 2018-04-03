@@ -39,6 +39,9 @@ public class ClientProxy extends CommonProxy {
     @SubscribeEvent
     public static void RegisterModels(ModelRegistryEvent event) {
         for (Block block : RegistryHelper.getBlocks()) {
+            if (block instanceof IBlockRender) {
+                ((IBlockRender) block).registerBlockRenderer();
+            }
             RegistryHelper.initItemBlocks(block);
         }
         for(Item items : RegistryHelper.getItemBlocks()){

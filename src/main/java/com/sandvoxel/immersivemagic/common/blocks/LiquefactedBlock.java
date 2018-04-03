@@ -199,9 +199,8 @@ public class LiquefactedBlock extends BlockBase {
         }
 
     }
-
-    @Override
     @SideOnly(Side.CLIENT)
+    @Override
     public void registerBlockRenderer() {
         final String resourcePath = String.format("%s:%s-", Reference.MOD_ID, this.resourcePath);
         final String badPath = String.format("%s:badblock", Reference.MOD_ID);

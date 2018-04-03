@@ -52,9 +52,7 @@ public class RegistryHelper {
             block.setUnlocalizedName(internalName);
             itemBlock.setRegistryName(Objects.requireNonNull(block.getRegistryName()));
 
-            if (Platform.isClient()&&block instanceof IBlockRender) {
-                ((IBlockRender) block).registerBlockRenderer();
-            }
+
 
             blocks.add(block);
             items.add(itemBlock);
