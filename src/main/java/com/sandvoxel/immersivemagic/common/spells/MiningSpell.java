@@ -2,14 +2,20 @@ package com.sandvoxel.immersivemagic.common.spells;
 
 import com.sandvoxel.immersivemagic.ImmersiveMagic;
 import com.sandvoxel.immersivemagic.api.magic.IAffinities;
+import com.sandvoxel.immersivemagic.common.blocks.Blocks;
+import com.sandvoxel.immersivemagic.common.blocks.LiquefactedBlock;
 import com.sandvoxel.immersivemagic.common.magicdata.AffinitiesProvider;
 import com.sandvoxel.immersivemagic.common.magicdata.AffinityTypes;
 import com.sandvoxel.immersivemagic.common.spells.lib.SpellBase;
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
 public class MiningSpell extends SpellBase {
@@ -18,11 +24,18 @@ public class MiningSpell extends SpellBase {
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
-        IAffinities affinities = playerIn.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY,null);
-        
+    public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+        IAffinities affinities = player.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY, null);
 
+        ImmersiveMagic.LOGGER.info(affinities.hasAffinity(AffinityTypes.EARTH));
+        for (BlockPos affectedBlock : BlockPos.getAllInBox(pos.add(-1, -1, -1), pos.add(1, 1, 1))) {
 
-        return new ActionResult(EnumActionResult.FAIL,playerIn.getHeldItem(handIn));
+            Block blockInQuestion = worldIn.getBlockState(affectedBlock).getBlock();
+            if(affinities.canCast(blockInQuestion.getHarvestLevel(worldIn.getBlockState(affectedBlock))*100,AffinityTypes.EARTH))
+                worldIn.destroyBlock(affectedBlock,true);
+        }
+        return EnumActionResult.PASS;
     }
+
+
 }
