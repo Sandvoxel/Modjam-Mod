@@ -25,7 +25,7 @@ public class ImmersiveMagic {
     public static MainCreativeTab tabimmmag = new MainCreativeTab();
 
 
-    @Mod.Instance("Trainwreck TrainwreckLib")
+    @Mod.Instance(Reference.MOD_ID)
     public static ImmersiveMagic instance;
 
     @SidedProxy(clientSide = "com.sandvoxel.immersivemagic.proxy.ClientProxy", serverSide = "com.sandvoxel.immersivemagic.proxy.ServerProxy")

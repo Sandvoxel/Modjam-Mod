@@ -6,6 +6,7 @@ import com.sandvoxel.immersivemagic.client.gui.TestScreen;
 import com.sandvoxel.immersivemagic.common.blocks.LIb.BlockBase;
 import com.sandvoxel.immersivemagic.common.blocks.LIb.BlockTileBase;
 import com.sandvoxel.immersivemagic.common.magicdata.AffinitiesProvider;
+import com.sandvoxel.immersivemagic.common.tileentitys.TestTile;
 import com.sandvoxel.immersivemagic.common.util.Platform;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -26,21 +27,16 @@ public class TempBlock extends BlockTileBase {
         super(Material.WOOD, "");
         setInternalName("tempblock");
         setCreativeTab(ImmersiveMagic.tabimmmag);
+        setTileEntity(TestTile.class);
         this.setSoundType(SoundType.WOOD);
     }
 
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 
-        if(!worldIn.isRemote){
-            openGui(playerIn);
-        }
+        playerIn.openGui(ImmersiveMagic.instance,0,worldIn,pos.getX(),pos.getY(),pos.getZ());
+
 
         return true;
-    }
-    @SideOnly(Side.CLIENT)
-    private void openGui(EntityPlayer playerIn){
-        Minecraft.getMinecraft().displayGuiScreen(new TestScreen(playerIn));
-
     }
 }

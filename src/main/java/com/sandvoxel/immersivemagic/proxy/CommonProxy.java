@@ -41,7 +41,7 @@ public class CommonProxy {
         Items.registerItems();
         Spells.registerSpells();
         CapabilityManager.INSTANCE.register(IAffinities.class, new AffinitiesStorage(),Affinities.class);
-
+        new GuiHandler(ImmersiveMagic.instance);
 
     }
 
