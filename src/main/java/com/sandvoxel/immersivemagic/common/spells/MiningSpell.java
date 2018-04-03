@@ -20,11 +20,8 @@ public class MiningSpell extends SpellBase {
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
         IAffinities affinities = playerIn.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY,null);
-        if(!affinities.getPlayerAffinities().isEmpty()){
-            if(affinities.hasAffinity(AffinityTypes.LIGHT))
-            ImmersiveMagic.LOGGER.info(affinities.getPlayerAffinities());
-        }
-            ImmersiveMagic.LOGGER.info(affinities.hasAffinity(AffinityTypes.LIGHT));
+        
+
 
         return new ActionResult(EnumActionResult.FAIL,playerIn.getHeldItem(handIn));
     }
