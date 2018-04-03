@@ -7,6 +7,7 @@ import com.sandvoxel.immersivemagic.common.magicdata.AffinitiesProvider;
 import com.sandvoxel.immersivemagic.common.magicdata.AffinityTypes;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.EntityPlayer;
@@ -88,7 +89,7 @@ public class AffinityButtons extends GuiButton {
 
 
             //Actual drawing of the texture
-            this.drawModalRectWithCustomSizedTexture(this.x, this.y, texXStart, texYStart, this.width, this.height, 144.0f, 72.0f);
+            drawModalRectWithCustomSizedTexture(this.x, this.y, texXStart, texYStart, this.width, this.height, 144.0f, 72.0f);
 
             this.drawCenteredString(fontrenderer, this.displayString, this.x + this.width / 2, this.y + (this.height - 8) / 2, j);
         }

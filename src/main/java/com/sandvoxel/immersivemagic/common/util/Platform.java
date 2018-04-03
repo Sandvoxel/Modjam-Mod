@@ -28,10 +28,10 @@ public class Platform {
                 stringbuilder.append(",");
             }
 
-            IProperty<?> iproperty = (IProperty) entry.getKey();
+            IProperty<?> iproperty = entry.getKey();
             stringbuilder.append(iproperty.getName());
             stringbuilder.append("=");
-            stringbuilder.append(getPropertyName(iproperty, (Comparable) entry.getValue()));
+            stringbuilder.append(getPropertyName(iproperty, entry.getValue()));
         }
 
         if (stringbuilder.length() == 0) {

@@ -42,6 +42,11 @@ public class MiningSpell extends SpellBase {
         if(i>0){
          return EnumActionResult.PASS;
         }
+        if (affinities.hasAffinity(AffinityTypes.FIRE)) {
+            dispOutOfMana(playerIn);
+        } else {
+            dispNoAffinity(playerIn);
+        }
         return EnumActionResult.FAIL;
     }
 }

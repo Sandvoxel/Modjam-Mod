@@ -1,19 +1,14 @@
 package com.sandvoxel.immersivemagic.client.gui;
 
-import com.sandvoxel.immersivemagic.ImmersiveMagic;
 import com.sandvoxel.immersivemagic.Reference;
 import com.sandvoxel.immersivemagic.api.magic.IAffinities;
 import com.sandvoxel.immersivemagic.client.buttons.AffinityButtons;
 import com.sandvoxel.immersivemagic.common.magicdata.AffinitiesProvider;
-import com.sandvoxel.immersivemagic.common.magicdata.AffinityObject;
 import com.sandvoxel.immersivemagic.common.magicdata.AffinityTypes;
 import com.sandvoxel.immersivemagic.common.network.AffinityGuiPacket;
 import com.sandvoxel.immersivemagic.common.network.lib.Network;
-import com.sun.deploy.panel.AdvancedNetworkSettingsDialog;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiButtonImage;
-import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
@@ -22,7 +17,7 @@ import org.lwjgl.util.Point;
 import org.lwjgl.util.Rectangle;
 
 import java.io.IOException;
-import java.util.ArrayList;
+
 
 public class TestScreen extends GuiBase {
 
