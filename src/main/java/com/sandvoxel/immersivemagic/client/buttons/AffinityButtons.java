@@ -64,7 +64,7 @@ public class AffinityButtons extends GuiButton {
             if(affinities.hasAffinity(AffinityTypes.getAffinity(id))){
                 texYStart = 18.0f;
             } else {
-                texYStart = 0.0f;
+                texYStart = 36.0f;
             }
         //Other button logic
             if (packedFGColour != 0)

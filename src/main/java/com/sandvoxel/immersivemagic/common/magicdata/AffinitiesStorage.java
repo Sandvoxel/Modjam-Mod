@@ -21,7 +21,7 @@ public class AffinitiesStorage implements Capability.IStorage<IAffinities> {
         for(AffinityObject affinityTypes :instance.getPlayerAffinities()){
             string.append(AffinityTypes.getAffinityID(affinityTypes.getAffinityType()));
             string.append("-");
-            string.append(affinityTypes.getAffinityPower());
+            string.append(affinityTypes.getAffinityLevel());
             string.append("-");
             string.append(affinityTypes.getAffinityMana());
             string.append("-");
@@ -41,7 +41,7 @@ public class AffinitiesStorage implements Capability.IStorage<IAffinities> {
             for (String affinitiy : affinities) {
                 String[] holder = affinitiy.split("-");
                 AffinityObject affinityObject = new AffinityObject(AffinityTypes.getAffinity(Integer.parseInt(holder[0])));
-                affinityObject.setAffinityPower(Integer.parseInt(holder[1]));
+                affinityObject.setAffinityLevel(Integer.parseInt(holder[1]));
                 affinityObject.setAffinityMana(Integer.parseInt(holder[2]));
                 affinityObject.setCurrentXP(Integer.parseInt(holder[3]));
                 list.add(affinityObject);

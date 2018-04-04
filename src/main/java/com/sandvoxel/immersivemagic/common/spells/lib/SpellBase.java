@@ -6,6 +6,8 @@ import com.sandvoxel.immersivemagic.api.magic.IAffinities;
 import com.sandvoxel.immersivemagic.api.spell.ISpellRegstier;
 import com.sandvoxel.immersivemagic.common.items.lib.ItemBase;
 import com.sandvoxel.immersivemagic.common.magicdata.AffinitiesProvider;
+import com.sandvoxel.immersivemagic.common.magicdata.AffinityObject;
+import com.sandvoxel.immersivemagic.common.magicdata.AffinityTypes;
 import com.sandvoxel.immersivemagic.common.spells.SpellTypes;
 import com.sandvoxel.immersivemagic.common.spells.entity.SpellEntityBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -16,15 +18,24 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 import javax.annotation.Nullable;
 
 public class SpellBase extends ItemBase implements ISpellRegstier {
+
     private SpellTypes spellType;
+
+    protected AffinityTypes spellAffType = AffinityTypes.EARTH;
+    protected int baseManaCost = 80;
+    public boolean successfulCast = true;
+
     @Nullable
     private Class<? extends SpellEntityBase> entityClass;
 
-    public SpellBase(String internalName, String resourcePath, SpellTypes spellType,Class<? extends SpellEntityBase> entityClass) {
+    public SpellBase(String internalName, String resourcePath, SpellTypes spellType,Class<? extends SpellEntityBase> entityClass, AffinityTypes spellAffinityType, int baseManaCost) {
         super(internalName, resourcePath);
+        this.spellAffType = spellAffinityType;
+        this.baseManaCost = baseManaCost;
         this.spellType = spellType;
         this.entityClass = entityClass;
         this.setCreativeTab(ImmersiveMagic.tabimmmag);
+        this.setMaxStackSize(1);
     }
 
     @Override
@@ -32,12 +43,14 @@ public class SpellBase extends ItemBase implements ISpellRegstier {
         return spellType;
     }
 
-    protected void dispOutOfMana(EntityPlayer playerIn) {
-        playerIn.sendStatusMessage(new TextComponentTranslation("You have no mana to cast this spell!", new Object[0]), true);
+    protected void dispNoAffinity(EntityPlayer playerIn, int affTypeID) {
+        successfulCast = false;
+        playerIn.sendStatusMessage(new TextComponentTranslation("You need the " + AffinityTypes.getAffinity(affTypeID).getName() + " affinity to cast this spell!", new Object[0]), true);
     }
 
-    protected void dispNoAffinity(EntityPlayer playerIn) {
-        playerIn.sendStatusMessage(new TextComponentTranslation("You do not have the affinity required to cast this spell!", new Object[0]), true);
+    protected void dispOutOfMana(EntityPlayer playerIn, int affTypeID, int mana, int manaCost) {
+        successfulCast = false;
+        playerIn.sendStatusMessage(new TextComponentTranslation("You only have " + mana + " of the required " + manaCost + " " + AffinityTypes.getAffinity(affTypeID).getName() + " mana to cast this spell!", new Object[0]), true);
     }
     
 

@@ -15,30 +15,30 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 
 public class LightSpell extends SpellBase {
+
     public LightSpell() {
-        super("spell_light", "spell_light", SpellTypes.THROWABLE_SPELL, SpellLight.class);
+        super("spell_light", "spell_light", SpellTypes.THROWABLE_SPELL, SpellLight.class, AffinityTypes.LIGHT, 50);
     }
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
+        successfulCast = true;
         IAffinities aff = playerIn.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY, null);
 
         if(!worldIn.isRemote) {
-            if (((Affinities)aff).canCast(50, AffinityTypes.LIGHT)) {
+            if (aff.canCast(baseManaCost, spellAffType)) {
                 SpellLight spellLight = new SpellLight(worldIn, playerIn);
                 spellLight.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, (float) -(playerIn.motionX + playerIn.motionY + playerIn.motionZ) + 1.0F, 1.0F);
                 worldIn.spawnEntity(spellLight);
                 return new ActionResult(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
-
+            } else if (aff.hasAffinity(spellAffType)) {
+                dispOutOfMana(playerIn, spellAffType.getMeta(), aff.getAffinityMana(spellAffType), baseManaCost);
             } else {
-                if (aff.hasAffinity(AffinityTypes.LIGHT)) {
-                    dispOutOfMana(playerIn);
-                } else {
-                    dispNoAffinity(playerIn);
-                }
+                dispNoAffinity(playerIn, spellAffType.getMeta());
             }
+        } else if (successfulCast) {
+            return new ActionResult(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
         }
-
-        return new ActionResult(EnumActionResult.FAIL,playerIn.getHeldItem(handIn));
+        return new ActionResult(EnumActionResult.FAIL, playerIn.getHeldItem(handIn));
     }
 }

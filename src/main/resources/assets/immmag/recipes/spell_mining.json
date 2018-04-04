@@ -8,7 +8,10 @@
 			"item": "immmag:crystal_ball"
 		},
 		{
-			"item": "minecraft:diamond_shovel"
+			"item": "minecraft:golden_pickaxe"
+		},
+		{
+			"item": "minecraft:iron_pickaxe"
 		}
 	],
 	"result": {

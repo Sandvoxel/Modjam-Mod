@@ -25,6 +25,7 @@ public class SpellItems extends ItemBase {
         super("spellcraft", "");
         setHasSubtypes(true);
         setCreativeTab(ImmersiveMagic.tabimmmag);
+        setMaxStackSize(8);
     }
 
     @Override

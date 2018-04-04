@@ -5,7 +5,6 @@ import com.sandvoxel.immersivemagic.api.magic.IAffinities;
 import net.minecraft.entity.player.EntityPlayer;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class Affinities implements IAffinities {
@@ -38,7 +37,7 @@ public class Affinities implements IAffinities {
 
     @Override
     public int getAffinityLevel(AffinityTypes affinityType) {
-        return affinityObjects.get(affinityType.getMeta()).getAffinityPower();
+        return affinityObjects.get(affinityType.getMeta()).getAffinityLevel();
     }
 
     @Override
@@ -51,7 +50,7 @@ public class Affinities implements IAffinities {
         AffinityObject affinity = affinityObjects.get(affinityType.getMeta());
         if (player.isCreative()) {
             return true;
-        } else if (affinity.getAffinityMana() >= manaCost) {
+        } else if (affinity.getAffinityMana() >= manaCost && affinity.isActive()) {
             affinityObjects.get(affinityType.getMeta()).setAffinityMana(affinity.getAffinityMana() - manaCost);
             return true;
         } else {
@@ -69,7 +68,7 @@ public class Affinities implements IAffinities {
     public void addXp(int XP,AffinityTypes affinityType) {
         affinityObjects.get(affinityType.getMeta()).setCurrentXP(affinityObjects.get(affinityType.getMeta()).getCurrentXP()+XP);
         affinityObjects.get(affinityType.getMeta()).canLevelUp();
-        ImmersiveMagic.LOGGER.info( affinityType.getName() + ": " +affinityObjects.get(affinityType.getMeta()).getAffinityPower());
+        ImmersiveMagic.LOGGER.info( affinityType.getName() + ": " +affinityObjects.get(affinityType.getMeta()).getAffinityLevel());
     }
 
     @Override

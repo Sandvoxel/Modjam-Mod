@@ -9,6 +9,9 @@
 		},
 		{
 			"item": "minecraft:ghast_tear"
+		},
+		{
+			"item": "minecraft:fire_charge"
 		}
 	],
 	"result": {

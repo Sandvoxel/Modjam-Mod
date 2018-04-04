@@ -1,10 +1,8 @@
 package com.sandvoxel.immersivemagic.common.magicdata;
 
-import com.sandvoxel.immersivemagic.ImmersiveMagic;
-
 public class AffinityObject {
     private AffinityTypes affinityType;
-    private int affinityPower=0;
+    private int affinityLevel = 1;
     private int affinityMana=0;
     private int currentXP=0;
     private boolean isActive =false;
@@ -27,11 +25,14 @@ public class AffinityObject {
     }
 
     public int getAffinityMana() {
+        if (affinityMana >= getManaCap())
+            affinityMana = getManaCap();
+
         return affinityMana;
     }
 
     public int getManaCap() {
-        return affinityPower*200;
+        return affinityLevel *200;
     }
 
     public int getPowerCap(){
@@ -59,22 +60,22 @@ public class AffinityObject {
     }
 
     public boolean canLevelUp(){
-        if(affinityPower >= getPowerCap()){
+        if(affinityLevel >= getPowerCap()){
             return false;
         }
-        if(currentXP > (affinityPower * affinityPower)*5+200){
-            affinityPower++;
+        if(currentXP > (affinityLevel * affinityLevel)*5+200){
+            affinityLevel++;
             currentXP = 0;
             return true;
         }
         return false;
     }
 
-    public int getAffinityPower() {
-        return affinityPower;
+    public int getAffinityLevel() {
+        return affinityLevel;
     }
 
-    public void setAffinityPower(int affinityPower) {
-        this.affinityPower = affinityPower;
+    public void setAffinityLevel(int affinityLevel) {
+        this.affinityLevel = affinityLevel;
     }
 }

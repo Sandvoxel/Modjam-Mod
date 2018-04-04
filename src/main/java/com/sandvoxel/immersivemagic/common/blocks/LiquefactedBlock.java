@@ -53,6 +53,7 @@ public class LiquefactedBlock extends BlockBase {
         setInternalName("block_liquefacted");
         setTickRandomly(true);
         setSoundType(SoundType.GROUND);
+        setHardness(1.5f);
         //setCreativeTab(ImmersiveMagic.tabimmmag);
     }
 

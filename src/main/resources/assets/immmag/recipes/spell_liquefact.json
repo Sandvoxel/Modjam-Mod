@@ -9,11 +9,14 @@
 			"item": "immmag:crystal_ball"
 		},
 		{
-			"item": "minecraft:sand",
+			"item": "minecraft:water_bucket",
 			"data": 0
 		},
 		{
 			"item": "minecraft:emerald"
+		},
+		{
+			"item": "minecraft:note_block"
 		}
 	],
 	"result": {
