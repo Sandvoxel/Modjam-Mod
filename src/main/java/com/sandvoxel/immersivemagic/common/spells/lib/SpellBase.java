@@ -2,11 +2,8 @@ package com.sandvoxel.immersivemagic.common.spells.lib;
 
 import com.sandvoxel.immersivemagic.ImmersiveMagic;
 import com.sandvoxel.immersivemagic.Reference;
-import com.sandvoxel.immersivemagic.api.magic.IAffinities;
 import com.sandvoxel.immersivemagic.api.spell.ISpellRegstier;
 import com.sandvoxel.immersivemagic.common.items.lib.ItemBase;
-import com.sandvoxel.immersivemagic.common.magicdata.AffinitiesProvider;
-import com.sandvoxel.immersivemagic.common.magicdata.AffinityObject;
 import com.sandvoxel.immersivemagic.common.magicdata.AffinityTypes;
 import com.sandvoxel.immersivemagic.common.spells.SpellTypes;
 import com.sandvoxel.immersivemagic.common.spells.entity.SpellEntityBase;

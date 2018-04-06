@@ -1,7 +1,6 @@
 package com.sandvoxel.immersivemagic.common.network.lib;
 
 import com.sandvoxel.immersivemagic.Reference;
-import com.sandvoxel.immersivemagic.Reference;
 import com.sandvoxel.immersivemagic.common.network.AffinityGuiPacket;
 import com.sandvoxel.immersivemagic.common.network.AffinityPacket;
 import net.minecraft.entity.Entity;

@@ -1,6 +1,5 @@
 package com.sandvoxel.immersivemagic.common.tileentitys;
 
-import com.sandvoxel.immersivemagic.ImmersiveMagic;
 import com.sandvoxel.immersivemagic.client.gui.TestScreen;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.relauncher.Side;

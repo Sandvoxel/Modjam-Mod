@@ -3,8 +3,6 @@ package com.sandvoxel.immersivemagic.common.util;
 import com.sandvoxel.immersivemagic.ImmersiveMagic;
 import com.sandvoxel.immersivemagic.Reference;
 import com.sandvoxel.immersivemagic.api.blocks.IBlock;
-import com.sandvoxel.immersivemagic.api.util.IBlockRender;
-import com.sandvoxel.immersivemagic.api.util.IItemRender;
 import com.sandvoxel.immersivemagic.common.items.lib.ItemBase;
 import com.sandvoxel.immersivemagic.common.spells.SpellTypes;
 import com.sandvoxel.immersivemagic.common.spells.lib.SpellBase;

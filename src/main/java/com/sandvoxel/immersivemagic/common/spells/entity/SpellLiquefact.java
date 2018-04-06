@@ -1,17 +1,13 @@
 package com.sandvoxel.immersivemagic.common.spells.entity;
 
-import com.sandvoxel.immersivemagic.Reference;
 import com.sandvoxel.immersivemagic.common.blocks.Blocks;
 import com.sandvoxel.immersivemagic.common.blocks.LiquefactedBlock;
 import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 /**
  * Created by CrazyGrape on 3/31/2018.
