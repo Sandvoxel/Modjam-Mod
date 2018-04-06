@@ -1,7 +1,6 @@
 package com.sandvoxel.immersivemagic.common.blocks;
 
 import com.sandvoxel.immersivemagic.Reference;
-import com.sandvoxel.immersivemagic.common.blocks.LIb.BlockBase;
 import com.sandvoxel.immersivemagic.common.util.RegistryHelper;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;

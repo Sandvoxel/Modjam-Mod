@@ -3,13 +3,12 @@ package com.sandvoxel.immersivemagic.client.gui;
 import com.sandvoxel.immersivemagic.common.util.GuiHelper;
 import com.sandvoxel.immersivemagic.common.util.OpenGLHelper;
 import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.inventory.*;
+import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
-import java.util.*;
 
 /**
  * Created by CrazyGrape on 4/2/2018.

@@ -1,9 +1,7 @@
 package com.sandvoxel.immersivemagic.common.items;
 
 import com.sandvoxel.immersivemagic.ImmersiveMagic;
-import com.sandvoxel.immersivemagic.Reference;
 import com.sandvoxel.immersivemagic.common.items.lib.ItemBase;
-import net.minecraft.util.ResourceLocation;
 
 /**
  * Created by CrazyGrape on 4/2/2018.

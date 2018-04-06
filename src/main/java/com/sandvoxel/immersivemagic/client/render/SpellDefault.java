@@ -1,8 +1,8 @@
 package com.sandvoxel.immersivemagic.client.render;
 
 import com.sandvoxel.immersivemagic.Reference;
-import com.sandvoxel.immersivemagic.common.spells.entity.SpellLiquefact;
 import com.sandvoxel.immersivemagic.common.spells.entity.SpellLight;
+import com.sandvoxel.immersivemagic.common.spells.entity.SpellLiquefact;
 import com.sandvoxel.immersivemagic.common.spells.entity.SpellNova;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;

@@ -1,10 +1,8 @@
 package com.sandvoxel.immersivemagic.common.items;
 
-import com.sandvoxel.immersivemagic.ImmersiveMagic;
 import com.sandvoxel.immersivemagic.Reference;
 import com.sandvoxel.immersivemagic.common.items.lib.ItemBase;
 import com.sandvoxel.immersivemagic.common.items.spellcraft.SpellItems;
-import com.sandvoxel.immersivemagic.common.util.Logger;
 import com.sandvoxel.immersivemagic.common.util.RegistryHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

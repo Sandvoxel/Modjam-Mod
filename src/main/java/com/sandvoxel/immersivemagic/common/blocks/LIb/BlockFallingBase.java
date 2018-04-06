@@ -3,7 +3,6 @@ package com.sandvoxel.immersivemagic.common.blocks.LIb;
 import com.sandvoxel.immersivemagic.Reference;
 import com.sandvoxel.immersivemagic.api.blocks.IBlock;
 import com.sandvoxel.immersivemagic.api.util.IBlockRender;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
