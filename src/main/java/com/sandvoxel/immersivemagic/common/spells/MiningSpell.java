@@ -26,7 +26,6 @@ import net.minecraft.world.World;
 public class MiningSpell extends SpellBase {
     protected AffinityTypes spellAffType = AffinityTypes.EARTH;
     protected int baseManaCost = 100;
-    private int ticksAfterCast;
     private BlockPos castingPos;
 
     public MiningSpell() {
@@ -35,61 +34,47 @@ public class MiningSpell extends SpellBase {
 
     @Override
     public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        successfulCast = true;
         castingPos = pos;
-        IAffinities affinities = playerIn.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY, null);
 
         int i = 0;
-        if (!worldIn.isRemote) {
-            int manaCost;
+        boolean foundBlock = false;
+        int manaCost = 0;
 
-            for (BlockPos affectedBlock : BlockPos.getAllInBox(pos.add(-1, -1, -1), pos.add(1, 1, 1))) {
-                Block blockInQuestion = worldIn.getBlockState(affectedBlock).getBlock();
-                manaCost = blockInQuestion.getHarvestLevel(worldIn.getBlockState(affectedBlock)) * baseManaCost;
-                if (affinities.canCast(manaCost, spellAffType)) {
-                    if(blockInQuestion.getHarvestLevel(worldIn.getBlockState(affectedBlock)) != -1.0f && blockInQuestion.getMaterial(worldIn.getBlockState(affectedBlock)) == Material.ROCK) {
-                        ticksAfterCast = 5;
-                        affinities.addXp(blockInQuestion.getHarvestLevel(worldIn.getBlockState(affectedBlock)), spellAffType);
-                        worldIn.destroyBlock(affectedBlock, true);
-                        worldIn.notifyNeighborsOfStateChange(affectedBlock, net.minecraft.init.Blocks.AIR, true);
-                        i++;
-                    } else {
-                        dispWrongType(playerIn);
-                    }
-                } else if (affinities.hasAffinity(spellAffType)) {
-                    dispOutOfMana(playerIn, spellAffType.getMeta(), affinities.getAffinityMana(spellAffType), manaCost);
-                    break;
-                } else {
-                    dispNoAffinity(playerIn, spellAffType.getMeta());
-                    break;
+        for (BlockPos affectedBlock : BlockPos.getAllInBox(pos.add(-1, -1, -1), pos.add(1, 1, 1))) {
+            Block blockInQuestion = worldIn.getBlockState(affectedBlock).getBlock();
+            manaCost = (blockInQuestion.getHarvestLevel(worldIn.getBlockState(affectedBlock)) + 1) * baseManaCost;
+            if (playerIn.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY, null).canCast(manaCost, spellAffType)) {
+                if(blockInQuestion.getHarvestLevel(worldIn.getBlockState(affectedBlock)) != -1.0f && blockInQuestion.getMaterial(worldIn.getBlockState(affectedBlock)) == Material.ROCK) {
+                    foundBlock = true;
+                    playerIn.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY, null).addXp(blockInQuestion.getHarvestLevel(worldIn.getBlockState(affectedBlock)), spellAffType);
+                    worldIn.destroyBlock(affectedBlock, true);
+                    worldIn.notifyNeighborsOfStateChange(affectedBlock, net.minecraft.init.Blocks.AIR, true);
+                    i++;
                 }
             }
-            if(i>0){
-                return EnumActionResult.PASS;
-            }
-        } else if (successfulCast){
+        }
+
+        if(i>0){
             return EnumActionResult.PASS;
         }
+
+        if (playerIn.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY, null).hasAffinity(spellAffType)) {
+            if (foundBlock) {
+                dispOutOfMana(playerIn, spellAffType.getMeta(), playerIn.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY, null).getAffinityMana(spellAffType), manaCost);
+                return EnumActionResult.FAIL;
+            } else {
+                dispWrongType(playerIn);
+            }
+        } else {
+            dispNoAffinity(playerIn, spellAffType.getMeta());
+            return EnumActionResult.FAIL;
+        }
+        //This statement is here so intelliJ doesn't get mad at me, saying that it's missing a return statement
         return EnumActionResult.FAIL;
     }
 
     protected void dispWrongType(EntityPlayer playerIn) {
-        successfulCast = false;
         playerIn.sendStatusMessage(new TextComponentTranslation("This spell only works on stone-type blocks!", new Object[0]), true);
     }
 
-    @Override
-    public void onUsingTick(ItemStack stack, EntityLivingBase player, int count) {
-        if (player.world.isRemote) {
-            if (ticksAfterCast > 1) {
-                ticksAfterCast--;
-            } else if (ticksAfterCast == 1) {
-                for (BlockPos affectedBlock : BlockPos.getAllInBox(castingPos.add(-1, -1, -1), castingPos.add(1, 1, 1))) {
-                    player.world.updateBlockTick(affectedBlock, player.world.getBlockState(affectedBlock).getBlock(), 1, 1);
-                }
-                ticksAfterCast = 0;
-            }
-        }
-        super.onUsingTick(stack, player, count);
-    }
 }

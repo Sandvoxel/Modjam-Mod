@@ -23,7 +23,6 @@ public class SpellBase extends ItemBase implements ISpellRegstier {
 
     protected AffinityTypes spellAffType = AffinityTypes.EARTH;
     protected int baseManaCost = 80;
-    public boolean successfulCast = true;
 
     @Nullable
     private Class<? extends SpellEntityBase> entityClass;
@@ -44,12 +43,10 @@ public class SpellBase extends ItemBase implements ISpellRegstier {
     }
 
     protected void dispNoAffinity(EntityPlayer playerIn, int affTypeID) {
-        successfulCast = false;
         playerIn.sendStatusMessage(new TextComponentTranslation("You need the " + AffinityTypes.getAffinity(affTypeID).getName() + " affinity to cast this spell!", new Object[0]), true);
     }
 
     protected void dispOutOfMana(EntityPlayer playerIn, int affTypeID, int mana, int manaCost) {
-        successfulCast = false;
         playerIn.sendStatusMessage(new TextComponentTranslation("You only have " + mana + " of the required " + manaCost + " " + AffinityTypes.getAffinity(affTypeID).getName() + " mana to cast this spell!", new Object[0]), true);
     }
     

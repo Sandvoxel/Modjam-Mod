@@ -5,16 +5,16 @@
             "missing": "minecraft:blocks/stone_slab_top",
             "particle": "minecraft:blocks/stone_slab_top"
         },
-        "model": "immmag:tempblock",
+        "model": "immmag:affinity_selector",
         "transform": "forge:default-block",
         "uvblock": true
     },
     "variants": {
         "normal":[{
-            "model": "immmag:tempblock"
+            "model": "immmag:affinity_selector"
             }],
         "inventory":[{
-            "model": "immmag:tempblock"
+            "model": "immmag:affinity_selector"
             }]
         }
 }

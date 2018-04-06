@@ -24,30 +24,25 @@ public class LiquefactSpell extends SpellBase {
     }
 
     protected void dispMana(EntityPlayer playerIn, int affMana) {
-        successfulCast = false;
         playerIn.sendStatusMessage(new TextComponentTranslation(affMana + " mana", new Object[0]), true);
     }
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
-        successfulCast = true;
-        IAffinities aff = playerIn.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY, null);
-        dispMana(playerIn, aff.getAffinityMana(spellAffType));
+        //dispMana(playerIn, aff.getAffinityMana(spellAffType));
 
-        if (!worldIn.isRemote) {
-            if (aff.canCast(baseManaCost, spellAffType)) {
-                SpellLiquefact liquef = new SpellLiquefact(worldIn, playerIn);
-                liquef.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, (float) -(playerIn.motionX + playerIn.motionY + playerIn.motionZ) + 1F, 1.0F);
-                worldIn.spawnEntity(liquef);
-                return new ActionResult(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
-            } else if (aff.hasAffinity(spellAffType)) {
-                dispOutOfMana(playerIn, spellAffType.getMeta(), aff.getAffinityMana(spellAffType), baseManaCost);
-            } else {
-                dispNoAffinity(playerIn, spellAffType.getMeta());
-            }
-        } else if (successfulCast) {
+
+        if (playerIn.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY, null).canCast(baseManaCost, spellAffType)) {
+            SpellLiquefact liquef = new SpellLiquefact(worldIn, playerIn);
+            liquef.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, (float) -(playerIn.motionX + playerIn.motionY + playerIn.motionZ) + 1F, 1.0F);
+            worldIn.spawnEntity(liquef);
             return new ActionResult(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
+        } else if (playerIn.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY, null).hasAffinity(spellAffType)) {
+            dispOutOfMana(playerIn, spellAffType.getMeta(), playerIn.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY, null).getAffinityMana(spellAffType), baseManaCost);
+        } else {
+            dispNoAffinity(playerIn, spellAffType.getMeta());
         }
+
         return new ActionResult(EnumActionResult.FAIL, playerIn.getHeldItem(handIn));
     }
 }

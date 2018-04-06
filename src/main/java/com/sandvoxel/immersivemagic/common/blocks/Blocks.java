@@ -1,7 +1,6 @@
 package com.sandvoxel.immersivemagic.common.blocks;
 
 import com.sandvoxel.immersivemagic.Reference;
-import com.sandvoxel.immersivemagic.common.blocks.LIb.BlockBase;
 import com.sandvoxel.immersivemagic.common.util.RegistryHelper;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
@@ -9,7 +8,7 @@ import net.minecraft.item.ItemStack;
 
 
 public enum Blocks {
-    TEMP_BLOCK(TempBlock.class),
+    TEMP_BLOCK(AffinitySelector.class),
     SPELL_LIGHT(SpellLightBlock.class),
     LIQ_BLOCK(LiquefactedBlock.class);
 

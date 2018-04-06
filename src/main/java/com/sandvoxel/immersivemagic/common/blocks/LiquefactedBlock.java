@@ -6,10 +6,7 @@ import com.sandvoxel.immersivemagic.ImmersiveMagic;
 import com.sandvoxel.immersivemagic.Reference;
 import com.sandvoxel.immersivemagic.common.blocks.LIb.BlockBase;
 import jline.internal.Nullable;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockDirt;
-import net.minecraft.block.BlockSand;
-import net.minecraft.block.SoundType;
+import net.minecraft.block.*;
 import net.minecraft.block.material.EnumPushReaction;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
@@ -228,6 +225,16 @@ public class LiquefactedBlock extends BlockBase {
                 return new ModelResourceLocation(resourcePath, getPropertyString(blockStates));
             }
         });
+    }
+
+    @Override
+    public boolean canSustainPlant(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing direction, net.minecraftforge.common.IPlantable plantable)
+    {
+        if (plantable instanceof BlockBush)
+        {
+            return true;
+        }
+        return false;
     }
 
 }

@@ -35,17 +35,18 @@ import javax.annotation.Nullable;
 import java.util.Arrays;
 import java.util.Map;
 
-public class TempBlock extends BlockTileBase {
+public class AffinitySelector extends BlockTileBase {
 
-    protected static final AxisAlignedBB CRAFTER_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.375D, 1.0D);
+    protected static final AxisAlignedBB CRAFTER_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.625D, 1.0D);
 
-    public TempBlock() {
+    public AffinitySelector() {
         super(Material.ROCK, "");
-        setInternalName("tempblock");
+        setInternalName("affinity_selector");
         setCreativeTab(ImmersiveMagic.tabimmmag);
         setTileEntity(TestTile.class);
         this.setSoundType(SoundType.STONE);
         this.setHardness(5.0f);
+
         setLightOpacity(0);
     }
 
@@ -65,6 +66,12 @@ public class TempBlock extends BlockTileBase {
 
     @Override
     public boolean isFullBlock(IBlockState state) {
+        return false;
+    }
+
+    @Override
+    public boolean isFullCube(IBlockState state)
+    {
         return false;
     }
 
