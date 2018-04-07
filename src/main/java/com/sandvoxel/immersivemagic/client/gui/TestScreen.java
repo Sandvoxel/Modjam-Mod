@@ -67,16 +67,15 @@ public class TestScreen extends GuiBase {
         buttonCenterX = this.width / 2;
         buttonCenterY = this.height / 2;
         buttonList.clear();
-        IAffinities playerAffinities = player.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY,null);
 
-        buttonList.add(button = new AffinityButtons(AffinityTypes.LIGHT.getMeta(),  buttonCenterX - 30,  buttonCenterY - 58, player, playerAffinities));
-        buttonList.add(button = new AffinityButtons(AffinityTypes.FIRE.getMeta(),   buttonCenterX + 11,  buttonCenterY - 58, player, playerAffinities));
-        buttonList.add(button = new AffinityButtons(AffinityTypes.EARTH.getMeta(),  buttonCenterX - 58,  buttonCenterY - 29, player, playerAffinities));
-        buttonList.add(button = new AffinityButtons(AffinityTypes.ENDER.getMeta(),  buttonCenterX + 40,  buttonCenterY - 29, player, playerAffinities));
-        buttonList.add(button = new AffinityButtons(AffinityTypes.WATER.getMeta(),  buttonCenterX - 58,  buttonCenterY + 11, player, playerAffinities));
-        buttonList.add(button = new AffinityButtons(AffinityTypes.AIR.getMeta(),    buttonCenterX + 40,  buttonCenterY + 11, player, playerAffinities));
-        buttonList.add(button = new AffinityButtons(AffinityTypes.ICE.getMeta(),    buttonCenterX - 29,  buttonCenterY + 40, player, playerAffinities));
-        buttonList.add(button = new AffinityButtons(AffinityTypes.DARKNESS.getMeta(),buttonCenterX + 11, buttonCenterY + 40, player, playerAffinities));
+        buttonList.add(button = new AffinityButtons(AffinityTypes.LIGHT.getMeta(),  buttonCenterX - 30,  buttonCenterY - 58, player));
+        buttonList.add(button = new AffinityButtons(AffinityTypes.FIRE.getMeta(),   buttonCenterX + 11,  buttonCenterY - 58, player));
+        buttonList.add(button = new AffinityButtons(AffinityTypes.EARTH.getMeta(),  buttonCenterX - 58,  buttonCenterY - 29, player));
+        buttonList.add(button = new AffinityButtons(AffinityTypes.ENDER.getMeta(),  buttonCenterX + 40,  buttonCenterY - 29, player));
+        buttonList.add(button = new AffinityButtons(AffinityTypes.WATER.getMeta(),  buttonCenterX - 58,  buttonCenterY + 11, player));
+        buttonList.add(button = new AffinityButtons(AffinityTypes.AIR.getMeta(),    buttonCenterX + 40,  buttonCenterY + 11, player));
+        buttonList.add(button = new AffinityButtons(AffinityTypes.ICE.getMeta(),    buttonCenterX - 29,  buttonCenterY + 40, player));
+        buttonList.add(button = new AffinityButtons(AffinityTypes.DARKNESS.getMeta(),buttonCenterX + 11, buttonCenterY + 40, player));
 
         super.initGui();
     }
@@ -85,8 +84,7 @@ public class TestScreen extends GuiBase {
     protected void actionPerformed(GuiButton button) throws IOException {
         switch (button.id){
             default:
-                    Network.sendToServer(new AffinityGuiPacket(button.id, 1));
-                initGui();
+                Network.sendToServer(new AffinityGuiPacket(button.id, 1));
         }
         super.actionPerformed(button);
     }
