@@ -72,7 +72,7 @@ public class AffinityGuiPacket extends PacketBase {
         } else {
             ImmersiveMagic.LOGGER.info("Mis-match between affinity status request and actual affinity status. Server is out of sync with " + netHandler.player.getName() + " for affinity '" + affinityType.getName() + "'!" );
         }
-        ImmersiveMagic.LOGGER.info("About to send AffinityPacket ");
+        //ImmersiveMagic.LOGGER.info("About to send AffinityPacket ");
         for(AffinityTypes type : AffinityTypes.values()){
             ImmersiveMagic.LOGGER.info(type.getName() + ": " + affinities.hasAffinity(type));
         }
