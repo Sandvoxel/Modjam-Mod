@@ -1,16 +1,10 @@
 package com.sandvoxel.immersivemagic.common.spells.entity;
 
-import com.sandvoxel.immersivemagic.ImmersiveMagic;
-import com.sandvoxel.immersivemagic.common.blocks.Blocks;
-import net.minecraft.entity.EntityAreaEffectCloud;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
-
-import java.util.Collection;
 
 /**
  * Created by CrazyGrape on 4/1/2018.

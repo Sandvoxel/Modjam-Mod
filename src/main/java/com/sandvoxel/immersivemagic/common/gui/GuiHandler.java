@@ -1,6 +1,5 @@
 package com.sandvoxel.immersivemagic.common.gui;
 
-import com.sandvoxel.immersivemagic.ImmersiveMagic;
 import com.sandvoxel.immersivemagic.common.tileentitys.TileEntityBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;

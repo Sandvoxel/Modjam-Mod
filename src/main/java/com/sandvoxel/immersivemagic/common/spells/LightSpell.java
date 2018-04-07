@@ -1,7 +1,6 @@
 package com.sandvoxel.immersivemagic.common.spells;
 
 import com.sandvoxel.immersivemagic.api.magic.IAffinities;
-import com.sandvoxel.immersivemagic.common.magicdata.Affinities;
 import com.sandvoxel.immersivemagic.common.magicdata.AffinitiesProvider;
 import com.sandvoxel.immersivemagic.common.magicdata.AffinityTypes;
 import com.sandvoxel.immersivemagic.common.spells.entity.SpellLight;
@@ -11,7 +10,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 
 public class LightSpell extends SpellBase {

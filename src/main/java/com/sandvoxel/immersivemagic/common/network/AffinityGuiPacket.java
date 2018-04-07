@@ -1,23 +1,15 @@
 package com.sandvoxel.immersivemagic.common.network;
 
-import com.jcraft.jogg.Packet;
 import com.sandvoxel.immersivemagic.ImmersiveMagic;
 import com.sandvoxel.immersivemagic.api.magic.IAffinities;
 import com.sandvoxel.immersivemagic.common.magicdata.AffinitiesProvider;
-import com.sandvoxel.immersivemagic.common.magicdata.AffinityObject;
 import com.sandvoxel.immersivemagic.common.magicdata.AffinityTypes;
 import com.sandvoxel.immersivemagic.common.network.lib.Network;
 import com.sandvoxel.immersivemagic.common.network.lib.PacketBase;
 import io.netty.buffer.ByteBuf;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.network.NetHandlerPlayClient;
 import net.minecraft.network.NetHandlerPlayServer;
-import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
-import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
-
-import java.util.UUID;
 
 public class AffinityGuiPacket extends PacketBase {
 
