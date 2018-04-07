@@ -9,9 +9,12 @@ import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.network.NetHandlerPlayClient;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.network.NetHandlerPlayServer;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 
 /**
@@ -24,24 +27,26 @@ public class AffinityPacket extends PacketBase {
     private EntityPlayer player;
 
     public AffinityPacket() {
-        ImmersiveMagic.LOGGER.info("Initialized without any parameters!");
+        //ImmersiveMagic.LOGGER.info("Initialized without any parameters!");
+        setPlayerSP();
     }
 
-
-    public AffinityPacket(IAffinities playerAffinities, EntityPlayer player) {
-        ImmersiveMagic.LOGGER.info("Initialized with parameters!");
+    public AffinityPacket(IAffinities playerAffinities, EntityPlayerMP player) {
+        //ImmersiveMagic.LOGGER.info("Initialized with parameters!");
         for (AffinityTypes type : AffinityTypes.values()){
             hasAffinityArr[type.getMeta()] = playerAffinities.hasAffinity(type);
         }
         this.player = player;
     }
 
-
+    @SideOnly(Side.CLIENT)
+    public void setPlayerSP() {
+        player = Minecraft.getMinecraft().player;
+    }
 
     @Override
     public IMessage handleClient(NetHandlerPlayClient netHandler) {
         ImmersiveMagic.LOGGER.info(hasAffinityArr);
-        player = Minecraft.getMinecraft().player;
         IAffinities aff = player.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY, null);
 
         for (AffinityTypes type : AffinityTypes.values()){
