@@ -44,12 +44,25 @@ public class AffinitiesStorage implements Capability.IStorage<IAffinities> {
             list.add(new AffinityObject(types));
         }
         if(!affinities[0].isEmpty()) {
+            boolean encounteredException = false;
             for (String affinitiy : affinities) {
-                String[] holder = affinitiy.split("-");
-                list.get(Integer.parseInt(holder[0])).setAffinityLevel(Integer.parseInt(holder[1]));
-                list.get(Integer.parseInt(holder[0])).setAffinityMana(Integer.parseInt(holder[2]));
-                list.get(Integer.parseInt(holder[0])).setCurrentXP(Integer.parseInt(holder[3]));
-                list.get(Integer.parseInt(holder[0])).setActive(Boolean.parseBoolean(holder[4]));
+                try {
+                    String[] holder = affinitiy.split("-");
+                    list.get(Integer.parseInt(holder[0])).setAffinityLevel(Integer.parseInt(holder[1]));
+                    list.get(Integer.parseInt(holder[0])).setAffinityMana(Integer.parseInt(holder[2]));
+                    list.get(Integer.parseInt(holder[0])).setCurrentXP(Integer.parseInt(holder[3]));
+                    list.get(Integer.parseInt(holder[0])).setActive(Boolean.parseBoolean(holder[4]));
+                } catch (Exception exception) {
+                    if (!encounteredException) {
+                        ImmersiveMagic.LOGGER.info("Encountered exception reading NBT data. Resetting all affinities in this loaded instance.");
+                        encounteredException = true;
+                    }
+                    String[] holder = affinitiy.split("-");
+                    list.get(Integer.parseInt(holder[0])).setAffinityLevel(1);
+                    list.get(Integer.parseInt(holder[0])).setAffinityMana(0);
+                    list.get(Integer.parseInt(holder[0])).setCurrentXP(0);
+                    list.get(Integer.parseInt(holder[0])).setActive(false);
+                }
             }
         }
         instance.setPlayerAffinities(list);

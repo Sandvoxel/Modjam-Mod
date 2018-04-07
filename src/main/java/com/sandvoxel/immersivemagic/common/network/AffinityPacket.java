@@ -46,7 +46,7 @@ public class AffinityPacket extends PacketBase {
 
     @Override
     public IMessage handleClient(NetHandlerPlayClient netHandler) {
-        ImmersiveMagic.LOGGER.info(hasAffinityArr);
+        //ImmersiveMagic.LOGGER.info(hasAffinityArr);
 
         for (AffinityTypes type : AffinityTypes.values()){
             if (hasAffinityArr[type.getMeta()]) {
@@ -72,7 +72,7 @@ public class AffinityPacket extends PacketBase {
     public void fromBytes(ByteBuf buf) {
         entityID = ByteBufUtils.readVarInt(buf, 4);
         for (int i = 0; i < hasAffinityArr.length; ++i) {
-            ImmersiveMagic.LOGGER.info(i);
+            //ImmersiveMagic.LOGGER.info(i);
             hasAffinityArr[i] = buf.readBoolean();
         }
     }
