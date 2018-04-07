@@ -18,25 +18,29 @@ public class AffinityGuiPacket extends PacketBase {
     private int mana;
     private boolean active;
     private int affinityCap = 3;
+    private boolean onlyRequesting = false;
 
     public AffinityGuiPacket() {
     }
 
-    public AffinityGuiPacket(int id, int power) {
+    public AffinityGuiPacket(int id, int power, boolean onlyRequestingInfo) {
         this.id = id;
         this.power = power;
+        onlyRequesting = onlyRequestingInfo;
     }
 
     @Override
     public void fromBytes(ByteBuf buf) {
         this.id = buf.readInt();
         this.power = buf.readInt();
+        this.onlyRequesting = buf.readBoolean();
     }
 
     @Override
     public void toBytes(ByteBuf buf) {
         buf.writeInt(id);
         buf.writeInt(power);
+        buf.writeBoolean(onlyRequesting);
     }
 
 
@@ -51,30 +55,31 @@ public class AffinityGuiPacket extends PacketBase {
     public IMessage handleServer(NetHandlerPlayServer netHandler) {
         IAffinities affinities = netHandler.player.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY,null);
 
-        AffinityTypes affinityType = AffinityTypes.getAffinity(id);
-
-        if (affinities.hasAffinity(affinityType)){
-            affinities.removeAffinity(affinityType);
-            ImmersiveMagic.LOGGER.info("Removed affinity '" + affinityType.getName() + "' from player " + netHandler.player.getName());
-        } else if (!affinities.hasAffinity(affinityType)) {
-            int activeNum = 0;
-            for(AffinityTypes type : AffinityTypes.values()){
-                if(affinities.hasAffinity(type)){
-                    activeNum++;
+        if (!onlyRequesting) {
+            AffinityTypes affinityType = AffinityTypes.getAffinity(id);
+            if (affinities.hasAffinity(affinityType)) {
+                affinities.removeAffinity(affinityType);
+                ImmersiveMagic.LOGGER.info("Removed affinity '" + affinityType.getName() + "' from player " + netHandler.player.getName());
+            } else if (!affinities.hasAffinity(affinityType)) {
+                int activeNum = 0;
+                for (AffinityTypes type : AffinityTypes.values()) {
+                    if (affinities.hasAffinity(type)) {
+                        activeNum++;
+                    }
                 }
-            }
-            if (activeNum >= affinityCap) {
-                ImmersiveMagic.LOGGER.info("Player " + netHandler.player.getName() + " already has " + activeNum + " affinities. Cannot add " + affinityType.getName() + "!");
+                if (activeNum >= affinityCap) {
+                    ImmersiveMagic.LOGGER.info("Player " + netHandler.player.getName() + " already has " + activeNum + " affinities. Cannot add " + affinityType.getName() + "!");
+                } else {
+                    affinities.addAffinities(affinityType);
+                    ImmersiveMagic.LOGGER.info("Added affinity '" + affinityType.getName() + "' to player " + netHandler.player.getName());
+                }
             } else {
-                affinities.addAffinities(affinityType);
-                ImmersiveMagic.LOGGER.info("Added affinity '" + affinityType.getName() + "' to player " + netHandler.player.getName());
+                ImmersiveMagic.LOGGER.info("Mis-match between affinity status request and actual affinity status. Server is out of sync with " + netHandler.player.getName() + " for affinity '" + affinityType.getName() + "'!");
             }
-        } else {
-            ImmersiveMagic.LOGGER.info("Mis-match between affinity status request and actual affinity status. Server is out of sync with " + netHandler.player.getName() + " for affinity '" + affinityType.getName() + "'!" );
-        }
-        //ImmersiveMagic.LOGGER.info("About to send AffinityPacket ");
-        for(AffinityTypes type : AffinityTypes.values()){
-            ImmersiveMagic.LOGGER.info(type.getName() + ": " + affinities.hasAffinity(type));
+            //ImmersiveMagic.LOGGER.info("About to send AffinityPacket ");
+            /*for (AffinityTypes type : AffinityTypes.values()) {
+                ImmersiveMagic.LOGGER.info(type.getName() + ": " + affinities.hasAffinity(type));
+            }*/
         }
         Network.sendTo(new AffinityPacket(affinities, netHandler.player), netHandler.player);
 

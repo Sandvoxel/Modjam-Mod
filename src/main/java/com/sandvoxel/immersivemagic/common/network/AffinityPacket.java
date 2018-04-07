@@ -47,19 +47,18 @@ public class AffinityPacket extends PacketBase {
     @Override
     public IMessage handleClient(NetHandlerPlayClient netHandler) {
         ImmersiveMagic.LOGGER.info(hasAffinityArr);
-        IAffinities aff = player.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY, null);
 
         for (AffinityTypes type : AffinityTypes.values()){
             if (hasAffinityArr[type.getMeta()]) {
-                aff.addAffinities(type);
+                player.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY, null).addAffinities(type);
             } else {
-                aff.removeAffinity(type);
+                player.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY, null).removeAffinity(type);
             }
         }
 
-        for(AffinityTypes type : AffinityTypes.values()){
+        /*for(AffinityTypes type : AffinityTypes.values()){
             ImmersiveMagic.LOGGER.info(type.getName() + ":. " + player.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY, null).hasAffinity(type));
-        }
+        }*/
 
         return null;
     }

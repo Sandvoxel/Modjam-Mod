@@ -41,6 +41,7 @@ public class TestScreen extends GuiBase {
             }
         });
         this.player = player;
+        Network.sendToServer(new AffinityGuiPacket(0, 0, true));
     }
 
     @Override
@@ -84,7 +85,7 @@ public class TestScreen extends GuiBase {
     protected void actionPerformed(GuiButton button) throws IOException {
         switch (button.id){
             default:
-                Network.sendToServer(new AffinityGuiPacket(button.id, 1));
+                Network.sendToServer(new AffinityGuiPacket(button.id, 1, false));
         }
         super.actionPerformed(button);
     }
