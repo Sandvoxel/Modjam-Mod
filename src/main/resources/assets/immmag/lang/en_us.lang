@@ -1,13 +1,13 @@
 #Items
 item.spell_nova.name=Nova (Fire)
-item.spell_mining.name=Excavator (Earth)
+item.spell_mining.name=Excavator (Earth) - OP and broken
 item.spell_light.name=Illuminate (Light)
 item.spell_liquefact.name=Liquefact (Earth)
 item.crystal_ball.name=Crystal Ball
 item.cosmic_item.name=Cosmic Item (cool tab icon)
 
 #Blocks
-tile.immmag.affinity_selector.name=Affinity Selector
+tile.immmag.tempblock.name=Affinity Selector
 tile.immmag.block_liquefacted.name=Liquefacted Block
 
 #Creative Tab

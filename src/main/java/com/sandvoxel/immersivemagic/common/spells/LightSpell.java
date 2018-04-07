@@ -22,7 +22,7 @@ public class LightSpell extends SpellBase {
         IAffinities aff = playerIn.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY, null);
 
         if(!worldIn.isRemote) {
-            if (((Affinities)aff).canCast(50, AffinityTypes.LIGHT)) {
+            if ((aff).canCast(50, AffinityTypes.LIGHT)) {
                 SpellLight spellLight = new SpellLight(worldIn, playerIn);
                 spellLight.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, (float) -(playerIn.motionX + playerIn.motionY + playerIn.motionZ) + 1.0F, 1.0F);
                 worldIn.spawnEntity(spellLight);

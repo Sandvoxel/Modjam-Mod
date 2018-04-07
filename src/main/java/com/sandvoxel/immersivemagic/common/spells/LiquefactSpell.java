@@ -24,7 +24,7 @@ public class LiquefactSpell extends SpellBase {
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
         IAffinities aff = playerIn.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY, null);
 
-        if (((Affinities)aff).canCast(80, AffinityTypes.EARTH)) {
+        if ((aff).canCast(80, AffinityTypes.EARTH)) {
             if (!worldIn.isRemote) {
                 SpellLiquefact liquef = new SpellLiquefact(worldIn, playerIn);
                 liquef.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, (float) -(playerIn.motionX + playerIn.motionY + playerIn.motionZ) + 1F, 1.0F);

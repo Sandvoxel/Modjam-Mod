@@ -24,7 +24,7 @@ public class NovaSpell extends SpellBase {
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
         IAffinities aff = playerIn.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY, null);
 
-        if(((Affinities)aff).canCast(100, AffinityTypes.FIRE)) {
+        if((aff).canCast(100, AffinityTypes.FIRE)) {
             if (!worldIn.isRemote) {
                 SpellNova spellNova = new SpellNova(worldIn, playerIn);
                 spellNova.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, (float) -(playerIn.motionX + playerIn.motionY + playerIn.motionZ) + 1.0F, 1.0F);
