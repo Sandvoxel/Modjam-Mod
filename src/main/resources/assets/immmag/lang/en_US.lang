@@ -1,6 +1,6 @@
 item.spell_nova.name=Nova (Fire)
-item.spell_mining=Excavator (Earth)
-item.spell_light=Illuminate (Light)
+item.spell_mining.name=Excavator (Earth)
+item.spell_light.name=Illuminate (Light)
 item.spell_liquefact.name=Liquefact (Earth)
 item.crystal_ball.name=Crystal Ball
 item.cosmic_item.name=Cosmic Item (cool tab icon)
