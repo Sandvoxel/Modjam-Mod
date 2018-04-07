@@ -2,6 +2,7 @@ package com.sandvoxel.immersivemagic.common.magicdata;
 
 import com.sandvoxel.immersivemagic.ImmersiveMagic;
 import com.sandvoxel.immersivemagic.api.magic.IAffinities;
+import com.sandvoxel.immersivemagic.common.network.lib.Network;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagString;
 import net.minecraft.util.EnumFacing;
@@ -26,6 +27,8 @@ public class AffinitiesStorage implements Capability.IStorage<IAffinities> {
             string.append(affinityTypes.getAffinityMana());
             string.append("-");
             string.append(affinityTypes.getCurrentXP());
+            string.append("-");
+            string.append(affinityTypes.isActive());
             string.append(" ");
         }
 
@@ -37,14 +40,16 @@ public class AffinitiesStorage implements Capability.IStorage<IAffinities> {
         String[] affinities = ((NBTTagString)nbt).getString().split(" ");
         ImmersiveMagic.LOGGER.info(affinities[0]);
         List<AffinityObject> list = new ArrayList<>();
+        for(AffinityTypes types : AffinityTypes.values()){
+            list.add(new AffinityObject(types));
+        }
         if(!affinities[0].isEmpty()) {
             for (String affinitiy : affinities) {
                 String[] holder = affinitiy.split("-");
-                AffinityObject affinityObject = new AffinityObject(AffinityTypes.getAffinity(Integer.parseInt(holder[0])));
-                affinityObject.setAffinityLevel(Integer.parseInt(holder[1]));
-                affinityObject.setAffinityMana(Integer.parseInt(holder[2]));
-                affinityObject.setCurrentXP(Integer.parseInt(holder[3]));
-                list.add(affinityObject);
+                list.get(Integer.parseInt(holder[0])).setAffinityLevel(Integer.parseInt(holder[1]));
+                list.get(Integer.parseInt(holder[0])).setAffinityMana(Integer.parseInt(holder[2]));
+                list.get(Integer.parseInt(holder[0])).setCurrentXP(Integer.parseInt(holder[3]));
+                list.get(Integer.parseInt(holder[0])).setActive(Boolean.parseBoolean(holder[4]));
             }
         }
         instance.setPlayerAffinities(list);

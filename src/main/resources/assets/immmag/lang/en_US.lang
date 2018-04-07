@@ -1,3 +1,4 @@
+#Items
 item.spell_nova.name=Nova (Fire)
 item.spell_mining.name=Excavator (Earth)
 item.spell_light.name=Illuminate (Light)
@@ -5,7 +6,9 @@ item.spell_liquefact.name=Liquefact (Earth)
 item.crystal_ball.name=Crystal Ball
 item.cosmic_item.name=Cosmic Item (cool tab icon)
 
-tile.immmag.tempblock.name=Affinity Selector
+#Blocks
+tile.immmag.affinity_selector.name=Affinity Selector
 tile.immmag.block_liquefacted.name=Liquefacted Block
 
+#Creative Tab
 itemGroup.immmag-tab=Immersive Magic
