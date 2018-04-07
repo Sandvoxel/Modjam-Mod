@@ -22,7 +22,7 @@ public class AffinitiesStorage implements Capability.IStorage<IAffinities> {
         for(AffinityObject affinityTypes :instance.getPlayerAffinities()){
             string.append(AffinityTypes.getAffinityID(affinityTypes.getAffinityType()));
             string.append("-");
-            string.append(affinityTypes.getAffinityPower());
+            string.append(affinityTypes.getAffinityLevel());
             string.append("-");
             string.append(affinityTypes.getAffinityMana());
             string.append("-");
