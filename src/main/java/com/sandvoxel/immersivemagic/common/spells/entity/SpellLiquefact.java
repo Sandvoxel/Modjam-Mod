@@ -19,6 +19,8 @@ public class SpellLiquefact extends SpellEntityBase {
         super(worldIn);
         spellParticleType = EnumParticleTypes.CRIT;
         impactPartVel = 4.0D;
+        this.hasGravity = true;
+
     }
 
     public SpellLiquefact(World world, EntityLivingBase entityLivingBase){

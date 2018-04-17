@@ -23,6 +23,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class AffinityPacket extends PacketBase {
 
     private boolean[] hasAffinityArr = new boolean[8];
+    private int[] mana = new int[8];
     private int entityID;
     private EntityPlayer player;
 
@@ -35,6 +36,7 @@ public class AffinityPacket extends PacketBase {
         //ImmersiveMagic.LOGGER.info("Initialized with parameters!");
         for (AffinityTypes type : AffinityTypes.values()){
             hasAffinityArr[type.getMeta()] = playerAffinities.hasAffinity(type);
+            mana[type.getMeta()] = playerAffinities.getAffinityMana(type);
         }
         this.player = player;
     }
@@ -54,6 +56,7 @@ public class AffinityPacket extends PacketBase {
             } else {
                 player.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY, null).removeAffinity(type);
             }
+            player.getCapability(AffinitiesProvider.AFFINITIES_CAPABILITY, null).setAffinityMana(type, mana[type.getMeta()]);
         }
 
         /*for(AffinityTypes type : AffinityTypes.values()){
@@ -75,13 +78,19 @@ public class AffinityPacket extends PacketBase {
             //ImmersiveMagic.LOGGER.info(i);
             hasAffinityArr[i] = buf.readBoolean();
         }
+        for (int m = 0; m < mana.length; m++) {
+            mana[m] = buf.readInt();
+        }
     }
 
     @Override
     public void toBytes(ByteBuf buf) {
         ByteBufUtils.writeVarInt(buf, player.getEntityId(), 4);
-        for (boolean bool : hasAffinityArr){
+        for (boolean bool : hasAffinityArr) {
             buf.writeBoolean(bool);
+        }
+        for (int mana : mana) {
+            buf.writeInt(mana);
         }
     }
 }

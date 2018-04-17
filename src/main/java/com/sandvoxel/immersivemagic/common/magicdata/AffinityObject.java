@@ -40,7 +40,10 @@ public class AffinityObject {
     }
 
     public void setAffinityMana(int affinityMana) {
-        this.affinityMana = affinityMana;
+        if (affinityMana <= getManaCap())
+            this.affinityMana = affinityMana;
+        else
+            this.affinityMana = getManaCap();
     }
 
     private void subtractAffinityMana(int affinityMana){

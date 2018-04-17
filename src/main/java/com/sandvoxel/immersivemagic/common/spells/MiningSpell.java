@@ -3,6 +3,8 @@ package com.sandvoxel.immersivemagic.common.spells;
 import com.sandvoxel.immersivemagic.api.magic.IAffinities;
 import com.sandvoxel.immersivemagic.common.magicdata.AffinitiesProvider;
 import com.sandvoxel.immersivemagic.common.magicdata.AffinityTypes;
+import com.sandvoxel.immersivemagic.common.network.AffinityGuiPacket;
+import com.sandvoxel.immersivemagic.common.network.lib.Network;
 import com.sandvoxel.immersivemagic.common.spells.lib.SpellBase;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -27,6 +29,7 @@ public class MiningSpell extends SpellBase {
 
     @Override
     public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+        Network.sendToServer(new AffinityGuiPacket(0, 0, true));
         castingPos = pos;
 
         int i = 0;

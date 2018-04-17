@@ -45,6 +45,10 @@ public class Affinities implements IAffinities {
         return affinityObjects.get(affinityType.getMeta()).getAffinityMana();
     }
 
+    public void setAffinityMana(AffinityTypes affinityType, int manaLevel) {
+        affinityObjects.get(affinityType.getMeta()).setAffinityMana(manaLevel);
+    }
+
     @Override
     public boolean canCast(int manaCost, AffinityTypes affinityType) {
         AffinityObject affinity = affinityObjects.get(affinityType.getMeta());
