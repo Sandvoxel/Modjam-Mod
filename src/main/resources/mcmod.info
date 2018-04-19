@@ -1,15 +1,15 @@
 [
 {
-  "modid": "immmag",
-  "name": "Immersive Magic",
-  "description": "Adds fast-paced, affinity-based magic to your Minecraft experience.",
+  "modid": "elemaff",
+  "name": "Elemental Affinities",
+  "description": "(Previously Immersive Magic) Adds fast-paced, affinity-based magic to your Minecraft experience.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
   "authorList": ["TheCrazyGrape", "Sandvoxel"],
-  "credits": "baseboard idea and name taken from BigHatMagnus' post on the Minecraft Forums",
-  "logoFile": "ImmMag.png",
+  "credits": "Baseboard idea and name taken from BigHatMagnus' post on the Minecraft Forums",
+  "logoFile": "ElemAff.png",
   "screenshots": [],
   "dependencies": []
 }
